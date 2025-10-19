@@ -69,7 +69,7 @@ License: free to use and customize.
 
     :root{
       --bg:linear-gradient(135deg, #df47b9 0%, #06a79f 50%, #000000 100%);; --card:#949494; --muted:#6b6b6b;
-      --accent:#1648d1; --accent-dark:#000000; --accent-contrast:#fff;
+      --accent:rgb(138, 138, 138); --accent-dark:#000000; --accent-contrast:#fff;
       --radius:14px; --maxw:1200px; --shadow:0 8px 30px rgba(18,22,28,0.08);
     }
     *{box-sizing:border-box}
@@ -624,6 +624,9 @@ header.shrink {
   position: relative;
   -webkit-overflow-scrolling: touch; /* smooth scrolling on mobile */
   scrollbar-width: thin;
+  margin-bottom: 0; /* small gap below slider */
+  margin-top:0;
+  padding-bottom: 0;
 }
 
 /* Wrapper for all products */
@@ -709,6 +712,40 @@ header.shrink {
 }
 
  
+/* EMI Banner */
+.emi-banner img {
+  width: 100%;       /* full width */
+  height: auto;      /* maintain aspect ratio */
+  display: block;
+  margin:  0;
+  padding: 0;     /* small gap above and below banner */
+  border-radius: 5px; /* optional rounded corners */
+}
+
+/* Reduce spacing for surrounding sections */
+.above-section {
+  margin-top: 5px;  /* gap below above-section */
+}
+
+.feature {
+  margin-top: 5px;     /* gap above feature section */
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .emi-banner img {
+    margin: 5px 0;     /* keep small gaps on mobile */
+    border-radius: 3px; /* slightly smaller corners */
+  }
+
+  .below-section {
+    margin-bottom: 0px;
+  }
+
+  .feature {
+    margin-top: 3px;
+  }
+}
 
 
   </style> 
@@ -829,8 +866,9 @@ header.shrink {
   <iframe src="3d.html" width="100%" height="450" frameborder="0" style="border-radius:10px;"></iframe>
 </section>
 
-
-
+<section class="emi-banner">
+  <img src="images/banner.jpg" alt="EMI on Cards Banner">
+</section>
 
  <div class="new-products-slider">
   <div class="new-products-wrapper">
