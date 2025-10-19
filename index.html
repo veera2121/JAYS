@@ -36,7 +36,7 @@ License: free to use and customize.
     <div class="brand">
       <div class="logo">Sri</div>
       <div>
-        <h1>Sri  Ganesha Home Needs and Furniture</h1>
+        <h1>Sri Sai Ganesha Home Needs and Furniture</h1>
         <p class="lead">Elegant furniture for modern homes</p>
       </div>
     </div>
@@ -74,14 +74,14 @@ License: free to use and customize.
     }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial; margin:0; background:var(--bg); color:#111}
-    a{text-decoration:none;color:inherit}
+    body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial; margin:0; background:var(--bg); color:#000000}
+    a{text-decoration:none;color:#06a79f}
     .container{max-width:var(--maxw);margin:26px auto;padding:0 20px}
 
     /* Header */
    
     .brand{display:flex;gap:14px;align-items:center}
-    .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-dark));display:flex;align-items:center;justify-content:center;color:var(--accent-contrast);font-weight:700;font-size:20px;box-shadow:var(--shadow)}
+    
     .brand h1{margin:0;font-size:20px}
     .brand p{margin:0;color:var(--muted);font-size:13px}
     nav{display:flex;gap:12px;align-items:center}
@@ -322,23 +322,60 @@ License: free to use and customize.
 
 
 header {
-  position: sticky;    /* stick at top */
+  position: sticky;
   top: 0;
   z-index: 9999;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
+  flex-wrap: nowrap; /* Prevent items from wrapping */
+
+  /* Base height and padding */
+  height: 70px;
+  min-height: 70px;
   padding: 15px 20px;
+  box-sizing: border-box;
 
   /* Gradient background */
-  background: #0d945c;
-  color: #ffffff;
-  font-weight: bold;
+  background: linear-gradient(135deg, #7a9926, #a1c349);
 
-  /* Optional shadow */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  /* Text styling */
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+
+  /* Shadow and border */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  border-bottom: 2px solid rgba(255,255,255,0.2);
+  border-radius: 0 0 10px 10px;
+
+  /* Smooth transition for resizing */
+  transition: all 0.3s ease;
 }
+
+/* Tablet: slightly smaller header */
+@media (max-width: 1024px) {
+  header {
+    height: 60px;
+    min-height: 60px;
+    padding: 12px 18px;
+    gap: 12px;
+  }
+}
+
+/* Mobile: compact header */
+@media (max-width: 768px) {
+  header {
+    height: 55px;
+    min-height: 55px;
+    padding: 10px 15px;
+    gap: 10px;
+    font-size: 0.9rem;
+    border-radius: 0 0 8px 8px;
+  }
+}
+
 
 
 /* Brand */
@@ -355,7 +392,12 @@ header {
   padding: 8px 12px;
   border-radius: 5px;
   font-size: 1.2rem;
+} 
+header .lead {
+  color: #000000; /* replace with your desired color */
+  font-weight: bold; /* optional: makes it stand out more */
 }
+
 
 /* Desktop navigation */
 nav {
@@ -681,6 +723,33 @@ header.shrink {
   .feature {
     margin-top: 3px;
   }
+} 
+
+/* Contact section text */
+/* Contact section text */
+#contact h3 {
+  color: #7f0c8a;      /* heading color */
+  font-weight: 700;    /* bold text */
+  font-size: 2rem;     /* slightly larger heading */
+}
+
+#contact p.meta {
+  color: #333333;      /* paragraph color */
+  font-weight: 500;    /* make text a bit bold for readability */
+}
+
+#contact a.btn {
+  color: #ffffff;              /* button text color */
+  background-color: #1e4619;   /* button background */
+  font-weight: 600;            /* bold button text */
+  padding: 12px 25px;          /* slightly larger button for emphasis */
+  border-radius: 8px;          /* smooth rounded button */
+  transition: all 0.3s ease;  /* smooth hover effect */
+}
+
+#contact a.btn:hover {
+  background-color: #4d44cf;   /* brighter orange on hover */
+  transform: scale(1.05);      /* subtle zoom effect */
 }
 
 
@@ -968,7 +1037,7 @@ header.shrink {
       <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center;background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow)">
         <div style="flex:1;min-width:260px">
           <h3 style="margin-top:0">Visit our showroom or contact us</h3>
-          <p class="meta">Address: 123 Market Road, Your City — Open Mon–Sat 10am–7pm</p>
+          <p class="meta">Address:-354, SH 14, MAIN ROAD, near PADMAJA PICTURE PALACE, Malikipuram, Andhra Pradesh 533253 — Open Mon–Sat 10am–7pm</p>
           <p class="meta">Phone: +91 98765 43210</p>
           <a class="btn" href="mailto:info@jaysfurniture.com">Email Us</a>
         </div>
