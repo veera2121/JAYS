@@ -36,7 +36,7 @@ License: free to use and customize.
     <div class="brand">
       <div class="logo">Sri</div>
       <div>
-        <h1>Sri Sai Ganesha Home Needs and Furniture</h1>
+        <h1>Sri  Ganesha Home Needs and Furniture</h1>
         <p class="lead">Elegant furniture for modern homes</p>
       </div>
     </div>
@@ -79,7 +79,7 @@ License: free to use and customize.
     .container{max-width:var(--maxw);margin:26px auto;padding:0 20px}
 
     /* Header */
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+   
     .brand{display:flex;gap:14px;align-items:center}
     .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-dark));display:flex;align-items:center;justify-content:center;color:var(--accent-contrast);font-weight:700;font-size:20px;box-shadow:var(--shadow)}
     .brand h1{margin:0;font-size:20px}
@@ -89,7 +89,7 @@ License: free to use and customize.
     .btn{background:var(--accent);color:var(--accent-contrast);padding:10px 14px;border-radius:12px;border:none;cursor:pointer;font-weight:600;box-shadow:0 6px 18px rgba(166,124,54,0.14)}
     .ghost{background:transparent;border:1px solid rgba(17, 245, 233, 0.06);padding:8px 12px;border-radius:10px}
  /* Hero */
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;margin:26px 0;align-items:center}
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;margin:10px 0;align-items:center}
     .hero-card{background:var(--card);padding:28px;border-radius:18px;box-shadow:var(--shadow)}
     .hero h2{margin:0 0 8px;font-size:32px;line-height:1.02}
     .hero p{margin:0;color:var(--muted);font-size:15px}
@@ -102,76 +102,86 @@ License: free to use and customize.
     /* Categories */
    /* --- Category Section --- */
 /* Desktop view: grid */
+/* --- Category Section --- */
+/* --- Category Section --- */
+/* Desktop view: 6 products per row */
 .categories {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 12px;
-  justify-content: center;
-  margin: 10px auto;
-  max-width: 1000px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 15px;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 10px;
 }
 
-/* Category card */
 .cat {
-  background: linear-gradient(90deg, #6A11CB, #2575FC);
-  color: #fff;
-  padding: 10px 14px;
-  border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(15,22,39,0.04);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 15px;
-  transition: transform 0.3s ease;
-  height: 70px;
-  width: fit-content;      /* Auto width */
-  min-width: 130px;        /* Prevent very small cards */
+  cursor: pointer;
+  transition: transform 0.3s;
 }
 
 .cat img {
-  width: 65px;
-  height: 60px;
-  border-radius: 10px;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
+  border-radius: 10px;
 }
 
 .cat div {
-  font-weight: 600;
-  font-size: 16px;
+  margin-top: 8px;
+  font-size: 14px;
+  text-align: center;
 }
 
 .cat:hover {
   transform: scale(1.05);
 }
 
-/* Mobile view: multiple rows with 3-4 per row */
+/* --- Mobile View --- */
 @media (max-width: 768px) {
   .categories {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 per row */
+    grid-auto-flow: column; /* horizontal scrolling */
+    grid-template-rows: repeat(2, auto); /* two rows */
     gap: 10px;
-    padding: 10px;
-    overflow-x: visible;  /* remove horizontal scroll */
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .categories::-webkit-scrollbar {
+    display: none;
   }
 
   .cat {
-    width: 100%;      /* fill the grid column */
-    height: 65px;
+    flex: 0 0 32%; /* 3 fully visible */
+    scroll-snap-align: start;
+    width: 100%;
+  }
+
+  /* Partially visible 4th item */
+  .cat:nth-child(4) {
+    flex: 0 0 50%;
   }
 
   .cat img {
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
   }
 
   .cat div {
-    font-size: 14px;
+    font-size: 13px;
   }
 }
 
 
     /* Products */
     .section-title{display:flex;align-items:center;justify-content:space-between;margin:28px 0}
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
     .card{background:var(--card);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);transition:transform .25s ease,box-shadow .25s ease}
     .card:hover{transform:translateY(-6px)}
     .card img{width:100%;height:210px;object-fit:cover;display:block}
@@ -308,91 +318,28 @@ License: free to use and customize.
   } 
 
 }
-   .product-card img {
-    height: auto;     /* image height adapts */
-    max-height: 200px; /* optional cap */
-    width: 100%; 
-    object-fit: contain; /* or cover if you want fill */
-  }
 
 
 
-  .product-card img {
-    height: auto;
-    width: 100%;
-    object-fit: contain; /* prevents cropping */
-  }
-
-
-.slide-card {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 20px;           /* Rounded corners */
-  overflow: hidden;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.25); /* Shadow */
-  background: rgba(255,255,255,0.1);        /* Glass effect background */
-  backdrop-filter: blur(12px);             /* Blur behind */
-  -webkit-backdrop-filter: blur(12px);     /* Safari support */
-}
-
-.slide {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  border-radius: 20px;
-  transition: opacity 1s ease-in-out;
-}
-
- .hero-slider {
-  position: relative;
-  flex: 1;
-  height: 100%;
-}
-
-.slide-card {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 400px;           /* Card width */
-  height: 300px;          /* Card height */
-  transform: translate(-50%, -50%); /* Center it */
-  border-radius: 20px;   
-  overflow: hidden;
-  background-size: cover;
-  background-position: center;
-  
-  /* Shadow to make it pop */
-  box-shadow: 0 20px 60px rgba(0,0,0,0.35);  
-
-  /* Optional glass effect */
-  background-color: rgba(255,255,255,0.05);
-  backdrop-filter: blur(8px);
-
-  transition: transform 0.5s ease, opacity 0.5s ease;
-  opacity: 0;
-  z-index: 1;
-}
-
-.slide-card.active {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1.05); /* slightly bigger */
-  z-index: 5; /* above others */
-}
-
-
-/* Header base */
 header {
+  position: sticky;    /* stick at top */
+  top: 0;
+  z-index: 9999;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #1A237E; /* Navy */
-  color: #fff;
+  gap: 16px;
   padding: 15px 20px;
-  position: relative;
-  z-index: 1000;
+
+  /* Gradient background */
+  background: #0d945c;
+  color: #ffffff;
+  font-weight: bold;
+
+  /* Optional shadow */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
+
 
 /* Brand */
 .brand {
@@ -402,8 +349,8 @@ header {
 }
 
 .logo {
-  background: #FFD700;
-  color: #1A237E;
+  background: #510458;
+  color: #e7e7e7;
   font-weight: 700;
   padding: 8px 12px;
   border-radius: 5px;
@@ -495,18 +442,7 @@ nav a:hover {
   transform: translateY(0);
 }
  
-/* Sticky header */
-header {
-  position: sticky;    /* stick at top */
-  top: 0;              /* distance from top */
-  z-index: 9999;       /* stay above other elements */
-  background: #1A237E; /* same as your header */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* optional shadow */
-}
+
 
 /* If you want smooth shrink effect */
 header.shrink {
@@ -756,8 +692,7 @@ header.shrink {
     </head>
 <body> 
 
-  <!-- CATEGORIES BELOW HERO -->
-<div class="categories" style="margin-top:20px">
+<div class="categories">
   <div class="cat" onclick="window.location.href='sofas.html'">
     <img src="images/sofa.jpg" alt="sofa">
     <div>Sofas</div>
@@ -782,18 +717,37 @@ header.shrink {
     <img src="images/pillows.jpg" alt="pillows">
     <div>Pillows</div>
   </div>
+  <!-- Second row -->
+  <div class="cat" onclick="window.location.href='tables.html'">
+    <img src="images/table.jpg" alt="tables">
+    <div>Tables</div>
+  </div>
+  <div class="cat" onclick="window.location.href='lamps.html'">
+    <img src="images/mattress.jpg" alt="lamps">
+    <div>mattress</div>
+  </div>
+  <div class="cat" onclick="window.location.href='carpets.html'">
+    <img src="images/ac21.jpg" alt="carpets">
+    <div>Air conditioner</div>
+  </div>
+  <div class="cat" onclick="window.location.href='curtains.html'">
+    <img src="images/cooler.jpg" alt="curtains">
+    <div>Cooler</div>
+  </div>
+  <div class="cat" onclick="window.location.href='bookshelves.html'">
+    <img src="images/wardrobe.jpg" alt="bookshelves">
+    <div>wardrobe</div>
+  </div>
+  <div class="cat" onclick="window.location.href='decor.html'">
+    <img src="images/tv.jpg" alt="decor">
+    <div>TV</div>
+  </div>
 </div>
 
-  <!--
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo">Sri</div>
-        <div>
-          <h1>Sri Sai Ganesha Home Needs and Furniture</h1>
-          <p class="lead">Elegant furniture for modern homes</p>
-        </div>
-      </div>  -->
+
+
+    
+
 
       <!-- Hamburger for mobile
       <div class="nav-toggle" id="navToggle">
