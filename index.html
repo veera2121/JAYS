@@ -53,6 +53,8 @@ License: free to use and customize.
       <a href="#home">Home</a>
       <a href="#products">Products</a>
       <a href="#contact">Contact</a>
+      
+      
       <button id="adminToggle" class="ghost">Admin</button>
       <button id="cartBtn" class="btn">Cart (<span id="cartCount">0</span>)</button>
     </nav> 
@@ -147,9 +149,10 @@ License: free to use and customize.
     grid-template-rows: repeat(2, auto); /* two rows */
     gap: 10px;
     overflow-x: auto;
-    padding-bottom: 10px;
+    padding-bottom: 0;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
+    margin-bottom:5px;
   }
 
   .categories::-webkit-scrollbar {
@@ -227,7 +230,7 @@ License: free to use and customize.
 /* rwossssssssssssss*/
   
 .featured-collection {
-  padding: 40px 20px;
+  padding: 20px 20px;
 }
 
 .section-title {
@@ -264,7 +267,7 @@ License: free to use and customize.
 .product-card img {
   width: 100%;
   height: 200px; /* 👈 fixed height */
-  object-fit: cover; /* keeps image proportion */
+  object-fit: contain; /* ✅ keep full image visible */ /* keeps image proportion */
   border-radius: 4px;
 }
 
@@ -381,7 +384,7 @@ header .lead {
 }
 
 
-/* Desktop navigation */
+/* ---------------- Desktop Navigation (unchanged) ---------------- */
 nav {
   display: flex;
   gap: 20px;
@@ -437,28 +440,7 @@ nav a:hover {
   transform: rotate(-45deg) translateY(-8px);
 }
 
-/* Bottom Navigation for Mobile */
-.bottom-nav {
-  display: none; /* default hidden for desktop */
-}
-
-/* Mobile view */ @media (max-width: 768px)
- { nav { position: absolute; 
-  top: 70px; right: 20px; 
-  background: #1A237E; 
-  flex-direction: column; 
-  gap: 15px; 
-  padding: 20px; 
-  border-radius: 10px;
-   display: none
- }
-    nav.active { 
-      display:  flex; /* show when hamburger clicked */ 
-       flex-direction: column   ! important;}
-
-.nav-toggle { 
-  display: flex; } }
-
+/* ---------------- Reveal Animations ---------------- */
 .reveal {
   opacity: 0;
   transform: translateY(50px);
@@ -469,34 +451,50 @@ nav a:hover {
   opacity: 1;
   transform: translateY(0);
 }
- 
 
-
-/* If you want smooth shrink effect */
+/* ---------------- Shrink header ---------------- */
 header.shrink {
   padding: 8px 20px;
 }
- 
-  /* Hide bottom nav on desktop */
-.bottom-nav {
-  display: none;
-}
 
-/* Mobile Bottom Navigation - Pro style */
+/* ---------------- Mobile Navigation ---------------- */
 @media (max-width: 768px) {
+
+  /* Hamburger menu */
+  nav {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: #1A237E;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    border-radius: 10px;
+    display: none;
+  }
+
+  nav.active {
+    display: flex !important;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  /* Bottom Navigation */
   .bottom-nav {
     display: flex;
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 50px; /* smaller height */
-    background: #008080(26, 35, 126, 0.95); /* semi-transparent */
+    height: 55px;
+    background: #1A237E; /* solid background */
     justify-content: space-around;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    padding: 10px 0;
-    box-shadow: 0 -4px 12px rgba(0,0,0,0.3);
+    align-items: center;
+    padding: 0;
+    box-shadow: 0 -3px 10px rgba(0,0,0,0.25);
+    border-radius: 0; /* square corners */
     z-index: 9999;
     transition: all 0.3s ease;
   }
@@ -505,7 +503,8 @@ header.shrink {
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #fff;
+    justify-content: center;
+    color: white;
     font-size: 12px;
     cursor: pointer;
     transition: transform 0.2s;
@@ -513,82 +512,35 @@ header.shrink {
   }
 
   .bottom-nav .nav-item i {
-    font-size: 22px;
-    margin-bottom: 3px;
+    font-size: 24px;
+    margin-bottom: 2px;
     transition: color 0.2s, transform 0.2s;
   }
 
+  .bottom-nav .nav-item span {
+    font-size: 11px;
+  }
+
   /* Active icon */
-  .bottom-nav .nav-item.active i {
-    color: #FFD700;
+  .bottom-nav .nav-item.active i,
+  .bottom-nav .nav-item.active span {
+    color: #FFD700; /* highlight color */
     transform: scale(1.2);
   }
 
-  .bottom-nav .nav-item .dot {
-    width: 6px;
-    height: 6px;
-    background: transparent;
-    border-radius: 50%;
-    margin-top: 3px;
-    transition: background 0.2s;
-  }
-
-  .bottom-nav .nav-item.active .dot {
-    background: #FFD700;
-  }
-
-  /* Tap hover effect */
+  /* Tap effect */
   .bottom-nav .nav-item:active {
     transform: translateY(-3px);
   }
 }
 
-/* ✅ Bottom Navigation for Mobile */
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: #fcfcfc;  /* solid dark blue background */
-  display: flex;
-  justify-content: space-around;
-  padding: 10px 0;
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3);
-  z-index: 9999;
-  border-radius:0;
-}
-
-.bottom-nav .nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.bottom-nav .nav-item i {
-  font-size: 20px;
-  margin-bottom: 4px;
-}
-
-.bottom-nav .nav-item span {
-  font-size: 12px;
-}
-
-.bottom-nav .nav-item.active span,
-.bottom-nav .nav-item.active i {
-  color: #FFD700; /* highlight color */
-}
-
-/* Optional: hide bottom nav on desktop */
+/* ---------------- Desktop hides bottom nav ---------------- */
 @media (min-width: 769px) {
   .bottom-nav {
     display: none;
   }
 }
 
-please see this once for bottom buttons
 
 .whatsapp-chat {
   display: flex;
@@ -596,14 +548,14 @@ please see this once for bottom buttons
   align-items: center;
   position: fixed;
   bottom: 70px;       /* adjust as needed */
-  right: 15px;
+  right: 25px;
   width: 40px;
   height: 40px;
   font-size: 20px;
   border-radius: 50%;
   background: #25D366;  /* WhatsApp green */
   color: white;
-  z-index: 9999;       /* above other content */
+  z-index: 10000;       /* above other content */
   box-shadow: 0 4px 6px rgba(0,0,0,0.2);
   cursor: pointer;
   animation: float 1.5s ease-in-out infinite; /* floating animation */
@@ -704,7 +656,9 @@ please see this once for bottom buttons
 /* Mobile view: horizontal sliding */
 @media (max-width: 768px) {
   .new-products-wrapper {
-    flex-wrap: nowrap; /* keep horizontal sliding */
+    flex-wrap: nowrap; /* keep horizontal sliding */}
+.new-products-slider {
+    margin-top:0;
   }
 
   .new-product {
@@ -847,7 +801,14 @@ please see this once for bottom buttons
   </div>
 </div>
 
+<!-- WhatsApp Chat button -->
+<div class="whatsapp-chat">
+  <i class="fab fa-whatsapp"></i>
+</div>
 
+<a href="https://wa.me/1234567890" class="whatsapp-chat" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
 
     
 
@@ -871,14 +832,7 @@ please see this once for bottom buttons
   </div>  -->
 
 
-<!-- WhatsApp Chat button -->
-<div class="whatsapp-chat">
-  <i class="fab fa-whatsapp"></i>
-</div>
 
-<a href="https://wa.me/1234567890" class="whatsapp-chat" target="_blank">
-  <i class="fab fa-whatsapp"></i>
-</a>
 
 
 
@@ -919,7 +873,7 @@ please see this once for bottom buttons
 
 
 <!-- 3D Gallery between Featured Collection and Categories -->
-<section class="gallery-section" style="width:100%; max-width:1200px; margin:auto; padding:20px 0;">
+<section class="gallery-section"></section>
   <iframe src="3d.html" width="100%" height="450" frameborder="0" style="border-radius:10px;"></iframe>
 </section>
 
@@ -1049,19 +1003,18 @@ please see this once for bottom buttons
 
 
 
-    <!-- Featured products -->
-    <div class="section-title">
-      <h3 style="margin:0">Featured Collection</h3>
-      <div style="color:var(--muted)">Quality furniture • Free delivery in city</div>
-    </div>
+<!-- Featured products -->
+<div class="section-title">
+  <h3 style="margin:0">Featured Collection</h3>
+  <div style="color:var(--muted)">Quality furniture • Free delivery in city</div>
+</div>
 
-    <section id="products">
-      <div class="grid" id="productGrid">
-        <!-- Product cards inserted by JS -->
-   
+<section id="products">
+  <div class="grid" id="productGrid">
+    <!-- Product cards inserted by JS -->
+  </div>
+</section>
 
-
-      </div>
 
           
     </section>
@@ -1463,29 +1416,55 @@ window.addEventListener('scroll', () => {
 
 
   
-function scrollToSection(id){
-  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+// ===== Scroll to section (desktop & mobile) =====
+function scrollToSection(id) {
+  const section = document.getElementById(id);
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
 
-
-// =======================
-// 1️⃣ Highlight active nav item
-// =======================
-const navItems = document.querySelectorAll('.bottom-nav .nav-item');
-window.addEventListener('scroll', () => {
-  const scrollPos = window.scrollY + window.innerHeight / 2;
-  navItems.forEach(item => item.classList.remove('active'));
-
-  const home = document.getElementById('home');
-  const products = document.getElementById('products');
-
-  if(scrollPos < products.offsetTop){
-    navItems[0].classList.add('active'); // Home
-  } else if(scrollPos >= products.offsetTop && scrollPos < products.offsetTop + products.offsetHeight){
-    navItems[1].classList.add('active'); // Products
-  }
-  // Cart always clickable, no section
+// ===== Desktop nav smooth scroll =====
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', function(e){
+    e.preventDefault();
+    const target = this.getAttribute('href').substring(1);
+    scrollToSection(target);
+  });
 });
+
+// ===== Mobile bottom nav smooth scroll =====
+const bottomNavItems = document.querySelectorAll('.bottom-nav .nav-item');
+const sectionIds = ['home', 'products', 'cart']; // match your sections
+
+bottomNavItems.forEach((item, i) => {
+  item.addEventListener('click', () => {
+    scrollToSection(sectionIds[i]);
+
+    // Update active class
+    bottomNavItems.forEach(nav => nav.classList.remove('active'));
+    item.classList.add('active');
+  });
+});
+
+// ===== Highlight active section on scroll =====
+const sections = document.querySelectorAll('section');
+
+window.addEventListener('scroll', () => {
+  const scrollPos = window.scrollY + 100; // small offset to detect top
+
+  sections.forEach((sec, i) => {
+    if (scrollPos >= sec.offsetTop && scrollPos < sec.offsetTop + sec.offsetHeight) {
+      bottomNavItems.forEach(nav => nav.classList.remove('active'));
+      bottomNavItems[i]?.classList.add('active');
+
+      // Update URL hash
+      history.replaceState(null, '', `#${sec.id}`);
+    }
+  });
+});
+
+
 
 
 
@@ -1568,15 +1547,32 @@ fetch('3d.html')
   });
 
 
-// Select all sections
-const sections = document.querySelectorAll('section');
 
-// Update URL hash when scrolling to a new section
+
+
+
+const navItems = document.querySelectorAll('.bottom-nav .nav-item');
+
+function scrollToSection(sectionId) {
+  const section = document.getElementById(sectionId);
+  if(section) {
+    window.scrollTo({
+      top: section.offsetTop - 70, // adjust for sticky header
+      behavior: 'smooth'
+    });
+  }
+}
+
+// Update active nav on scroll
 window.addEventListener('scroll', () => {
   const scrollPos = window.scrollY + window.innerHeight / 2;
-  sections.forEach(section => {
-    if(scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight){
-      history.replaceState({section: section.id}, '', `#${section.id}`);
+  navItems.forEach(item => {
+    const targetId = item.getAttribute('onclick').match(/'(.+?)'/)[1];
+    const sec = document.getElementById(targetId);
+    if(sec.offsetTop <= scrollPos && sec.offsetTop + sec.offsetHeight > scrollPos) {
+      item.classList.add('active');
+    } else {
+      item.classList.remove('active');
     }
   });
 });
