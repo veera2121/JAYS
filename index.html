@@ -400,8 +400,7 @@ nav a:hover {
 
 /* Buttons */
 .btn, .ghost {
-  background: transparent;
-  color: white;
+  background: #FFD700;
   border: 1px solid #FFD700;
   padding: 5px 10px;
   border-radius: 4px;
@@ -436,6 +435,11 @@ nav a:hover {
 }
 .nav-toggle.open span:nth-child(3) {
   transform: rotate(-45deg) translateY(-8px);
+}
+
+/* Bottom Navigation for Mobile */
+.bottom-nav {
+  display: none; /* default hidden for desktop */
 }
 
 /* Mobile view */ @media (max-width: 768px)
@@ -538,6 +542,53 @@ header.shrink {
     transform: translateY(-3px);
   }
 }
+
+/* ✅ Bottom Navigation for Mobile */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fcfcfc;  /* solid dark blue background */
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  border-radius:0;
+}
+
+.bottom-nav .nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.bottom-nav .nav-item i {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.bottom-nav .nav-item span {
+  font-size: 12px;
+}
+
+.bottom-nav .nav-item.active span,
+.bottom-nav .nav-item.active i {
+  color: #FFD700; /* highlight color */
+}
+
+/* Optional: hide bottom nav on desktop */
+@media (min-width: 769px) {
+  .bottom-nav {
+    display: none;
+  }
+}
+
+please see this once for bottom buttons
 
 .whatsapp-chat {
   display: flex;
@@ -733,6 +784,7 @@ header.shrink {
   background-color: #4d44cf;   /* brighter orange on hover */
   transform: scale(1.05);      /* subtle zoom effect */
 }
+
 
 
   </style> 
@@ -1064,7 +1116,7 @@ header.shrink {
   </div>
  
 
-  <!-- Navigation -->
+ <!-- Navigation -->
 <nav class="nav">
   <div class="nav-toggle" id="navToggle">
     <span></span>
@@ -1072,14 +1124,13 @@ header.shrink {
     <span></span>
   </div>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Product</a></li>
-    <li><a href="#">Cart</a></li>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#cart">Cart</a></li>
   </ul>
 </nav>
 
-<!-- Bottom Nav for Mobile -->
-<div class="bottom-nav">
+<!-- Bottom Nav for Mobile 
   <div class="nav-item" onclick="scrollToSection('home')">
     <i>🏠</i>
     <span>Home</span>
@@ -1090,17 +1141,39 @@ header.shrink {
     <span>Products</span>
     <div class="dot"></div>
   </div>
-  <div class="nav-item" onclick="openCart()">
+  <div class="nav-item" onclick="scrollToSection('cart')">
     <i>🛒</i>
     <span>Cart</span>
     <div class="dot"></div>
   </div>
-</div> 
+</div> -->
 
 
+<!-- Bottom Nav for Mobile -->
+<div class="bottom-nav">
+  <div class="nav-item active" onclick="scrollToSection('home')">
+    <i class="fa-solid fa-house-chimney"></i>
+    <span>Home</span>
+    <div class="dot"></div>
+  </div>
+  <div class="nav-item" onclick="scrollToSection('products')">
+    <i class="fa-solid fa-bed"></i>
+    <span>Products</span>
+    <div class="dot"></div>
+  </div>
+  <div class="nav-item" onclick="scrollToSection('cart')">
+    <i class="fa-solid fa-bag-shopping"></i>
+    <span>Cart</span>
+    <div class="dot"></div>
+  </div>
+</div>
+
+
+<!-- Sections -->
 <section id="home"> ... </section>
-<section id="sofas"> ... </section>
 <section id="products"> ... </section>
+<section id="cart"> ... </section>
+
 
 
 
@@ -1507,15 +1580,6 @@ window.addEventListener('scroll', () => {
     }
   });
 });
-
-// Handle back/forward button
-window.addEventListener('popstate', (event) => {
-  if(event.state && event.state.section){
-    const sec = document.getElementById(event.state.section);
-    sec.scrollIntoView({behavior: 'smooth'});
-  }
-});
-
 
 
 
