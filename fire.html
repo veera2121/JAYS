@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fireworks Celebration</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    #fireworks {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .celebration-text {
+      text-align: center;
+      z-index: 10;
+      position: relative;
+    }
+
+    .celebration-text h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: #ffd700;
+    }
+
+    .celebration-text a {
+      background: #ff4500;
+      color: #fff;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    .celebration-text a:hover {
+      background: #ff6600;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="fireworks"></canvas>
+
+  <div class="celebration-text">
+    <h1>🎆 Happy Celebration! 🎇</h1>
+    <a href="index.html">Go Back to Home</a>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('fireworks');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    const particles = [];
+
+    function random(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function createFirework(x, y) {
+      for (let i = 0; i < 50; i++) {
+        particles.push({
+          x, y,
+          angle: random(0, 2 * Math.PI),
+          speed: random(2, 7),
+          radius: 2,
+          alpha: 1,
+          decay: random(0.01, 0.03),
+          color: `hsl(${Math.random() * 360},100%,50%)`
+        });
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += Math.cos(p.angle) * p.speed;
+        p.y += Math.sin(p.angle) * p.speed;
+        p.alpha -= p.decay;
+
+        if (p.alpha <= 0) {
+          particles.splice(i, 1);
+          continue;
+        }
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.alpha;
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+      requestAnimationFrame(animate);
+    }
+
+    // Fireworks when clicking anywhere
+    canvas.addEventListener('click', (e) => {
+      createFirework(e.clientX, e.clientY);
+    });
+
+    // Auto fireworks every second
+    setInterval(() => {
+      createFirework(
+        Math.random() * canvas.width,
+        Math.random() * canvas.height / 1.5
+      );
+    }, 1000);
+
+    animate();
+  </script>
+</body>
+</html>

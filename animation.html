@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jay’s Furniture | Diwali</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  height:100vh;
+  overflow:hidden;
+  position:relative;
+  font-family:"Poppins",sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: radial-gradient(circle at bottom, #1b1b3a 0%, #0a0a1f 70%, #000 100%);
+}
+
+h1{
+  font-size:3rem;
+  color:#ffd700;
+  z-index:10;
+  text-shadow:0 0 15px #fffacd,0 0 30px #ffda44;
+  animation:scaleUp 2s ease-in-out;
+}
+
+@keyframes scaleUp{
+  0%{transform:scale(0.5);opacity:0;}
+  50%{transform:scale(1.2);opacity:1;}
+  100%{transform:scale(1);opacity:1;}
+}
+
+.fade-out{
+  animation:fadeOut 1s forwards;
+}
+
+@keyframes fadeOut{
+  to{opacity:0;transform:scale(1.1);}
+}
+
+canvas{position:absolute;top:0;left:0;z-index:0;}
+
+/* Floating diyas */
+.diya{
+  position:absolute;
+  width:30px;
+  height:30px;
+  background:radial-gradient(circle,#ffecb3 0%,#ff8c00 80%);
+  border-radius:50%;
+  bottom:20px;
+  animation:floatDiya 3s ease-in-out infinite alternate;
+  box-shadow:0 0 15px #ffda44;
+}
+@keyframes floatDiya{
+  0%{transform:translateY(0px) rotate(0deg);}
+  50%{transform:translateY(-20px) rotate(10deg);}
+  100%{transform:translateY(0px) rotate(-10deg);}
+}
+</style>
+</head>
+<body>
+
+<h1>Jay’s Furniture 🪑</h1>
+<canvas id="fireworks"></canvas>
+
+<!-- Floating diyas -->
+<div class="diya" style="left:10%;animation-delay:0s;"></div>
+<div class="diya" style="left:30%;animation-delay:0.5s;"></div>
+<div class="diya" style="left:50%;animation-delay:1s;"></div>
+<div class="diya" style="left:70%;animation-delay:1.2s;"></div>
+<div class="diya" style="left:90%;animation-delay:0.8s;"></div>
+
+<!-- Firework sound -->
+<audio id="fwSound" src="https://freesound.org/data/previews/320/320654_5260877-lq.mp3"></audio>
+
+<script>
+// ===== Premium Fireworks =====
+const canvas = document.getElementById('fireworks');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+// Twinkling stars
+const stars = [];
+for(let i=0;i<150;i++){
+  stars.push({
+    x: Math.random()*canvas.width,
+    y: Math.random()*canvas.height,
+    radius: Math.random()*1.5,
+    alpha: Math.random()
+  });
+}
+
+// Draw stars
+function drawStars(){
+  stars.forEach(s=>{
+    ctx.beginPath();
+    ctx.arc(s.x,s.y,s.radius,0,Math.PI*2);
+    ctx.fillStyle = `rgba(255,255,255,${s.alpha})`;
+    ctx.fill();
+    s.alpha += (Math.random()-0.5)*0.02;
+    if(s.alpha>1) s.alpha=1;
+    if(s.alpha<0) s.alpha=0;
+  });
+}
+
+class Particle{
+  constructor(x,y,color){
+    this.x = x;
+    this.y = y;
+    this.radius = Math.random()*2+1;
+    this.color = color;
+    this.speedX = (Math.random()-0.5)*6;
+    this.speedY = (Math.random()-0.5)*6;
+    this.gravity = 0.05;
+    this.alpha = 1;
+    this.fade = 0.01+Math.random()*0.02;
+  }
+  update(){
+    this.x+=this.speedX;
+    this.y+=this.speedY+this.gravity;
+    this.alpha-=this.fade;
+  }
+  draw(){
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
+    ctx.fillStyle = `hsla(${this.color},100%,50%,${this.alpha})`;
+    ctx.fill();
+  }
+}
+
+class Rocket{
+  constructor(){
+    this.x = Math.random()*canvas.width;
+    this.y = canvas.height;
+    this.targetY = Math.random()*canvas.height*0.5;
+    this.particles = [];
+    this.color = Math.random()*360;
+    this.exploded=false;
+  }
+  update(){
+    if(!this.exploded){
+      this.y -= 8;
+      this.drawTrail();
+      if(this.y<=this.targetY){
+        this.explode();
+        this.exploded=true;
+      }
+    }
+    this.particles.forEach(p=>p.update());
+    this.particles = this.particles.filter(p=>p.alpha>0);
+  }
+  draw(){
+    if(!this.exploded){
+      ctx.beginPath();
+      ctx.arc(this.x,this.y,3,0,Math.PI*2);
+      ctx.fillStyle='white';
+      ctx.fill();
+    }
+    this.particles.forEach(p=>p.draw());
+  }
+  drawTrail(){
+    ctx.beginPath();
+    ctx.moveTo(this.x, this.y+5);
+    ctx.lineTo(this.x, this.y);
+    ctx.strokeStyle='white';
+    ctx.stroke();
+  }
+  explode(){
+    const count = 50 + Math.random()*30;
+    for(let i=0;i<count;i++){
+      this.particles.push(new Particle(this.x,this.y,this.color));
+    }
+    // play firework sound
+    document.getElementById('fwSound').currentTime = 0;
+    document.getElementById('fwSound').play();
+  }
+}
+
+let rockets = [];
+let frames=0;
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  drawStars();
+
+  // Launch multiple rockets randomly
+  if(frames%20===0){
+    const numRockets = Math.floor(Math.random()*2)+1; // 1-2 rockets at a time
+    for(let i=0;i<numRockets;i++){
+      rockets.push(new Rocket());
+    }
+  }
+
+  rockets.forEach(r=>{r.update(); r.draw();});
+  frames++;
+  requestAnimationFrame(animate);
+}
+animate();
+
+// ===== Redirect after 6 seconds =====
+setTimeout(()=>{
+  document.querySelector("h1").classList.add("fade-out");
+  setTimeout(()=>{
+    window.location.href="index.html";
+  },1000);
+},6000);
+
+</script>
+</body>
+</html>
