@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jay's Furniture — Fridges</title>
+  <style>
+    body { font-family: 'Poppins', sans-serif; margin:0; background:#fbfaf8; color:#111; }
+    a { text-decoration:none; color:inherit; }
+    .container { max-width:1200px; margin:26px auto; padding:0 20px; }
+    header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
+    .brand { display:flex; align-items:center; gap:12px; }
+    .logo { width:50px; height:50px; background:#c99b55; color:#fff; font-weight:700; display:flex; align-items:center; justify-content:center; border-radius:10px; }
+    nav a { margin-left:12px; font-weight:600; }
+    h2 { margin-top:0; }
+    .grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:20px; }
+    .card { background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 8px 30px rgba(18,22,28,0.08); transition: transform .25s ease; }
+    .card:hover { transform:translateY(-6px); }
+    .card img { width:100%; height:200px; object-fit:cover; }
+    .card-body { padding:14px; }
+    .title { font-weight:600; margin:0 0 6px; }
+    .meta { color:#6b6b6b; font-size:13px; margin-bottom:8px; }
+    .price { font-weight:700; font-size:16px; color:#a67c36; margin-bottom:10px; }
+    .btn { background:#c99b55; color:#fff; border:none; padding:8px 12px; border-radius:10px; cursor:pointer; font-weight:600; }
+    footer { margin-top:40px; text-align:center; color:#6b6b6b; font-size:14px; }
+    @media(max-width:768px){ .grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">Jay's</div>
+        <h1>Jay's Furniture</h1>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="sofas.html">Sofas</a>
+        <a href="chairs.html">Chairs</a>
+        <a href="beds.html">Beds</a>
+        <a href="fridge.html">Fridges</a>
+      </nav>
+    </header>
+
+    <h2>Fridges Collection</h2>
+    <div class="grid">
+      <!-- Fridge 1 -->
+      <div class="card">
+        <img src="images/fridge1.jpg" alt="Double Door Fridge">
+        <div class="card-body">
+          <h4 class="title">Double Door Fridge</h4>
+          <div class="meta">Spacious fridge with frost-free cooling.</div>
+          <div class="price">₹22,499</div>
+          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Fridge Enquiry'">Enquire</button>
+        </div>
+      </div>
+
+      <!-- Fridge 2 -->
+      <div class="card">
+        <img src="images/fridge2.jpg" alt="Single Door Fridge">
+        <div class="card-body">
+          <h4 class="title">Single Door Fridge</h4>
+          <div class="meta">Compact and energy-efficient fridge.</div>
+          <div class="price">₹10,999</div>
+          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Fridge Enquiry'">Enquire</button>
+        </div>
+      </div>
+
+      <!-- Fridge 3 -->
+      <div class="card">
+        <img src="images/fridge3.jpg" alt="Side by Side Fridge">
+        <div class="card-body">
+          <h4 class="title">Side by Side Fridge</h4>
+          <div class="meta">Modern design with smart cooling technology.</div>
+          <div class="price">₹34,999</div>
+          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Fridge Enquiry'">Enquire</button>
+        </div>
+      </div>
+
+      <!-- Fridge 4 -->
+      <div class="card">
+        <img src="images/fridge4.jpg" alt="Mini Fridge">
+        <div class="card-body">
+          <h4 class="title">Mini Fridge</h4>
+          <div class="meta">Perfect for offices and small spaces.</div>
+          <div class="price">₹5,499</div>
+          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Fridge Enquiry'">Enquire</button>
+        </div>
+      </div>
+
+      <!-- Fridge 5 -->
+      <div class="card">
+        <img src="images/fridge5.jpg" alt="French Door Fridge">
+        <div class="card-body">
+          <h4 class="title">French Door Fridge</h4>
+          <div class="meta">Large fridge with premium features.</div>
+          <div class="price">₹42,499</div>
+          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Fridge Enquiry'">Enquire</button>
+        </div>
+      </div>
+
+      <!-- Fridge 6 -->
+      <div class="card">
+        <img src="images/fridge6.jpg" alt="Top Freezer Fridge">
+        <div class="card-body">
+          <h4 class="title">Top Freezer Fridge</h4>
+          <div class="meta">Classic fridge design with top freezer.</div>
+          <div class="price">₹12,499</div>
+          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Fridge Enquiry'">Enquire</button>
+        </div>
+      </div>
+    </div>
+
+    <footer>© Jay's Furniture — Crafted with care</footer>
+  </div>
+</body>
+</html>

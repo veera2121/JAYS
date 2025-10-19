@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jay's Furniture — Pillows</title>
+  <style>
+    body { font-family: 'Poppins', sans-serif; margin:0; background:#fbfaf8; color:#111; }
+    a { text-decoration:none; color:inherit; }
+    .container { max-width:1200px; margin:26px auto; padding:0 20px; }
+    header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
+    .brand { display:flex; align-items:center; gap:12px; }
+    .logo { width:50px; height:50px; background:#c99b55; color:#fff; font-weight:700; display:flex; align-items:center; justify-content:center; border-radius:10px; }
+    nav a { margin-left:12px; font-weight:600; }
+    h2 { margin-top:0; }
+    .grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:20px; }
+    .card { background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 8px 30px rgba(18,22,28,0.08); transition: transform .25s ease; }
+    .card:hover { transform:translateY(-6px); }
+    .card img { width:100%; height:200px; object-fit:cover; }
+    .card-body { padding:14px; }
+    .title { font-weight:600; margin:0 0 6px; }
+    .meta { color:#6b6b6b; font-size:13px; margin-bottom:8px; }
+    .price { font-weight:700; font-size:16px; color:#a67c36; margin-bottom:10px; }
+    .btn { background:#c99b55; color:#fff; border:none; padding:8px 12px; border-radius:10px; cursor:pointer; font-weight:600; }
+    footer { margin-top:40px; text-align:center; color:#6b6b6b; font-size:14px; }
+    @media(max-width:768px){ .grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">Jay's</div>
+        <h1>Jay's Furniture</h1>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="sofas.html">Sofas</a>
+        <a href="chairs.html">Chairs</a>
+        <a href="beds.html">Beds</a>
+        <a href="fridge.html">Fridges</a>
+        <a href="washing.html">Washing Machines</a>
+        <a href="pillows.html">Pillows</a>
+      </nav>
+    </header>
+
+    <h2>Pillows Collection</h2>
+    <div class="grid">
+      <!-- Pillow 1 -->
+      <div class="card">
+        <img src="images/pillow1.jpg" alt="Soft Pillow 1">
+        <div class="card-body">
+          <h4 class="title">Soft Pillow 1</h4>
+          <div class="meta">Comfortable and cozy for restful sleep.</div>
+          <div class="price">₹499</div>
+          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Pillow Enquiry'">Enquire</button>
+        </div>
+      </div>
+
+      <!-- Pillow 2 -->
+      <div class="card">
+        <img src="images/pillow2.jpg" alt="Soft Pillow 2">
+        <div class="card-body">
+          <h4 class="title">Soft Pillow 2</h4>
+          <div class="meta">Premium cotton cover with plush filling.</div>
+          <div class="price">₹599</div>
+          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Pillow Enquiry'">Enquire</button>
+        </div>
+      </div>
+
+      <!-- Pillow 3 -->
+      <div class="card">
+        <img src="images/pillow3.jpg" alt="Soft Pillow 3">
+        <div class="card-body">
+          <h4 class="title">Soft Pillow 3</h4>
+          <div class="meta">Hypoallergenic and durable.</div>
+          <div class="price">₹699</div>
+          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Pillow Enquiry'">Enquire</button>
+        </div>
+      </div>
+
+      <!-- Pillow 4 -->
+      <div class="card">
+        <img src="images/pillow4.jpg" alt="Soft Pillow 4">
+        <div class="card-body">
+          <h4 class="title">Soft Pillow 4</h4>
+          <div class="meta">Elegant design to match any bedroom.</div>
+          <div class="price">₹549</div>
+          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Pillow Enquiry'">Enquire</button>
+        </div>
+      </div>
+
+      <!-- Pillow 5 -->
+      <div class="card">
+        <img src="images/pillow5.jpg" alt="Soft Pillow 5">
+        <div class="card-body">
+          <h4 class="title">Soft Pillow 5</h4>
+          <div class="meta">Lightweight and easy to wash.</div>
+          <div class="price">₹499</div>
+          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Pillow Enquiry'">Enquire</button>
+        </div>
+      </div>
+
+      <!-- Pillow 6 -->
+      <div class="card">
+        <img src="images/pillow6.jpg" alt="Soft Pillow 6">
+        <div class="card-body">
+          <h4 class="title">Soft Pillow 6</h4>
+          <div class="meta">Ergonomic design for perfect support.</div>
+          <div class="price">₹649</div>
+          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Pillow Enquiry'">Enquire</button>
+        </div>
+      </div>
+    </div>
+
+    <footer>© Jay's Furniture — Crafted with care</footer>
+  </div>
+</body>
+</html>

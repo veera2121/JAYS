@@ -1,0 +1,1482 @@
+<!--
+Furniture Showroom — Convertible to E-commerce
+File: Jay's Furniture — Full Code (showroom -> ecommerce).html
+Branding: Jay's
+
+Instructions:
+1) Open this file in a browser. It's a single-file static site.
+2) Use the top-right "Admin: Toggle E‑commerce Mode" button to switch between SHOWROOM and E‑COMMERCE modes.
+   - SHOWROOM: product enquiry buttons (mailto/WhatsApp)
+   - E-COMMERCE: Add to Cart, Cart Drawer, Checkout simulation (orders stored in localStorage)
+3) Replace placeholder images (unsplash links) with your product photos.
+4) To go live: connect to a backend for products and payments (Stripe/Razorpay/PayPal).
+
+License: free to use and customize.
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sri Sai Ganesha Home Needs and Fortniture  — Elegant Living</title>
+  <meta name="description" content="Jay's Furniture — Premium furniture showroom. Toggle to e-commerce to enable cart and checkout." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+<!-- Main HTML file -->
+<a href="3d.html" target="_blank"></a>
+
+
+  <!-- Sticky header outside container -->
+  <header>
+    <div class="brand">
+      <div class="logo">Sri</div>
+      <div>
+        <h1>Sri Sai Ganesha Home Needs and Furniture</h1>
+        <p class="lead">Elegant furniture for modern homes</p>
+      </div>
+    </div>
+
+    <!-- Hamburger menu for mobile -->
+    <div class="nav-toggle" id="navToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Navigation menu -->
+    <nav id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#contact">Contact</a>
+      <button id="adminToggle" class="ghost">Admin</button>
+      <button id="cartBtn" class="btn">Cart (<span id="cartCount">0</span>)</button>
+    </nav> 
+
+
+    
+
+  </header>
+
+
+ 
+ <style> 
+
+
+    :root{
+      --bg:linear-gradient(135deg, #df47b9 0%, #06a79f 50%, #000000 100%);; --card:#949494; --muted:#6b6b6b;
+      --accent:#1648d1; --accent-dark:#000000; --accent-contrast:#fff;
+      --radius:14px; --maxw:1200px; --shadow:0 8px 30px rgba(18,22,28,0.08);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial; margin:0; background:var(--bg); color:#111}
+    a{text-decoration:none;color:inherit}
+    .container{max-width:var(--maxw);margin:26px auto;padding:0 20px}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-dark));display:flex;align-items:center;justify-content:center;color:var(--accent-contrast);font-weight:700;font-size:20px;box-shadow:var(--shadow)}
+    .brand h1{margin:0;font-size:20px}
+    .brand p{margin:0;color:var(--muted);font-size:13px}
+    nav{display:flex;gap:12px;align-items:center}
+    nav a{padding:8px 12px;border-radius:10px;font-weight:600;color:#2b2b2b}
+    .btn{background:var(--accent);color:var(--accent-contrast);padding:10px 14px;border-radius:12px;border:none;cursor:pointer;font-weight:600;box-shadow:0 6px 18px rgba(166,124,54,0.14)}
+    .ghost{background:transparent;border:1px solid rgba(17, 245, 233, 0.06);padding:8px 12px;border-radius:10px}
+ /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;margin:26px 0;align-items:center}
+    .hero-card{background:var(--card);padding:28px;border-radius:18px;box-shadow:var(--shadow)}
+    .hero h2{margin:0 0 8px;font-size:32px;line-height:1.02}
+    .hero p{margin:0;color:var(--muted);font-size:15px}
+    .hero-cta{margin-top:18px;display:flex;gap:12px}
+    .hero-cta .btn{font-size:15px}
+    .hero-image{border-radius:14px;overflow:hidden;height:320px;box-shadow:var(--shadow)}
+    .hero-image img{width:100%;height:100%;object-fit:cover;display:block}
+
+   
+    /* Categories */
+   /* --- Category Section --- */
+/* Desktop view: grid */
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  justify-content: center;
+  margin: 10px auto;
+  max-width: 1000px;
+}
+
+/* Category card */
+.cat {
+  background: linear-gradient(90deg, #6A11CB, #2575FC);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(15,22,39,0.04);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: transform 0.3s ease;
+  height: 70px;
+  width: fit-content;      /* Auto width */
+  min-width: 130px;        /* Prevent very small cards */
+}
+
+.cat img {
+  width: 65px;
+  height: 60px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.cat div {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.cat:hover {
+  transform: scale(1.05);
+}
+
+/* Mobile view: multiple rows with 3-4 per row */
+@media (max-width: 768px) {
+  .categories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 per row */
+    gap: 10px;
+    padding: 10px;
+    overflow-x: visible;  /* remove horizontal scroll */
+  }
+
+  .cat {
+    width: 100%;      /* fill the grid column */
+    height: 65px;
+  }
+
+  .cat img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .cat div {
+    font-size: 14px;
+  }
+}
+
+
+    /* Products */
+    .section-title{display:flex;align-items:center;justify-content:space-between;margin:28px 0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+    .card{background:var(--card);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);transition:transform .25s ease,box-shadow .25s ease}
+    .card:hover{transform:translateY(-6px)}
+    .card img{width:100%;height:210px;object-fit:cover;display:block}
+    .card-body{padding:14px}
+    .title{font-weight:600;margin:0 0 6px}
+    .meta{color:var(--muted);font-size:13px;margin-bottom:8px}
+    .price{font-weight:700;font-size:16px;color:var(--accent-dark)}
+    .card-actions{display:flex;gap:8px;margin-top:10px}
+    .btn-ghost{background:transparent;border:1px solid rgba(0,0,0,0.06);padding:8px 12px;border-radius:10px;cursor:pointer}
+
+    /* Modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(5,10,15,0.5);display:flex;align-items:center;justify-content:center;padding:22px;z-index:60}
+    .modal{background:var(--card);width:100%;max-width:920px;border-radius:14px;overflow:hidden;display:flex;gap:18px}
+    .modal .left{flex:1;min-height:360px}
+    .modal .left img{width:100%;height:100%;object-fit:cover}
+    .modal .right{width:420px;padding:18px}
+    .close-x{background:transparent;border:none;font-size:20px;cursor:pointer}
+
+    /* Floating WhatsApp */
+    .wa{position:fixed;right:18px;bottom:18px;background:#25D366;color:#fff;padding:12px;border-radius:14px;display:flex;align-items:center;gap:10px;z-index:80;box-shadow:0 8px 30px rgba(2,100,56,0.18)}
+
+    /* Cart Drawer */
+    .cart-drawer{position:fixed;right:0;top:0;height:100vh;width:360px;background:var(--card);box-shadow: -24px 0 40px rgba(13,17,22,0.12);z-index:70;padding:18px;transform:translateX(110%);transition:transform .28s ease}
+    .cart-drawer.open{transform:translateX(0)}
+    .cart-item{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid rgba(0,0,0,0.04)}
+    .cart-item img{width:72px;height:72px;object-fit:cover;border-radius:8px}
+
+    /* Footer */
+    footer{margin:36px 0;color:var(--muted);font-size:14px}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .hero-image{height:260px}
+      .modal{flex-direction:column}
+      .modal .right{width:100%}
+      .cart-drawer{width:100%}
+    }
+
+
+
+
+/* rwossssssssssssss*/
+  
+.featured-collection {
+  padding: 40px 20px;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.grid {
+   display: flex;
+   flex-wrap: wrap; 
+   gap: 20px; 
+   justify-content: center; }
+
+
+.product-card {
+  width: calc(33.333% - 30px);
+  border: 3px solid #5e052e;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  padding: 10px;
+  transition: transform 0.3s;
+  height: 400px; /* 👈 fix height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+ 
+
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px; /* 👈 fixed height */
+  object-fit: cover; /* keeps image proportion */
+  border-radius: 4px;
+}
+
+.product-name {
+  font-weight: bold;
+  margin: 10px 0 5px;
+}
+
+.product-desc {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.product-price {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.product-actions button {
+  margin: 5px;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.product-actions button:first-child {
+  background: #333;
+  color: #fff;
+}
+
+.product-actions button:last-child {
+  background: #fff;
+  border: 1px solid #333;
+  color: #333;
+}
+
+/* Tablet: 2 per row */
+@media (max-width: 768px) {
+  .product-card {
+    width: calc(50% - 15px);
+  }
+}
+
+/* ✅ Mobile: 2 per row (same as tablet) */
+@media (max-width: 480px) {
+  .product-card {
+    width: calc(50% - 15px); /* 👈 changed from 100% to 50% */
+    height: auto; 
+  } 
+
+}
+   .product-card img {
+    height: auto;     /* image height adapts */
+    max-height: 200px; /* optional cap */
+    width: 100%; 
+    object-fit: contain; /* or cover if you want fill */
+  }
+
+
+
+  .product-card img {
+    height: auto;
+    width: 100%;
+    object-fit: contain; /* prevents cropping */
+  }
+
+
+.slide-card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;           /* Rounded corners */
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25); /* Shadow */
+  background: rgba(255,255,255,0.1);        /* Glass effect background */
+  backdrop-filter: blur(12px);             /* Blur behind */
+  -webkit-backdrop-filter: blur(12px);     /* Safari support */
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  transition: opacity 1s ease-in-out;
+}
+
+ .hero-slider {
+  position: relative;
+  flex: 1;
+  height: 100%;
+}
+
+.slide-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;           /* Card width */
+  height: 300px;          /* Card height */
+  transform: translate(-50%, -50%); /* Center it */
+  border-radius: 20px;   
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  
+  /* Shadow to make it pop */
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);  
+
+  /* Optional glass effect */
+  background-color: rgba(255,255,255,0.05);
+  backdrop-filter: blur(8px);
+
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  opacity: 0;
+  z-index: 1;
+}
+
+.slide-card.active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.05); /* slightly bigger */
+  z-index: 5; /* above others */
+}
+
+
+/* Header base */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1A237E; /* Navy */
+  color: #fff;
+  padding: 15px 20px;
+  position: relative;
+  z-index: 1000;
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  background: #FFD700;
+  color: #1A237E;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+}
+
+/* Desktop navigation */
+nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: #FFD700;
+}
+
+/* Buttons */
+.btn, .ghost {
+  background: transparent;
+  color: white;
+  border: 1px solid #FFD700;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover, .ghost:hover {
+  background: #FFD700;
+  color: #1A237E;
+}
+
+/* Hamburger */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  transition: 0.3s;
+}
+
+.nav-toggle.open span:nth-child(1) {
+  transform: rotate(45deg) translateY(8px);
+}
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle.open span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
+}
+
+/* Mobile view */ @media (max-width: 768px)
+ { nav { position: absolute; 
+  top: 70px; right: 20px; 
+  background: #1A237E; 
+  flex-direction: column; 
+  gap: 15px; 
+  padding: 20px; 
+  border-radius: 10px;
+   display: none
+ }
+    nav.active { 
+      display:  flex; /* show when hamburger clicked */ 
+       flex-direction: column   ! important;}
+
+.nav-toggle { 
+  display: flex; } }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.7s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+ 
+/* Sticky header */
+header {
+  position: sticky;    /* stick at top */
+  top: 0;              /* distance from top */
+  z-index: 9999;       /* stay above other elements */
+  background: #1A237E; /* same as your header */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* optional shadow */
+}
+
+/* If you want smooth shrink effect */
+header.shrink {
+  padding: 8px 20px;
+}
+ 
+  /* Hide bottom nav on desktop */
+.bottom-nav {
+  display: none;
+}
+
+/* Mobile Bottom Navigation - Pro style */
+@media (max-width: 768px) {
+  .bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px; /* smaller height */
+    background: #008080(26, 35, 126, 0.95); /* semi-transparent */
+    justify-content: space-around;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 10px 0;
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.3);
+    z-index: 9999;
+    transition: all 0.3s ease;
+  }
+
+  .bottom-nav .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    position: relative;
+  }
+
+  .bottom-nav .nav-item i {
+    font-size: 22px;
+    margin-bottom: 3px;
+    transition: color 0.2s, transform 0.2s;
+  }
+
+  /* Active icon */
+  .bottom-nav .nav-item.active i {
+    color: #FFD700;
+    transform: scale(1.2);
+  }
+
+  .bottom-nav .nav-item .dot {
+    width: 6px;
+    height: 6px;
+    background: transparent;
+    border-radius: 50%;
+    margin-top: 3px;
+    transition: background 0.2s;
+  }
+
+  .bottom-nav .nav-item.active .dot {
+    background: #FFD700;
+  }
+
+  /* Tap hover effect */
+  .bottom-nav .nav-item:active {
+    transform: translateY(-3px);
+  }
+}
+
+.whatsapp-chat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 70px;       /* adjust as needed */
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 50%;
+  background: #25D366;  /* WhatsApp green */
+  color: white;
+  z-index: 9999;       /* above other content */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  cursor: pointer;
+  animation: float 1.5s ease-in-out infinite; /* floating animation */
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Hide "Chat on WhatsApp" text button on mobile */
+@media (max-width: 768px) {
+  .whatsapp-text {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  footer {
+    padding-bottom: 60px;  /* or margin-bottom */
+  }
+}
+
+/* Slider container */
+.new-products-slider {
+  overflow-x: auto; /* enable horizontal scroll */
+  width: 100%;
+  position: relative;
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on mobile */
+  scrollbar-width: thin;
+}
+
+/* Wrapper for all products */
+.new-products-wrapper {
+  display: flex;
+  gap: 10px;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Product card */
+.new-product {
+  flex: 0 0 calc(33.333% - 10px); /* 3 products per row on desktop */
+  text-align: center;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+/* Product image */
+.product-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3; /* maintain 4:3 ratio */
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fill card without stretching */
+  transition: all 0.3s ease;
+}
+
+/* New tag */
+.new-tag {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #FF3C3C;
+  color: #fff;
+  padding: 3px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+/* Product info */
+.product-info {
+  margin-top: 6px;
+  padding: 5px 0;
+}
+
+.product-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.product-price {
+  font-size: 13px;
+  color: #555;
+}
+
+/* Mobile view: horizontal sliding */
+@media (max-width: 768px) {
+  .new-products-wrapper {
+    flex-wrap: nowrap; /* keep horizontal sliding */
+  }
+
+  .new-product {
+    flex: 0 0 70%; /* each card takes 70% of viewport width */
+  }
+
+  .product-image {
+    height: auto; /* height adjusts automatically */
+  }
+
+  .product-image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* fit entire image without cropping */
+  }
+}
+
+ 
+
+
+  </style> 
+
+
+
+   
+    </head>
+<body> 
+
+  <!-- CATEGORIES BELOW HERO -->
+<div class="categories" style="margin-top:20px">
+  <div class="cat" onclick="window.location.href='sofas.html'">
+    <img src="images/sofa.jpg" alt="sofa">
+    <div>Sofas</div>
+  </div>
+  <div class="cat" onclick="window.location.href='chairs.html'">
+    <img src="images/chair.jpg" alt="chair">
+    <div>Chairs</div>
+  </div>
+  <div class="cat" onclick="window.location.href='beds.html'">
+    <img src="images/bed.jpg" alt="bed">
+    <div>Beds</div>
+  </div>
+  <div class="cat" onclick="window.location.href='fridge.html'">
+    <img src="images/fridge.jpg" alt="fridge">
+    <div>Fridges</div>
+  </div>
+  <div class="cat" onclick="window.location.href='washing.html'">
+    <img src="images/washing.jpg" alt="washing machine">
+    <div>Washing Machine</div>
+  </div>
+  <div class="cat" onclick="window.location.href='pillows.html'">
+    <img src="images/pillows.jpg" alt="pillows">
+    <div>Pillows</div>
+  </div>
+</div>
+
+  <!--
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">Sri</div>
+        <div>
+          <h1>Sri Sai Ganesha Home Needs and Furniture</h1>
+          <p class="lead">Elegant furniture for modern homes</p>
+        </div>
+      </div>  -->
+
+      <!-- Hamburger for mobile
+      <div class="nav-toggle" id="navToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+       <!-- Navigation Menu 
+  <nav id="navLinks">
+    <a href="#home">Home</a>
+    <a href="#products">Products</a>
+    <a href="#contact">Contact</a>
+    <button id="adminToggle" class="ghost">Admin</button>
+    <button id="cartBtn" class="btn">Cart (<span id="cartCount">0</span>)</button>
+  </nav>
+    </header>
+  </div>  -->
+
+
+<!-- WhatsApp Chat button -->
+<div class="whatsapp-chat">
+  <i class="fab fa-whatsapp"></i>
+</div>
+
+<a href="https://wa.me/1234567890" class="whatsapp-chat" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+
+
+
+
+<!--
+<!-- HERO SECTION WITH SLIDER
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-card">
+      <h2>Transform your home with timeless furniture</h2>
+      <p>Discover handcrafted pieces, premium materials, and curated collections designed to elevate your living space.</p>
+      <div class="hero-cta">
+        <a href="#products" class="btn">Explore Collections</a>
+        <a href="#contact" class="btn ghost">Visit Showroom</a>
+      </div>
+    </div>
+  </div> 
+
+
+
+  <div class="hero-slider">
+    <!-- Floating hero cards -
+    <div class="slide-card active" style="background-image:url('images/hero1.jpg')"></div>
+    <div class="slide-card" style="background-image:url('images/hero2.jpg')"></div>
+    <div class="slide-card" style="background-image:url('images/hero3.jpg')"></div>
+    <div class="slide-card" style="background-image:url('images/hero4.jpg')"></div>
+    <div class="slide-card" style="background-image:url('images/hero5.jpg')"></div>
+    <div class="slide-card" style="background-image:url('images/hero6.jpg')"></div>
+    <div class="slide-card" style="background-image:url('images/hero7.jpg')"></div>
+    <div class="slide-card" style="background-image:url('images/hero8.jpg')"></div>
+
+    <!-- Slider buttons 
+    <button class="prev">❮</button>
+    <button class="next">❯</button>
+  </div>
+</section>  -->
+
+
+<!-- 3D Gallery between Featured Collection and Categories -->
+<section class="gallery-section" style="width:100%; max-width:1200px; margin:auto; padding:20px 0;">
+  <iframe src="3d.html" width="100%" height="450" frameborder="0" style="border-radius:10px;"></iframe>
+</section>
+
+
+
+
+ <div class="new-products-slider">
+  <div class="new-products-wrapper">
+
+    <div class="new-product">
+      <div class="product-image">
+        <span class="new-tag">New Arrival</span>
+        <img src="images/sofa11.jpg" alt="Luxury Sofa">
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Luxury Sofa</h3>
+        <p class="product-price">$250</p>
+      </div>
+    </div>
+
+    <div class="new-product">
+      <div class="product-image">
+        <span class="new-tag">New Arrival</span>
+        <img src="images/sofa12.jpg" alt="Comfort Sofa">
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Comfort Sofa</h3>
+        <p class="product-price">$220</p>
+      </div>
+    </div>
+
+    <div class="new-product">
+      <div class="product-image">
+        <span class="new-tag">New Arrival</span>
+        <img src="images/sofa13.jpg" alt="Classic Sofa">
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Classic Sofa</h3>
+        <p class="product-price">$200</p>
+      </div>
+    </div>
+
+    <div class="new-product">
+      <div class="product-image">
+        <span class="new-tag">New Arrival</span>
+        <img src="images/sofa14.jpg" alt="Modern Sofa">
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Modern Sofa</h3>
+        <p class="product-price">$230</p>
+      </div>
+    </div>
+
+    <div class="new-product">
+      <div class="product-image">
+        <span class="new-tag">New Arrival</span>
+        <img src="images/sofa15.jpg" alt="Elegant Chair">
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Elegant Chair</h3>
+        <p class="product-price">$120</p>
+      </div>
+    </div>
+
+    <div class="new-product">
+      <div class="product-image">
+        <span class="new-tag">New Arrival</span>
+        <img src="images/sofa16.jpg" alt="Recliner Chair">
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Recliner Chair</h3>
+        <p class="product-price">$150</p>
+      </div>
+    </div>
+
+    <div class="new-product">
+      <div class="product-image">
+        <span class="new-tag">New Arrival</span>
+        <img src="images/sofa17.jpg" alt="Wooden Coffee Table">
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Wooden Coffee Table</h3>
+        <p class="product-price">$180</p>
+      </div>
+    </div>
+
+    <div class="new-product">
+      <div class="product-image">
+        <span class="new-tag">New Arrival</span>
+        <img src="images/sofa18.jpg" alt="Modern Bed">
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Modern Bed</h3>
+        <p class="product-price">$400</p>
+      </div>
+    </div>
+
+    <div class="new-product">
+      <div class="product-image">
+        <span class="new-tag">New Arrival</span>
+        <img src="images/sofa19.jpg" alt="Luxury Wardrobe">
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Luxury Wardrobe</h3>
+        <p class="product-price">$350</p>
+      </div>
+    </div>
+
+    <div class="new-product">
+      <div class="product-image">
+        <span class="new-tag">New Arrival</span>
+        <img src="images/sofa20.jpg" alt="Stylish Recliner">
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Stylish Recliner</h3>
+        <p class="product-price">$200</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+    <!-- Featured products -->
+    <div class="section-title">
+      <h3 style="margin:0">Featured Collection</h3>
+      <div style="color:var(--muted)">Quality furniture • Free delivery in city</div>
+    </div>
+
+    <section id="products">
+      <div class="grid" id="productGrid">
+        <!-- Product cards inserted by JS -->
+   
+
+
+      </div>
+
+          
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" style="margin-top:34px;background:transparent;padding:18px 0">
+      <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center;background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow)">
+        <div style="flex:1;min-width:260px">
+          <h3 style="margin-top:0">Visit our showroom or contact us</h3>
+          <p class="meta">Address: 123 Market Road, Your City — Open Mon–Sat 10am–7pm</p>
+          <p class="meta">Phone: +91 98765 43210</p>
+          <a class="btn" href="mailto:info@jaysfurniture.com">Email Us</a>
+        </div>
+        <div style="min-width:280px">
+          <form id="contactForm">
+            <div style="display:flex;gap:8px;margin-bottom:8px"><input required placeholder="Your name" name="name" style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)"><input required placeholder="Phone or email" name="contact" style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)"></div>
+            <textarea required name="message" placeholder="Message" style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);height:86px"></textarea>
+            <div style="margin-top:8px"><button class="btn" type="submit">Send Enquiry</button></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+        <div>© Jay's Furniture — Crafted with care</div>
+        <div>mk solutions</div>
+        <div style="color:var(--muted)">Follow us on Instagram • Facebook</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Modal template -->
+  <div id="modalRoot" style="display:none"></div>
+
+  
+
+  <!-- Cart Drawer -->
+  <div id="cartDrawer" class="cart-drawer" aria-hidden="true">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <h3 style="margin:0">Your Cart</h3>
+      <button id="closeCart" class="close-x">✕</button>
+    </div>
+    <div id="cartItems" style="overflow:auto;max-height:66vh;padding-right:6px"></div>
+    <div style="position:absolute;left:18px;right:18px;bottom:18px">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-top:1px solid rgba(0,0,0,0.04)">
+        <div style="font-weight:700">Total</div>
+        <div id="cartTotal">₹0</div>
+      </div>
+      <button id="checkoutBtn" class="btn" style="width:100%;margin-top:8px">Checkout</button>
+    </div>
+  </div>
+ 
+
+  <!-- Navigation -->
+<nav class="nav">
+  <div class="nav-toggle" id="navToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Product</a></li>
+    <li><a href="#">Cart</a></li>
+  </ul>
+</nav>
+
+<!-- Bottom Nav for Mobile -->
+<div class="bottom-nav">
+  <div class="nav-item" onclick="scrollToSection('home')">
+    <i>🏠</i>
+    <span>Home</span>
+    <div class="dot"></div>
+  </div>
+  <div class="nav-item" onclick="scrollToSection('products')">
+    <i>🛋️</i>
+    <span>Products</span>
+    <div class="dot"></div>
+  </div>
+  <div class="nav-item" onclick="openCart()">
+    <i>🛒</i>
+    <span>Cart</span>
+    <div class="dot"></div>
+  </div>
+</div> 
+
+
+<section id="home"> ... </section>
+<section id="sofas"> ... </section>
+<section id="products"> ... </section>
+
+
+
+  <script>
+    // Sample products (replace with your real product data or fetch from API)
+    const products = [
+  // Row 1 - Sofas
+  {id:1, title:"Sofa 1", desc:"Comfortable 3-seater sofa", price:29999, img:"images/sofa1.jpg"},
+  {id:2, title:"Sofa 2", desc:"Elegant 2-seater sofa", price:24999, img:"images/sofa2.jpg"},
+  {id:3, title:"Sofa 3", desc:"Modern L-shaped sofa", price:39999, img:"images/sofa3.jpg"},
+
+  // Row 2 - Chairs
+  {id:4, title:"Chair 1", desc:"Ergonomic office chair", price:6999, img:"images/chair1.jpg"},
+  {id:5, title:"Chair 2", desc:"Wooden dining chair", price:4999, img:"images/chair2.jpg"},
+  {id:6, title:"Chair 3", desc:"Swivel chair", price:5999, img:"images/chair3.jpg"},
+
+  // Row 3 - Fridges
+  {id:7, title:"Fridge 1", desc:"Double-door refrigerator", price:34999, img:"images/fridge1.jpg"},
+  {id:8, title:"Fridge 2", desc:"Single-door compact fridge", price:14999, img:"images/fridge2.jpg"},
+  {id:9, title:"Fridge 3", desc:"Smart fridge with touch control", price:49999, img:"images/fridge3.jpg"},
+
+  // Row 4 - Beds
+  {id:10, title:"Bed 1", desc:"Queen size bed with storage", price:24999, img:"images/bed1.jpg"},
+  {id:11, title:"Bed 2", desc:"King size bed with headboard", price:39999, img:"images/bed2.jpg"},
+  {id:12, title:"Bed 3", desc:"Single bed for kids room", price:14999, img:"images/bed3.jpg"},
+
+  // Row 5 - Washing Machines
+  {id:13, title:"Washing 1", desc:"Front-load washing machine 7kg", price:19999, img:"images/washing1.jpg"},
+  {id:14, title:"Washing 2", desc:"Top-load washing machine 6.5kg", price:14999, img:"images/washing2.jpg"},
+  {id:15, title:"Washing 3", desc:"Semi-automatic washing machine", price:8999, img:"images/washing3.jpg"},
+
+  // Row 6 - Air Conditioners
+  {id:16, title:"AC 1", desc:"1.5 Ton Split AC", price:34999, img:"images/ac1.jpg"},
+  {id:17, title:"AC 2", desc:"1 Ton Window AC", price:24999, img:"images/ac2.jpg"},
+  {id:18, title:"AC 3", desc:"2 Ton Split AC", price:49999, img:"images/ac3.jpg"},
+];
+
+
+
+    // State
+    let ecommerceMode = false;
+    let cart = JSON.parse(localStorage.getItem('jays_cart')||'[]');
+
+    const productGrid = document.getElementById('productGrid');
+    const modalRoot = document.getElementById('modalRoot');
+    const cartBtn = document.getElementById('cartBtn');
+    const cartDrawer = document.getElementById('cartDrawer');
+    const cartItemsEl = document.getElementById('cartItems');
+    const cartCount = document.getElementById('cartCount');
+    const cartTotal = document.getElementById('cartTotal');
+    const adminToggle = document.getElementById('adminToggle');
+    const closeCart = document.getElementById('closeCart');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+
+    function money(x){return '₹'+x.toLocaleString('en-IN')}
+
+    function renderProducts(){
+  const productGrid = document.getElementById('productGrid');
+  productGrid.innerHTML = '';
+  products.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.innerHTML = `
+      <img src="${p.img}" alt="${p.title}">
+      <div class="product-name">${p.title}</div>
+      <div class="product-desc">${p.desc}</div>
+      <div class="product-price">₹${p.price.toLocaleString('en-IN')}</div>
+      <div class="product-actions">
+        <button onclick="openDetails(${p.id})">View</button>
+        <button onclick="enquireProduct(${p.id})">Enquire</button>
+      </div>
+    `;
+    productGrid.appendChild(card);
+  });
+}
+
+
+    function openDetails(id){
+      const p = products.find(x=>x.id===id);
+      modalRoot.style.display='block';
+      modalRoot.innerHTML = `
+        <div class="modal-backdrop" onclick="closeModal(event)">
+          <div class="modal" onclick="event.stopPropagation()">
+            <div class="left"><img src="${p.img}" alt="${p.title}"></div>
+            <div class="right">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <h3 style="margin:0">${p.title}</h3>
+                <button class="close-x" onclick="closeModal()">✕</button>
+              </div>
+              <p class="meta">${p.desc}</p>
+              <div style="font-size:18px;font-weight:800;margin-top:6px">${money(p.price)}</div>
+              <div style="margin-top:12px;display:flex;gap:8px">
+                ${ecommerceMode?`<button class=\"btn\" onclick=\"addToCart(${p.id})\">Add to Cart</button>`:`<button class=\"btn\" onclick=\"enquireProduct(${p.id})\">Enquire Now</button>`}
+                <button class="btn-ghost" onclick="closeModal()">Close</button>
+              </div>
+              <div style="margin-top:14px;color:var(--muted)">Dimensions, materials and delivery options available on request.</div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+    function closeModal(e){
+      if(e && e.target && e.target.classList && e.target.classList.contains('modal-backdrop')){
+        modalRoot.style.display='none';modalRoot.innerHTML='';return;
+      }
+      modalRoot.style.display='none';modalRoot.innerHTML='';
+    }
+
+    function enquireProduct(id){
+      const p = products.find(x=>x.id===id);
+      const subject = encodeURIComponent(`Enquiry about ${p.title}`);
+      const body = encodeURIComponent(`Hi Jay's team,\n\nI am interested in ${p.title} (product id ${p.id}). Please share more details and pricing.\n\nThanks,`);
+      window.location.href = `mailto:info@jaysfurniture.com?subject=${subject}&body=${body}`;
+    }
+
+    function addToCart(id){
+      const p = products.find(x=>x.id===id);
+      const existing = cart.find(i=>i.id===id);
+      if(existing){ existing.qty += 1; } else { cart.push({id:p.id,title:p.title,price:p.price,img:p.img,qty:1}); }
+      syncCart();
+      openCart();
+    }
+
+    function syncCart(){
+      localStorage.setItem('jays_cart',JSON.stringify(cart));
+      cartCount.textContent = cart.reduce((s,i)=>s+i.qty,0);
+      cartTotal.textContent = money(cart.reduce((s,i)=>s+i.price*i.qty,0));
+      renderCartItems();
+    }
+
+    function renderCartItems(){
+      cartItemsEl.innerHTML = '';
+      if(cart.length===0){ cartItemsEl.innerHTML='<div style="padding:18px;color:var(--muted)">Your cart is empty.</div>'; return; }
+      cart.forEach(item=>{
+        const div = document.createElement('div');div.className='cart-item';
+        div.innerHTML = `
+          <img src="${item.img}" alt="${item.title}">
+          <div style="flex:1">
+            <div style="font-weight:700">${item.title}</div>
+            <div style="color:var(--muted);font-size:13px">${money(item.price)} • Qty: <strong>${item.qty}</strong></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <button class=\"btn-ghost\" onclick=\"changeQty(${item.id},1)\">＋</button>
+            <button class=\"btn-ghost\" onclick=\"changeQty(${item.id},-1)\">−</button>
+            <button class=\"btn-ghost\" onclick=\"removeItem(${item.id})\">Remove</button>
+          </div>
+        `;
+        cartItemsEl.appendChild(div);
+      });
+    }
+
+    function changeQty(id,delta){
+      const it = cart.find(x=>x.id===id); if(!it) return;
+      it.qty += delta; if(it.qty<=0) cart = cart.filter(x=>x.id!==id);
+      syncCart();
+    }
+    function removeItem(id){ cart = cart.filter(x=>x.id!==id); syncCart(); }
+
+    function openCart(){ cartDrawer.classList.add('open'); cartDrawer.setAttribute('aria-hidden','false'); }
+    function closeCartFn(){ cartDrawer.classList.remove('open'); cartDrawer.setAttribute('aria-hidden','true'); }
+
+    cartBtn.addEventListener('click',()=>{ openCart(); });
+    closeCart.addEventListener('click',closeCartFn);
+
+    checkoutBtn.addEventListener('click',()=>{
+      if(cart.length===0){ alert('Your cart is empty'); return; }
+      // Simulated checkout: collect name and phone
+      const name = prompt('Customer name for order:');
+      if(!name) return;
+      const phone = prompt('Phone or email:');
+      if(!phone) return;
+      const order = {id:Date.now(),name,phone,items:cart,total:cart.reduce((s,i)=>s+i.price*i.qty,0),date:new Date().toISOString()};
+      // Save orders locally as demo
+      const orders = JSON.parse(localStorage.getItem('jays_orders')||'[]'); orders.push(order); localStorage.setItem('jays_orders',JSON.stringify(orders));
+      // Clear cart
+      cart = []; syncCart(); closeCartFn();
+      alert('Thank you! Your order has been placed. We will contact you shortly. (Demo mode)');
+    });
+
+    adminToggle.addEventListener('click',()=>{
+      ecommerceMode = !ecommerceMode; adminToggle.textContent = ecommerceMode? 'Admin: E‑commerce ON' : 'Admin: Toggle E‑commerce Mode';
+      renderProducts();
+    });
+
+    // WhatsApp link
+    const waLink = document.getElementById('waLink');
+    const phone = '919876543210'; // replace with your WhatsApp number + country code
+    waLink.href = `https://wa.me/${phone}?text=${encodeURIComponent('Hi Jay\'s Furniture, I have an enquiry.')}`;
+    waLink.style.display='flex';
+
+    // Contact form
+    document.getElementById('contactForm').addEventListener('submit',function(e){
+      e.preventDefault();
+      const form = new FormData(this); const name = form.get('name'); const contact = form.get('contact'); const msg = form.get('message');
+      // Demo: open mailto
+      const subject = encodeURIComponent(`Showroom enquiry from ${name}`);
+      const body = encodeURIComponent(`Name: ${name}\nContact: ${contact}\n\n${msg}`);
+      window.location.href = `mailto:info@jaysfurniture.com?subject=${subject}&body=${body}`;
+    });
+
+    // Load cart from storage
+    function init(){
+      // init cart
+      cart = JSON.parse(localStorage.getItem('jays_cart')||'[]');
+      syncCart();
+      renderProducts();
+    }
+    init();
+
+    // Expose a few functions globally for inline handlers
+    window.openDetails = openDetails; window.closeModal = closeModal; window.enquireProduct = enquireProduct;
+    window.addToCart = addToCart; window.changeQty = changeQty; window.removeItem = removeItem; window.openCart = openCart;
+    
+</script> 
+<script>
+const slides = document.querySelectorAll('.slide-card');
+const next = document.querySelector('.next');
+const prev = document.querySelector('.prev');
+let current = 0;
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.toggle('active', i === index);
+  });
+}
+
+function nextSlide() {
+  current = (current + 1) % slides.length;
+  showSlide(current);
+}
+
+function prevSlide() {
+  current = (current - 1 + slides.length) % slides.length;
+  showSlide(current);
+}
+
+next.addEventListener('click', nextSlide);
+prev.addEventListener('click', prevSlide);
+
+// Auto slide every 5 seconds
+setInterval(nextSlide, 5000);
+</script>
+
+<script>
+ function init(){
+  cart = JSON.parse(localStorage.getItem('jays_cart')||'[]');
+  syncCart();
+  renderProducts(); // this will render all 6 rows
+}
+init();
+
+</script>
+ 
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    navToggle.classList.toggle('open');
+  });
+</script>
+
+ 
+<script> 
+// JS to add active class on scroll
+const reveals = document.querySelectorAll('.reveal');
+window.addEventListener('scroll', () => {
+  reveals.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100) {
+      el.classList.add('active');
+    }
+  });
+}); 
+
+
+// Shrink header when scrolling
+const header = document.querySelector('header');
+window.addEventListener('scroll', () => {
+  if(window.scrollY > 50) {
+    header.classList.add('shrink');
+  } else {
+    header.classList.remove('shrink');
+  }
+});
+
+
+  
+function scrollToSection(id){
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+
+// =======================
+// 1️⃣ Highlight active nav item
+// =======================
+const navItems = document.querySelectorAll('.bottom-nav .nav-item');
+window.addEventListener('scroll', () => {
+  const scrollPos = window.scrollY + window.innerHeight / 2;
+  navItems.forEach(item => item.classList.remove('active'));
+
+  const home = document.getElementById('home');
+  const products = document.getElementById('products');
+
+  if(scrollPos < products.offsetTop){
+    navItems[0].classList.add('active'); // Home
+  } else if(scrollPos >= products.offsetTop && scrollPos < products.offsetTop + products.offsetHeight){
+    navItems[1].classList.add('active'); // Products
+  }
+  // Cart always clickable, no section
+});
+
+
+
+// =======================
+// 2️⃣ New Arrivals auto-slide
+// =======================
+const newWrapper = document.querySelector('.new-products-wrapper');
+const newProducts = document.querySelectorAll('.new-product');
+
+let scrollAmount = 0;
+const gap = 10; // gap between products in px
+const productWidth = newProducts[0].offsetWidth + gap;
+
+function slideNewProducts() {
+  scrollAmount += productWidth;
+
+  if(scrollAmount > newWrapper.scrollWidth - newWrapper.clientWidth){
+    scrollAmount = 0; // loop back to start
+  }
+
+  newWrapper.style.transform = `translateX(-${scrollAmount}px)`;
+}
+
+// smooth transition
+newWrapper.style.transition = 'transform 0.5s ease-in-out';
+
+// Auto-slide every 2.5 seconds
+setInterval(slideNewProducts, 2500);
+
+
+
+// =======================
+// 3️⃣ 3D Gallery
+// =======================
+
+// Wrap this in a function in case we load dynamically
+function init3DGallery(wrapperSelector){
+  const carouselWrapper = document.querySelector(wrapperSelector);
+  if(!carouselWrapper) return;
+
+  const images = carouselWrapper.querySelectorAll('img');
+  const total = images.length;
+
+  // Arrange images in a circle
+  const radius = 200; // distance from center
+  images.forEach((img, i) => {
+    const angle = (360 / total) * i;
+    img.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
+  });
+
+  // Mobile swipe
+  let startX = 0;
+  let currentRotation = 0;
+
+  carouselWrapper.addEventListener('touchstart', (e) => {
+    carouselWrapper.style.animation = 'none'; // stop auto-rotate
+    startX = e.touches[0].clientX;
+  });
+
+  carouselWrapper.addEventListener('touchmove', (e) => {
+    const deltaX = e.touches[0].clientX - startX;
+    currentRotation += deltaX * 0.5; // rotation speed
+    carouselWrapper.style.transform = `rotateY(${currentRotation}deg)`;
+    startX = e.touches[0].clientX;
+  });
+
+  carouselWrapper.addEventListener('touchend', () => {
+    // optional: resume auto-rotation
+    carouselWrapper.style.animation = 'rotate 20s infinite linear';
+  });
+}
+
+// If you load 3D gallery via fetch
+fetch('3d.html')
+  .then(r => r.text())
+  .then(data => {
+    document.getElementById('gallery-container').innerHTML = data;
+    // Initialize 3D gallery after HTML is loaded
+    init3DGallery('#gallery-container .carousel-wrapper');
+  });
+
+
+// Select all sections
+const sections = document.querySelectorAll('section');
+
+// Update URL hash when scrolling to a new section
+window.addEventListener('scroll', () => {
+  const scrollPos = window.scrollY + window.innerHeight / 2;
+  sections.forEach(section => {
+    if(scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight){
+      history.replaceState({section: section.id}, '', `#${section.id}`);
+    }
+  });
+});
+
+// Handle back/forward button
+window.addEventListener('popstate', (event) => {
+  if(event.state && event.state.section){
+    const sec = document.getElementById(event.state.section);
+    sec.scrollIntoView({behavior: 'smooth'});
+  }
+});
+
+
+
+
+</script>
+
+</body>
+</html>

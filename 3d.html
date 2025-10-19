@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Rectangle Gallery</title>
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body {
+  display:flex; justify-content:center; align-items:center; min-height:100vh;
+  background:url('your-background.jpg') center/cover no-repeat;
+  font-family:sans-serif;
+}
+.gallery-container {
+  position:relative; width:90%; max-width:900px; height:450px; perspective:1000px;
+}
+.gallery-center {
+  position:absolute; top:50%; left:50%; width:220px; height:220px;
+  z-index:10; transform:translate(-50%,-50%);
+}
+.gallery-center img {
+  width:100%; height:100%; border-radius:12px; object-fit:contain;
+  box-shadow:0 6px 20px rgba(0,0,0,0.35);
+}
+.gallery-side {
+  position:absolute; width:120px; height:80px; border-radius:10px;
+  object-fit:cover; box-shadow:0 3px 10px rgba(0,0,0,0.2);
+  transition:all 0.8s ease; opacity:0.95;
+} 
+
+/* Side images */
+.gallery-side {
+  position: absolute;
+  width: 80px;   /* smaller width */
+  height: 80px;  /* make it square for full image */
+  border-radius: 10px;
+  object-fit: contain; /* instead of cover, so it won't crop */
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  transition: all 0.8s ease;
+  opacity: 0.95;
+}
+/* Top row */
+.gallery-side.pos1 { top: 5%; left: 15%; transform: translateX(-50%); }
+.gallery-side.pos2 { top: 5%; left: 50%; transform: translateX(-50%); }
+.gallery-side.pos3 { top: 5%; left: 85%; transform: translateX(-50%); }
+
+/* Left vertical */
+.gallery-side.pos4 { top: 50%; left: 2%; transform: translateY(-50%); }
+
+/* Right vertical */
+.gallery-side.pos5 { top: 50%; right: 2%; transform: translateY(-50%); }
+
+/* Bottom row */
+.gallery-side.pos6 { bottom: 5%; left: 15%; transform: translateX(-50%); }
+.gallery-side.pos7 { bottom: 5%; left: 50%; transform: translateX(-50%); }
+.gallery-side.pos8 { bottom: 5%; left: 85%; transform: translateX(-50%); }
+/* Mobile */
+@media(max-width:768px){
+  .gallery-container { height:320px; }
+  .gallery-center { width:160px; height:160px; }
+  .gallery-side { width:60px; height:40px; }
+  .gallery-side.pos1{ left:20%; } .gallery-side.pos2{ left:50%; } .gallery-side.pos3{ left:80%; }
+  .gallery-side.pos4{ left:5%; top:50%; } .gallery-side.pos5{ right:5%; top:50%; }
+  .gallery-side.pos6{ left:20%; } .gallery-side.pos7{ left:50%; } .gallery-side.pos8{ left:80%; }
+}
+</style>
+</head>
+<body>
+<div class="gallery-container">
+  <div class="gallery-center"><img src="images/a5.jpg" alt=""></div>
+  <!-- Top row -->
+  <img class="gallery-side pos1" src="images/a1.jpg" alt="">
+  <img class="gallery-side pos2" src="images/a2.jpg" alt="">
+  <img class="gallery-side pos3" src="images/a3.jpg" alt="">
+  <!-- Left and Right vertical -->
+  <img class="gallery-side pos4" src="images/a4.jpg" alt="">
+  <img class="gallery-side pos5" src="images/a6.jpg" alt="">
+  <!-- Bottom row -->
+  <img class="gallery-side pos6" src="images/a7.jpg" alt="">
+  <img class="gallery-side pos7" src="images/a8.jpg" alt="">
+  <img class="gallery-side pos8" src="images/a9.jpg" alt="">
+
+</div>
+
+<script>
+
+const center = document.querySelector('.gallery-center img');
+const sideImages = {
+  pos1: document.querySelector('.pos1'),
+  pos2: document.querySelector('.pos2'),
+  pos3: document.querySelector('.pos3'),
+  pos4: document.querySelector('.pos4'),
+  pos5: document.querySelector('.pos5'),
+  pos6: document.querySelector('.pos6'),
+  pos7: document.querySelector('.pos7'),
+  pos8: document.querySelector('.pos8')
+};
+
+let images = [
+  "images/a1.jpg",
+  "images/a2.jpg",
+  "images/a3.jpg",
+  "images/a4.jpg",
+  "images/a6.jpg",
+  "images/a7.jpg",
+  "images/a8.jpg",
+  "images/a9.jpg",
+  "images/a5.jpg"  // center image last
+];
+
+function rotateGallery() {
+  images.unshift(images.pop()); // rotate array
+
+  // Assign unique images
+  sideImages.pos1.src = images[0];
+  sideImages.pos2.src = images[1];
+  sideImages.pos3.src = images[2];
+  sideImages.pos4.src = images[3];
+  sideImages.pos5.src = images[4];
+  sideImages.pos6.src = images[5];
+  sideImages.pos7.src = images[6];
+  sideImages.pos8.src = images[7];
+
+  center.src = images[8]; // center image
+}
+
+setInterval(rotateGallery, 3000);
+
+</script>
+</body>
+</html>
