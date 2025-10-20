@@ -996,14 +996,14 @@ nav a:hover {
 /* Container */
 .media-grid {
   display: flex;
-  justify-content: center;
+  justify-content:  center;
   align-items: flex-start;
-  gap: 12px;
+  gap: 10px;
   margin: 25px auto;
   padding: 15px;
-  background: #f7f7f7;
+  background: #070707;
   border-radius: 14px;
-  max-width: 850px;
+  max-width: 650px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
   flex-wrap: nowrap;
 }
@@ -1049,8 +1049,8 @@ img {
     justify-content: center;    /* ✅ centers the grid horizontally */
     width: 100%;                /* ✅ fill entire width */
     max-width: 100%;            /* remove fixed 70% */
-    gap: 4px;                   /* ✅ smaller, equal gap on both sides */
-    padding: 0;                 /* remove side paddings */
+    gap: 1px;                   /* ✅ smaller, equal gap on both sides */
+    padding: 8px;                 /* remove side paddings */
     margin: 0 auto;             /* center */
     box-sizing: border-box;
   }
@@ -1083,7 +1083,11 @@ img {
   .media-grid img,
   .media-grid video {
     display: block;
-    border-radius: 6px;
+    border-radius: 10px;
+    padding: 5px;
+    gap:5px;
+ 
+  
   }
 }
 
