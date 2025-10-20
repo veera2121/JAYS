@@ -30,6 +30,7 @@ License: free to use and customize.
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
 
 <!-- Main HTML file -->
 <a href="3d.html" target="_blank"></a>
@@ -39,11 +40,15 @@ License: free to use and customize.
   <header>
     <div class="brand">
       <div class="logo">Sri</div>
+      <div class="header-content"> <!-- Added this class -->
       <div>
         <h1>Sri Sai Ganesha Home Needs and Furniture</h1>
         <p class="lead">Elegant furniture for modern homes</p>
       </div>
     </div>
+
+
+
 
     <!-- Hamburger menu for mobile -->
     <div class="nav-toggle" id="navToggle">
@@ -80,7 +85,7 @@ License: free to use and customize.
     }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial; margin:0; background:var(--bg); color:#000000}
+    body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial; margin:0; background:var(--bg); color:#000000;}
     a{text-decoration:none;color:#06a79f}
     .container{max-width:var(--maxw);margin:26px auto;padding:0 20px}
 
@@ -336,30 +341,31 @@ header {
   justify-content: space-between;
   align-items: center;
   gap: 25px;
-  flex-wrap: nowrap; /* Prevent items from wrapping */
+  flex-wrap: nowrap;
 
-  /* Base height and padding */
   height: 80px;
   min-height: 70px;
   padding: 18px 22px;
   box-sizing: border-box;
 
-  /* Gradient background */
-  background: linear-gradient(135deg, #7a9926, #a1c349);
+  /* 🌿 Glassmorphism green background */
+  background: linear-gradient(180deg, rgba(32, 223, 118, 0.4), rgba(98, 13, 236, 0.692));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(141, 4, 4, 0.562);
 
-  /* Text styling */
-  color: #fff;
-  font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  /* 🪞 Glow border */
+  box-shadow: 0 0 15px rgba(167, 10, 214, 0.774), 0 4px 10px rgba(0,0,0,0.25);
 
-  /* Shadow and border */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  
   border-bottom: 2px solid rgba(255,255,255,0.2);
   border-radius: 0 0 10px 10px;
-
-  /* Smooth transition for resizing */
   transition: all 0.3s ease;
 }
+
+
+
+
 
 
 
@@ -460,6 +466,21 @@ nav a:hover {
 header.shrink {
   padding: 8px 20px;
 }
+/*
+
+
+
+/* ✨ Floating animation for smooth entry */
+@keyframes floatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
 
 /* ---------------- Mobile Navigation ---------------- */
 @media (max-width: 768px) {
@@ -500,8 +521,7 @@ header.shrink {
     box-shadow: 0 -3px 10px rgba(0,0,0,0.25);
     border-radius: 0; /* square corners */
     z-index: 9999;
-    transition: all 0.3s ease;
-  }
+    transition: all 0.3s ease; }
 
   .bottom-nav .nav-item {
     display: flex;
@@ -809,6 +829,7 @@ header.shrink {
   height: 200px;
   pointer-events: none;
 }
+   
 
   </style> 
 
