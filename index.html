@@ -392,6 +392,14 @@ header .lead {
   color: #000000; /* replace with your desired color */
   font-weight: bold; /* optional: makes it stand out more */
 }
+/* ---------------- Shrink header ---------------- */
+header.shrink {
+  padding: 8px 20px;
+}
+header.shrink {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  background: rgba(5, 156, 18, 0.5); /* slightly more transparent for effect */
+}
 
 
 /* ---------------- Desktop Navigation (unchanged) ---------------- */
@@ -462,10 +470,7 @@ nav a:hover {
   transform: translateY(0);
 }
 
-/* ---------------- Shrink header ---------------- */
-header.shrink {
-  padding: 8px 20px;
-}
+
 /*
 
 
@@ -831,6 +836,262 @@ header.shrink {
 }
    
 
+/* diwali section text */
+
+.footer {
+  background: rgba(83, 82, 82, 0.85); /* Glassmorphism feel */
+  backdrop-filter: blur(12px);
+  color: #fff;
+  padding: 40px 20px;
+  font-family: 'Poppins', sans-serif;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+/* Top row: Products + Newsletter */
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Product Categories */
+.footer-products h3 {
+  font-family: 'Playfair Display', serif;
+  color: #1A237E;
+  margin-bottom: 10px;
+}
+
+.footer-products ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-products li {
+  margin-bottom: 6px;
+  color: #ddd;
+}
+
+/* Newsletter + Payments */
+.footer-newsletter h3, .footer-payments h4 {
+  font-family: 'Playfair Display', serif;
+  color: #1A237E;
+  margin-bottom: 8px;
+}
+
+.footer-newsletter p {
+  font-size: 0.95rem;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.footer-newsletter form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.footer-newsletter input[type="email"] {
+  flex: 1;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+}
+
+.footer-newsletter button {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: none;
+  background: #028543;
+  color: #1A237E;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.footer-newsletter button:hover {
+  transform: scale(1.05);
+}
+
+/* Payment Icons */
+.payment-icons img {
+  width: 50px;       /* same width for all */
+  height: 30px;      /* same height for all */
+  object-fit: contain; /* keeps aspect ratio, no stretching */
+  margin-right: 10px;
+
+  margin-right: 8px;
+  margin-top: 5px;
+}
+
+/* Social Media (centered) */
+.footer-social {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.footer-social h3 {
+  font-family: 'Playfair Display', serif;
+  color: #1A237E;
+  margin-bottom: 10px;
+}
+
+.footer-social .social-icons a {
+  margin: 0 10px;
+  display: inline-block;
+}
+
+.footer-social .social-icons img {
+
+  width: 40px;       /* same width */
+  height: 40px;      /* same height */
+  object-fit: contain; /* preserves ratio */
+  transition: transform 0.3s;
+  transition: transform 0.3s;
+}
+
+.footer-social .social-icons img:hover {
+  transform: scale(1.2);
+}
+
+/* Footer Copy */
+.footer-copy {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .footer-newsletter form {
+    flex-direction: column;
+  }
+
+  .footer-newsletter input[type="email"],
+  .footer-newsletter button {
+    width: 100%;
+  }
+}
+
+@keyframes float {
+
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
+.floating-item {
+  animation: float 4s ease-in-out infinite;
+}
+.product-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+}
+
+/* Container */
+.media-grid {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 25px auto;
+  padding: 15px;
+  background: #f7f7f7;
+  border-radius: 14px;
+  max-width: 850px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  flex-wrap: nowrap;
+}
+
+/* Left column (video + square stacked) */
+.left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 0 0 380px;
+  max-width: 100%;
+}
+
+.video,
+.square {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  background: #000;
+}
+
+.tall {
+  flex: 0 0 240px;
+  width: 240px;
+  height: calc(250px + 250px + 12px);
+  object-fit: cover;
+  border-radius: 10px;
+  background: #000;
+}
+
+/* Shadows */
+video,
+img {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+/* ===== MOBILE FIX ===== */
+@media (max-width: 768px) {
+  .media-grid {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;    /* ✅ centers the grid horizontally */
+    width: 100%;                /* ✅ fill entire width */
+    max-width: 100%;            /* remove fixed 70% */
+    gap: 4px;                   /* ✅ smaller, equal gap on both sides */
+    padding: 0;                 /* remove side paddings */
+    margin: 0 auto;             /* center */
+    box-sizing: border-box;
+  }
+
+  .left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 0 0 60vw;             /* left column takes 60% of width */
+    margin: 0;
+    padding: 0;
+  }
+
+  .video,
+  .square {
+    width: 100%;
+    height: 180px;
+  }
+
+  .tall {
+    width: 40vw;               /* right column takes 40% of width */
+    height: calc(180px * 2 + 4px);
+    margin: 0;
+  }
+
+  .media-grid > * {
+    margin: 0;
+  }
+
+  .media-grid img,
+  .media-grid video {
+    display: block;
+    border-radius: 6px;
+  }
+}
+
+
+
+
+
+
   </style> 
 
 
@@ -968,6 +1229,24 @@ header.shrink {
 <section class="gallery-section"></section>
   <iframe src="3d.html" width="100%" height="450" frameborder="0" style="border-radius:10px;"></iframe>
 </section>
+
+
+<div class="media-grid">
+  <div class="left-column">
+    <video id="myVideo" class="video" muted playsinline>
+      <source src="videos/diwali.webm" type="video/webm">
+    </video>
+    <img src="images/diwali.jpg" alt="Square Image" class="square">
+  </div>
+
+  <div class="right-column">
+    <img src="images/diwali1.jpg" alt="Tall Image" class="tall">
+  </div>
+</div>
+
+
+  
+
 
 <section class="emi-banner">
   <img src="images/banner.jpg" alt="EMI on Cards Banner">
@@ -1130,14 +1409,7 @@ header.shrink {
       </div>
     </section>
 
-    <footer>
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
-        <div>© Jay's Furniture — Crafted with care</div>
-        <div>mk solutions</div>
-        <div style="color:var(--muted)">Follow us on Instagram • Facebook</div>
-      </div>
-    </footer>
-  </div>
+
 
   <!-- Modal template -->
   <div id="modalRoot" style="display:none"></div>
@@ -1215,9 +1487,71 @@ header.shrink {
 
 
 <!-- Sections -->
-<section id="home"> ... </section>
-<section id="products"> ... </section>
-<section id="cart"> ... </section>
+<section id="home"></section>
+<section id="products"></section>
+<section id="cart"></section>
+
+<!-- edn of thee pageeeeeeee-->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-products">
+      <h3>Product Categories</h3>
+      <ul>
+        <li>Living</li>
+        <li>Bedroom</li>
+        <li>Dining Sets</li>
+        <li>Study & Office Furniture</li>
+        <li>Modular Furniture</li>
+        <li>Collections</li>
+      </ul>
+    </div>
+
+    <div class="footer-newsletter">
+      <h3>Sign Up for Regular Updates</h3>
+      <p>Subscribe to receive updates on new arrivals, offers, and more!</p>
+      <form>
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+
+      <div class="footer-payments">
+        <h4>We Accept</h4>
+        <div class="payment-icons">
+          <img src="images/payment1.png" alt="Visa">
+          <img src="images/payment2.png" alt="MasterCard">
+          <img src="images/payment3.png" alt="PayPal">
+          <img src="images/payment4.png" alt="UPI">
+          <img src="images/payment5.png" alt="Wallet">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-social">
+  <h3>Follow Us</h3>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/people/Sri-Sai-Ganesh-Home-Needs-And-Furniture/61576153976543/" target="_blank" rel="noopener noreferrer">
+      <img src="images/facebook.png" alt="Facebook">
+    </a>
+    <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer">
+      <img src="images/twitter.png" alt="Twitter">
+    </a>
+    <a href="https://www.instagram.com/srisaiganeshhomeneeds/srisaiganeshhomeneeds" target="_blank" rel="noopener noreferrer">
+      <img src="images/instagram.png" alt="Instagram">
+    </a>
+    <a href=https://youtube.com/@sureshthota2345?si=63g2CXZrxqe3FVF_"  target="_blank" rel="noopener noreferrer">
+      <img src="images/youtube.png" alt="YouTube">
+    </a>
+  </div>
+</div>
+
+
+  <p class="footer-copy">© 2025 Sri Sai Ganesha Furniture. All Rights Reserved.</p>
+</footer>
+
+
+
+
 
 <canvas id="fireworksCanvas"></canvas>
 
@@ -1796,6 +2130,26 @@ function animate(){
 }
 
 animate();
+
+
+// Select the video element
+const video = document.getElementById('myVideo');
+
+// Create an Intersection Observer
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      video.play();   // play video when visible
+    } else {
+      video.pause();  // pause video when out of view
+    }
+  });
+}, {
+  threshold: 0.5 // 50% of video should be visible to trigger
+});
+
+// Observe the video element
+observer.observe(video);
 
 
 </script>
