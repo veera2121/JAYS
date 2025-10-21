@@ -708,17 +708,17 @@ nav a:hover {
  
 /* EMI Banner */
 .emi-banner img {
-  width: 100%;       /* full width */
+  width: 99%;       /* full width */
   height: auto;      /* maintain aspect ratio */
   display: block;
-  margin:  0;
-  padding: 0;     /* small gap above and below banner */
+  margin:  10;
+  padding: 20;     /* small gap above and below banner */
   border-radius: 5px; /* optional rounded corners */
 }
 
 /* Reduce spacing for surrounding sections */
 .above-section {
-  margin-top: 5px;  /* gap below above-section */
+  margin-top: 15px;  /* gap below above-section */
 }
 
 .feature {
@@ -1097,6 +1097,74 @@ box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   }
 }
 
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 videos per row */
+  gap: 20px;
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 15px;
+}
+
+.video-item {
+  position: relative; /* required for glow overlay */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.4s ease;
+}
+
+/* Hover effects */
+.video-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2), 0 0 10px rgba(255,255,255,0.05);
+}
+
+/* Floating animation */
+@keyframes floatVideo {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+.video-item video {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+  animation: floatVideo 4s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+.video-item:hover video {
+  transform: scale(1.03);
+}
+
+/* Bottom glow overlay */
+.video-item::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px; /* height of glow */
+  background: linear-gradient(to top, rgba(255, 200, 0, 0.4), rgba(255, 200, 0, 0));
+  pointer-events: none;
+  border-radius: 0 0 12px 12px;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .video-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 per row on mobile */
+    gap: 15px;
+  }
+
+  .video-item video {
+    height: 150px; /* smaller height for mobile */
+  }
+}
 
 
 
@@ -1379,6 +1447,38 @@ box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 </div>
 
 
+<section class="video-grid">
+  <div class="video-item">
+    <video autoplay muted loop playsinline>
+      <source src="videos/t3.webm" type="video/webm">
+    </video>
+  </div>
+  <div class="video-item">
+    <video autoplay muted loop playsinline>
+      <source src="videos/v1.webm" type="video/webm">
+    </video>
+  </div>
+  <div class="video-item">
+    <video autoplay muted loop playsinline>
+      <source src="videos/v3.webm" type="video/webm">
+    </video>
+  </div>
+  <div class="video-item">
+    <video autoplay muted loop playsinline>
+      <source src="videos/v2.webm" type="video/webm">
+    </video>
+  </div>
+  <div class="video-item">
+    <video autoplay muted loop playsinline>
+      <source src="videos/t1.webm" type="video/webm">
+    </video>
+  </div>
+  <div class="video-item">
+    <video autoplay muted loop playsinline>
+      <source src="videos/s1.webm" type="video/webm">
+    </video>
+  </div>
+</section>
 
 
 
