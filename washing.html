@@ -5,114 +5,258 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Jay's Furniture — Washing Machines</title>
   <style>
-    body { font-family: 'Poppins', sans-serif; margin:0; background:#fbfaf8; color:#111; }
+    /* ---------------------------
+       🌈 GLOBAL STYLES
+    ---------------------------- */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin:0;
+      background: linear-gradient(135deg,#fbfaf8,#f3e8ff);
+      color:#111;
+    }
     a { text-decoration:none; color:inherit; }
     .container { max-width:1200px; margin:26px auto; padding:0 20px; }
-    header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
+    h2 { text-align:center; font-size:2rem; margin:20px 0; font-weight:700; background: linear-gradient(90deg,#c99b55,#e0b469); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+
+    /* ---------------------------
+       🪑 HEADER
+    ---------------------------- */
+    header {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:20px;
+    }
     .brand { display:flex; align-items:center; gap:12px; }
-    .logo { width:50px; height:50px; background:#c99b55; color:#fff; font-weight:700; display:flex; align-items:center; justify-content:center; border-radius:10px; }
+    .logo {
+      width:50px; height:50px;
+      background:linear-gradient(135deg,#c99b55,#e0b469);
+      color:#fff; font-weight:700;
+      display:flex; align-items:center; justify-content:center;
+      border-radius:12px; font-size:18px;
+    }
     nav a { margin-left:12px; font-weight:600; }
-    h2 { margin-top:0; }
-    .grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:20px; }
-    .card { background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 8px 30px rgba(18,22,28,0.08); transition: transform .25s ease; }
-    .card:hover { transform:translateY(-6px); }
-    .card img { width:100%; height:200px; object-fit:cover; }
-    .card-body { padding:14px; }
+    
+    /* ---------------------------
+       ✨ GLASS PRODUCT CARDS
+    ---------------------------- */
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+      gap:20px;
+      margin-top:20px;
+    }
+    .card {
+      background: rgba(255,255,255,0.15);
+      border-radius:20px;
+      backdrop-filter:blur(12px);
+      border:1px solid rgba(255,255,255,0.25);
+      box-shadow:0 8px 32px rgba(31,38,135,0.25);
+      overflow:hidden;
+      transition:transform .25s ease, box-shadow .3s ease;
+    }
+    .card:hover { transform:translateY(-6px); box-shadow:0 10px 40px rgba(0,0,0,0.25); }
+    .card img {
+      width:100%;
+      height:auto;
+      max-height:220px;
+      object-fit:contain; /* full image visible */
+      border-radius:12px;
+      background:#f0f0f0;
+      display:block;
+    }
+    .card-body { padding:14px; text-align:center; }
     .title { font-weight:600; margin:0 0 6px; }
     .meta { color:#6b6b6b; font-size:13px; margin-bottom:8px; }
     .price { font-weight:700; font-size:16px; color:#a67c36; margin-bottom:10px; }
-    .btn { background:#c99b55; color:#fff; border:none; padding:8px 12px; border-radius:10px; cursor:pointer; font-weight:600; }
-    footer { margin-top:40px; text-align:center; color:#6b6b6b; font-size:14px; }
-    @media(max-width:768px){ .grid { grid-template-columns:1fr; } }
+    .btn {
+      background: linear-gradient(135deg,#c99b55,#e0b469);
+      color:#fff; border:none; padding:8px 12px; border-radius:10px;
+      cursor:pointer; font-weight:600; transition:0.3s;
+    }
+    .btn:hover { transform:scale(1.05); background: linear-gradient(135deg,#b88a4e,#d9a85f); }
+
+    /* ---------------------------
+       💎 MODAL (DETAIL POPUP)
+    ---------------------------- */
+    .modal {
+      display:none;
+      position:fixed;
+      z-index:9999;
+      left:0; top:0;
+      width:100%; height:100%;
+      background-color:rgba(0,0,0,0.65);
+      backdrop-filter:blur(6px);
+      justify-content:center;
+      align-items:center;
+    }
+    .modal-content {
+      background:rgba(255,255,255,0.95);
+      border-radius:18px;
+      width:90%;
+      max-width:500px;
+      max-height:90vh;
+      padding:20px;
+      color:#333;
+      text-align:left;
+      box-shadow:0 8px 30px rgba(0,0,0,0.25);
+      animation:zoomIn 0.4s ease;
+      position:absolute;
+      top:50%; left:50%;
+      transform:translate(-50%,-50%);
+      overflow-y:auto;
+    }
+    .modal-content img {
+      width:100%;
+      height:auto;
+      max-height:250px;
+      object-fit:contain;
+      border-radius:12px;
+      margin-bottom:15px;
+      background:#f0f0f0;
+      display:block;
+    }
+    #modalSpecs { list-style:none; padding:0; margin:0; font-size:0.95rem; }
+    #modalSpecs li { margin-bottom:8px; padding:8px; border-bottom:1px solid rgba(0,0,0,0.1); }
+    .close { float:right; font-size:24px; cursor:pointer; }
+    @keyframes zoomIn { from { transform: scale(0.8); opacity:0; } to { transform: scale(1); opacity:1; } }
+
+    footer {
+      margin-top:40px;
+      text-align:center;
+      color:#6b6b6b;
+      font-size:14px;
+      padding:20px 0;
+      backdrop-filter:blur(10px);
+      background: rgba(255,255,255,0.25);
+      border-top:1px solid rgba(255,255,255,0.2);
+      border-radius:20px 20px 0 0;
+    }
+
+    @media(max-width:768px){
+      .grid { grid-template-columns:1fr; }
+      .modal-content { max-height:85vh; }
+      header { flex-direction:column; gap:10px; text-align:center; }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo">Jay's</div>
-        <h1>Jay's Furniture</h1>
-      </div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="sofas.html">Sofas</a>
-        <a href="chairs.html">Chairs</a>
-        <a href="beds.html">Beds</a>
-        <a href="fridge.html">Fridges</a>
-        <a href="washing.html">Washing Machines</a>
-      </nav>
-    </header>
+<div class="container">
+  <header>
+    <div class="brand">
+      <div class="logo">Jay's</div>
+      <h1>Jay's Furniture</h1>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="sofas.html">Sofas</a>
+      <a href="chairs.html">Chairs</a>
+      <a href="beds.html">Beds</a>
+      <a href="fridge.html">Fridges</a>
+      <a href="washing.html" style="color:#c99b55;">Washing Machines</a>
+    </nav>
+  </header>
 
-    <h2>Washing Machines Collection</h2>
-    <div class="grid">
-      <!-- Washing Machine 1 -->
-      <div class="card">
-        <img src="images/washing1.jpg" alt="Front Load Washing Machine">
-        <div class="card-body">
-          <h4 class="title">Front Load Washing Machine</h4>
-          <div class="meta">Efficient washing with advanced features.</div>
-          <div class="price">₹15,499</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Washing Machine Enquiry'">Enquire</button>
-        </div>
-      </div>
-
-      <!-- Washing Machine 2 -->
-      <div class="card">
-        <img src="images/washing2.jpg" alt="Top Load Washing Machine">
-        <div class="card-body">
-          <h4 class="title">Top Load Washing Machine</h4>
-          <div class="meta">Spacious drum with quick wash options.</div>
-          <div class="price">₹12,999</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Washing Machine Enquiry'">Enquire</button>
-        </div>
-      </div>
-
-      <!-- Washing Machine 3 -->
-      <div class="card">
-        <img src="images/washing3.jpg" alt="Semi-Automatic Washing Machine">
-        <div class="card-body">
-          <h4 class="title">Semi-Automatic Washing Machine</h4>
-          <div class="meta">Durable and energy-saving design.</div>
-          <div class="price">₹7,999</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Washing Machine Enquiry'">Enquire</button>
-        </div>
-      </div>
-
-      <!-- Washing Machine 4 -->
-      <div class="card">
-        <img src="images/washing4.jpg" alt="Compact Washing Machine">
-        <div class="card-body">
-          <h4 class="title">Compact Washing Machine</h4>
-          <div class="meta">Ideal for small apartments.</div>
-          <div class="price">₹5,499</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Washing Machine Enquiry'">Enquire</button>
-        </div>
-      </div>
-
-      <!-- Washing Machine 5 -->
-      <div class="card">
-        <img src="images/washing5.jpg" alt="Smart Washing Machine">
-        <div class="card-body">
-          <h4 class="title">Smart Washing Machine</h4>
-          <div class="meta">Wi-Fi enabled with multiple wash modes.</div>
-          <div class="price">₹21,499</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Washing Machine Enquiry'">Enquire</button>
-        </div>
-      </div>
-
-      <!-- Washing Machine 6 -->
-      <div class="card">
-        <img src="images/washing6.jpg" alt="Portable Washing Machine">
-        <div class="card-body">
-          <h4 class="title">Portable Washing Machine</h4>
-          <div class="meta">Lightweight and easy to move.</div>
-          <div class="price">₹6,499</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Washing Machine Enquiry'">Enquire</button>
-        </div>
+  <h2>Washing Machines Collection</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="images/washing1.jpg" alt="Front Load Washing Machine">
+      <div class="card-body">
+        <h4 class="title">Front Load Washing Machine</h4>
+        <div class="meta">Efficient washing with advanced features.</div>
+        <div class="price">₹15,499</div>
+        <button class="btn" onclick="showDetails(1)">View Details</button>
       </div>
     </div>
-
-    <footer>© Jay's Furniture — Crafted with care</footer>
+    <div class="card">
+      <img src="images/washing2.jpg" alt="Top Load Washing Machine">
+      <div class="card-body">
+        <h4 class="title">Top Load Washing Machine</h4>
+        <div class="meta">Spacious drum with quick wash options.</div>
+        <div class="price">₹12,999</div>
+        <button class="btn" onclick="showDetails(2)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/washing3.jpg" alt="Semi-Automatic Washing Machine">
+      <div class="card-body">
+        <h4 class="title">Semi-Automatic Washing Machine</h4>
+        <div class="meta">Durable and energy-saving design.</div>
+        <div class="price">₹7,999</div>
+        <button class="btn" onclick="showDetails(3)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/washing4.jpg" alt="Compact Washing Machine">
+      <div class="card-body">
+        <h4 class="title">Compact Washing Machine</h4>
+        <div class="meta">Ideal for small apartments.</div>
+        <div class="price">₹5,499</div>
+        <button class="btn" onclick="showDetails(4)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/washing5.jpg" alt="Smart Washing Machine">
+      <div class="card-body">
+        <h4 class="title">Smart Washing Machine</h4>
+        <div class="meta">Wi-Fi enabled with multiple wash modes.</div>
+        <div class="price">₹21,499</div>
+        <button class="btn" onclick="showDetails(5)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/washing6.jpg" alt="Portable Washing Machine">
+      <div class="card-body">
+        <h4 class="title">Portable Washing Machine</h4>
+        <div class="meta">Lightweight and easy to move.</div>
+        <div class="price">₹6,499</div>
+        <button class="btn" onclick="showDetails(6)">View Details</button>
+      </div>
+    </div>
   </div>
+
+  <!-- Modal -->
+  <div id="wmModal" class="modal">
+    <div class="modal-content" id="modalContent"></div>
+  </div>
+
+  <footer>© Jay's Furniture — Crafted with care</footer>
+</div>
+
+<script>
+  const machines = {
+    1:{name:"Front Load Washing Machine", type:"Front Load", capacity:"7 kg", color:"Silver", features:"Advanced washing technology, efficient water usage."},
+    2:{name:"Top Load Washing Machine", type:"Top Load", capacity:"8 kg", color:"White", features:"Spacious drum, quick wash options."},
+    3:{name:"Semi-Automatic Washing Machine", type:"Semi-Automatic", capacity:"6 kg", color:"Grey", features:"Durable and energy-saving design."},
+    4:{name:"Compact Washing Machine", type:"Compact", capacity:"5 kg", color:"White", features:"Ideal for small apartments."},
+    5:{name:"Smart Washing Machine", type:"Smart", capacity:"9 kg", color:"Black", features:"Wi-Fi enabled, multiple wash modes."},
+    6:{name:"Portable Washing Machine", type:"Portable", capacity:"4 kg", color:"Grey", features:"Lightweight and easy to move."}
+  };
+
+  function showDetails(id){
+    const machine = machines[id];
+    const modal = document.getElementById('wmModal');
+    const content = document.getElementById('modalContent');
+    content.innerHTML = `
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img src="images/washing${id}.jpg" alt="${machine.name}">
+      <h3>${machine.name}</h3>
+      <ul id="modalSpecs">
+        <li><strong>Type:</strong> ${machine.type}</li>
+        <li><strong>Capacity:</strong> ${machine.capacity}</li>
+        <li><strong>Color:</strong> ${machine.color}</li>
+        <li><strong>Features:</strong> ${machine.features}</li>
+      </ul>
+    `;
+    modal.style.display='flex';
+  }
+
+  function closeModal(){ document.getElementById('wmModal').style.display='none'; }
+
+  window.onclick = function(event){
+    const modal = document.getElementById('wmModal');
+    if(event.target===modal) closeModal();
+  }
+</script>
 </body>
 </html>

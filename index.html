@@ -29,11 +29,11 @@ License: free to use and customize.
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
 
 <!-- Main HTML file -->
-<a href="3d.html" target="_blank"></a>
+  <a href="3d.html" target="_blank"></a>
 
 
   <!-- Sticky header outside container -->
@@ -43,7 +43,6 @@ License: free to use and customize.
       <div class="header-content"> <!-- Added this class -->
       <div>
         <h1>Sri Sai Ganesha Home Needs and Furniture</h1>
-        
       </div>
     </div>
 
@@ -61,16 +60,12 @@ License: free to use and customize.
     <nav id="navLinks">
       <a href="#home">Home</a>
       <a href="#products">Products</a>
-      <a href="#contact">Contact</a>
+      <a href="#Offer">Offer</a>
       
       
       <button id="adminToggle" class="ghost">Admin</button>
       <button id="cartBtn" class="btn">Cart (<span id="cartCount">0</span>)</button>
     </nav> 
-
-
-    
-
   </header>
 
 
@@ -110,108 +105,144 @@ License: free to use and customize.
     .hero-image img{width:100%;height:100%;object-fit:cover;display:block}
 
    
-    /* Categories */
-   /* --- Category Section --- */
-/* Desktop view: grid */
-/* --- Category Section --- */
-/* --- Category Section --- */
-/* Desktop view: 6 products per row */
-.categories {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 15px;
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 10px;
-}
-.categories-section {
-  max-width: 1200px;
-  margin: 50px auto;
-  padding: 0 20px;
-  text-align: center;
-}
+        /* Categories */
+      /* --- Category Section --- */
+    /* Desktop view: grid */
+    /* --- Category Section --- */
+    /* --- Category Section --- */
+    /* Desktop view: 6 products per row */
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 15px;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 5px;
+    }
+    .categories-section {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
 
-.categories-section .section-header h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-  background: linear-gradient(180deg, #b30e3f, #000000);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+    .categories-section .section-header h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      background: linear-gradient(180deg, #b30e3f, #000000);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-.categories-section .section-header p {
-  font-size: 1.1rem;
-  color: #000000;
-  margin-bottom: 20px;
-}
+    .categories-section .section-header p {
+      font-size: 1.1rem;
+      color: #000000;
+      margin-bottom: 20px;
+    }
 
-.cat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.cat img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.cat div {
-  margin-top: 8px;
-  font-size: 14px;
-  text-align: center;
-}
-
-.cat:hover {
-  transform: scale(1.05);
-}
-
-/* --- Mobile View --- */
-@media (max-width: 768px) {
-  .categories {
-    display: grid;
-    grid-auto-flow: column; /* horizontal scrolling */
-    grid-template-rows: repeat(2, auto); /* two rows */
-    gap: 10px;
-    overflow-x: auto;
-    padding-bottom: 0;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    margin-bottom:5px;
-  }
-
-  .categories::-webkit-scrollbar {
-    display: none;
-  }
-
-  .cat {
-    flex: 0 0 32%; /* 3 fully visible */
-    scroll-snap-align: start;
-    width: 100%;
-  }
-
-  /* Partially visible 4th item */
-  .cat:nth-child(4) {
-    flex: 0 0 50%;
-  }
-
-  .cat img {
-    width: 80px;
-    height: 80px;
-    border-radius: 12px;
-  }
-
-  .cat div {
-    font-size: 13px;
-  }
-}
+    /*.cat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.3s;*/
+    .cat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-radius: 12px; /* rounded corners */
+      padding: 5px;
+      background: rgba(255, 255, 255, 0.05); /* subtle background for glow */
+    }
 
 
+    .cat:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 20px rgba(179, 14, 63, 0.6), 0 0 10px rgba(179, 14, 63, 0.4) inset;
+    }
+
+
+    .cat img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+
+    .cat div {
+      margin-top: 8px;
+      font-size: 14px;
+      text-align: center;
+      color: #14006e; /* Change this to any color you want */
+      font-weight: 600; /* Optional: make the name bold */
+      transition: color 0.3s; /* Smooth color change on hover */
+    }
+
+
+    .cat:hover img {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px rgba(179, 14, 63, 0.7);
+    }
+
+    /* --- Mobile View --- */
+    @media (max-width: 768px) {
+      .categories {
+        display: grid;
+        grid-auto-flow: column; /* horizontal scrolling */
+        grid-template-rows: repeat(2, auto); /* two rows */
+        gap: 10px;
+        overflow-x: auto;
+        padding-bottom: 0;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        margin-bottom:5px;
+      } 
+      @keyframes glow {
+      0% { box-shadow: 0 0 5px rgba(179,14,63,0.4); }
+      50% { box-shadow: 0 0 15px rgba(179,14,63,0.8); }
+      100% { box-shadow: 0 0 5px rgba(179,14,63,0.4); }
+      }
+
+      .categories::-webkit-scrollbar {
+        display: none;
+      }
+
+      .cat {
+        flex: 0 0 32%; /* 3 fully visible */
+        scroll-snap-align: start;
+        width: 100%;
+      }
+
+      /* Partially visible 4th item */
+      .cat:nth-child(4) {
+        flex: 0 0 50%;
+      }
+
+      .cat img {
+      width: 80px;
+      height: 80px;
+      border-radius: 12px;
+      animation: glow 2s infinite ease-in-out;
+      transition: transform 0.3s;
+      }
+
+      .cat div {
+        font-size: 13px;
+      }
+
+      .cat:hover img {
+        transform: scale(1.15);
+        box-shadow: 0 0 12px rgba(179, 14, 63, 0.6);
+      }
+        
+      .cat:active img {
+        transform: scale(1.15);
+      }
+    }
     /* Products */
     .section-title{display:flex;align-items:center;justify-content:space-between;margin:28px 0}
     .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
@@ -257,413 +288,406 @@ License: free to use and customize.
 
 
 
-/* rwossssssssssssss*/
-  
-.featured-collection {
-  padding: 20px 20px;
-}
+    /* rwossssssssssssss*/
+      
+    .featured-collection {
+      padding: 20px 20px;
+    }
 
-.section-title {
-  text-align: center;
-  margin-bottom: 30px;
-}
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
 
-.grid {
-   display: flex;
-   flex-wrap: wrap; 
-   gap: 20px; 
-   justify-content: center; }
-
-
-.product-card {
-  width: calc(33.333% - 30px);
-  border: 3px solid #5e052e;
-  border-radius: 8px;
-  overflow: hidden;
-  text-align: center;
-  padding: 10px;
-  transition: transform 0.3s;
-  height: 400px; /* 👈 fix height */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
- 
-
-.product-card:hover {
-  transform: scale(1.05);
-}
-
-.product-card img {
-  width: 100%;
-  height: 200px; /* 👈 fixed height */
-  object-fit: contain; /* ✅ keep full image visible */ /* keeps image proportion */
-  border-radius: 4px;
-}
-
-.product-name {
-  font-weight: bold;
-  margin: 10px 0 5px;
-}
-
-.product-desc {
-  font-size: 0.9rem;
-  color: #555;
-  margin-bottom: 5px;
-}
-
-.product-price {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.product-actions button {
-  margin: 5px;
-  padding: 6px 12px;
-  border: none;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-.product-actions button:first-child {
-  background: #333;
-  color: #fff;
-}
-
-.product-actions button:last-child {
-  background: #fff;
-  border: 1px solid #333;
-  color: #333;
-}
-
-/* Tablet: 2 per row */
-@media (max-width: 768px) {
-  .product-card {
-    width: calc(50% - 15px);
-  }
-}
-
-/* ✅ Mobile: 2 per row (same as tablet) */
-@media (max-width: 480px) {
-  .product-card {
-    width: calc(50% - 15px); /* 👈 changed from 100% to 50% */
-    height: auto; 
-  } 
-
-}
+    .grid {
+      display: flex;
+      flex-wrap: wrap; 
+      gap: 20px; 
+      justify-content: center; }
 
 
+    .product-card {
+      width: calc(33.333% - 30px);
+      border: 3px solid #5e052e;
+      border-radius: 8px;
+      overflow: hidden;
+      text-align: center;
+      padding: 10px;
+      transition: transform 0.3s;
+      height: 400px; /* 👈 fix height */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
 
-header {
-  position: sticky;
-  top: 0;
-  z-index: 9999;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 25px;
-  flex-wrap: nowrap;
+    .product-card:hover {
+      transform: scale(1.05);
+    }
 
-  height: 80px;
-  min-height: 70px;
-  padding: 18px 22px;
-  box-sizing: border-box;
+    .product-card img {
+      width: 100%;
+      height: 200px; /* 👈 fixed height */
+      object-fit: contain; /* ✅ keep full image visible */ /* keeps image proportion */
+      border-radius: 4px;
+    }
 
-  /* 🌿 Glassmorphism green background */
-  background: linear-gradient(90%, rgba(32, 88, 57, 0.897), rgba(109, 7, 177, 0.692));
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(141, 4, 4, 0.562);
+    .product-name {
+      font-weight: bold;
+      margin: 10px 0 5px;
+    }
 
-  /* 🪞 Glow border */
-  box-shadow: 0 0 15px rgba(167, 10, 214, 0.774), 0 4px 10px rgba(0,0,0,0.25);
+    .product-desc {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 5px;
+    }
 
-  
-  border-bottom: 2px solid rgba(255,255,255,0.2);
-  border-radius: 0 0 10px 10px;
-  transition: all 0.3s ease;
-} 
-header .header-content h1 {
-  
-  font-weight: 800;
-  font-size: 1.5rem;
-  background: linear-gradient(100deg, #000000, #b306df); /* Example: blue → green */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; /* Makes gradient visible on text */
-}
-@media (max-width: 768px) {
-  header .header-content h1 {
-    font-size: 1.2rem; /* smaller for mobile */
-    font-weight: 900; /* extra bold for clarity */
-    background: linear-gradient(180deg, #000000, #f320ad); /* two-color blend */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-align: center; /* optional for better mobile layout */
-  }
-}
+    .product-price {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
 
+    .product-actions button {
+      margin: 5px;
+      padding: 6px 12px;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
 
-/* Brand */
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+    .product-actions button:first-child {
+      background: #333;
+      color: #fff;
+    }
 
-.logo {
-  background: #510458;
-  color: #e7e7e7;
-  font-weight: 700;
-  padding: 8px 12px;
-  border-radius: 5px;
-  font-size: 1.2rem;
-} 
-header .lead {
-  color: #000000; /* replace with your desired color */
-  font-weight: bold; /* optional: makes it stand out more */
-}
-/* ---------------- Shrink header ---------------- */
-header.shrink {
-  padding: 8px 20px;
-}
-header.shrink {
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  background: rgba(5, 156, 18, 0.5); /* slightly more transparent for effect */
-}
+    .product-actions button:last-child {
+      background: #fff;
+      border: 1px solid #333;
+      color: #333;
+    }
+
+    /* Tablet: 2 per row */
+    @media (max-width: 768px) {
+      .product-card {
+        width: calc(50% - 15px);
+      }
+    }
+
+    /* ✅ Mobile: 2 per row (same as tablet) */
+    @media (max-width: 480px) {
+      .product-card {
+        width: calc(50% - 15px); /* 👈 changed from 100% to 50% */
+        height: auto; 
+      } 
+
+    }
 
 
-/* ---------------- Desktop Navigation (unchanged) ---------------- */
-nav {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
 
-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-}
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 9999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+      flex-wrap: nowrap;
 
-nav a:hover {
-  color: #FFD700;
-}
+      height: 80px;
+      min-height: 70px;
+      padding: 25px 20px;
+      box-sizing: border-box;
 
-/* Buttons */
-.btn, .ghost {
-  background: #FFD700;
-  border: 1px solid #FFD700;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-}
+      /* 🌿 Glassmorphism green background */
+      background: linear-gradient(90%, rgba(32, 88, 57, 0.897), rgba(109, 7, 177, 0.692));
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(141, 4, 4, 0.562);
 
-.btn:hover, .ghost:hover {
-  background: #FFD700;
-  color: #1A237E;
-}
+      /* 🪞 Glow border */
+      box-shadow: 0 0 15px rgba(167, 10, 214, 0.774), 0 4px 10px rgba(0,0,0,0.25);
 
-/* Hamburger */
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-}
+      
+      border-bottom: 2px solid rgba(255,255,255,0.2);
+      border-radius: 0 0 10px 10px;
+      transition: all 0.3s ease;
+    } 
+    header .header-content h1 {
+      
+      font-weight: 800;
+      font-size: 1.5rem;
+      background: linear-gradient(100deg, #000000, #b306df); /* Example: blue → green */
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; /* Makes gradient visible on text */
+    }
+    @media (max-width: 768px) {
+      header .header-content h1 {
+        font-size: 1.2rem; /* smaller for mobile */
+        font-weight: 900; /* extra bold for clarity */
+        background: linear-gradient(180deg, #000000, #f320ad); /* two-color blend */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-align: center; /* optional for better mobile layout */
+      }
+    }
 
-.nav-toggle span {
-  width: 25px;
-  height: 3px;
-  background: white;
-  transition: 0.3s;
-}
 
-.nav-toggle.open span:nth-child(1) {
-  transform: rotate(45deg) translateY(8px);
-}
-.nav-toggle.open span:nth-child(2) {
-  opacity: 0;
-}
-.nav-toggle.open span:nth-child(3) {
-  transform: rotate(-45deg) translateY(-8px);
-}
+    /* Brand */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-/* ---------------- Reveal Animations ---------------- */
-.reveal {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 0.7s ease;
-}
+    .logo {
+      background: #510458;
+      color: #e7e7e7;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 5px;
+      font-size: 1.2rem;
+    } 
+    header .lead {
+      color: #000000; /* replace with your desired color */
+      font-weight: bold; /* optional: makes it stand out more */
+    }
+    /* ---------------- Shrink header ---------------- */
+    header.shrink {
+      padding: 8px 20px;
+    }
+    header.shrink {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      background: rgba(5, 156, 18, 0.5); /* slightly more transparent for effect */
+    }
 
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
+
+    /* ---------------- Desktop Navigation (unchanged) ---------------- */
+    nav {
+      display: flex;
+      gap: 50px;
+      align-items: center;
+      margin-left: auto; 
+    }
+
+    nav a {
+      color: rgb(0, 0, 0);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #FFD700;
+    }
+
+    /* Buttons */
+    .btn, .ghost {
+      background: #FFD700;
+      border: 1px solid #FFD700;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-left: 10px; /* space between buttons if multiple */
+
+    }
+
+    .btn:hover, .ghost:hover {
+      background: #FFD700;
+      color: #1A237E;
+    }
+
+    /* Hamburger */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .nav-toggle span {
+      width: 25px;
+      height: 3px;
+      background: white;
+      transition: 0.3s;
+    }
+
+    .nav-toggle.open span:nth-child(1) {
+      transform: rotate(45deg) translateY(8px);
+    }
+    .nav-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .nav-toggle.open span:nth-child(3) {
+      transform: rotate(-45deg) translateY(-8px);
+    }
+
+    /* ---------------- Reveal Animations ---------------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.7s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
 
 /*
 
 
 
-/* ✨ Floating animation for smooth entry */
-@keyframes floatIn {
-  0% {
-    opacity: 0;
-    transform: translateY(40px) scale(0.95);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
+    /* ✨ Floating animation for smooth entry */
+    @keyframes floatIn {
+      0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
 
-/* ---------------- Mobile Navigation ---------------- */
-@media (max-width: 768px) {
+    /* ---------------- Mobile Navigation ---------------- */
+    @media (max-width: 768px) {
 
-  /* Hamburger menu */
-  nav {
-    position: absolute;
-    top: 70px;
-    right: 20px;
-    background: #1A237E;
-    flex-direction: column;
-    gap: 15px;
-    padding: 20px;
-    border-radius: 10px;
-    display: none;
-  }
+      /* Hamburger menu */
+      nav {
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background: #1A237E;
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        border-radius: 10px;
+        display: none;
+      }
 
-  nav.active {
-    display: flex !important;
-  }
+      nav.active {
+        display: flex !important;
+      }
 
-  .nav-toggle {
-    display: flex;
-  }
+      .nav-toggle {
+        display: flex;
+      }
 
-  /* Bottom Navigation */
-  .bottom-nav {
-    display: flex;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 55px;
-    background: #1A237E; /* solid background */
-    justify-content: space-around;
-    align-items: center;
-    padding: 0;
-    box-shadow: 0 -3px 10px rgba(0,0,0,0.25);
-    border-radius: 0; /* square corners */
-    z-index: 9999;
-    transition: all 0.3s ease; }
+      /* Bottom Navigation */
+      .bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 55px;
+        background: #1A237E; /* solid background */
+        justify-content: space-around;
+        align-items: center;
+        padding: 0;
+        box-shadow: 0 -3px 10px rgba(0,0,0,0.25);
+        border-radius: 0; /* square corners */
+        z-index: 9999;
+        transition: all 0.3s ease; }
 
-  .bottom-nav .nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 12px;
-    cursor: pointer;
-    transition: transform 0.2s;
-    position: relative;
-  }
+      .bottom-nav .nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 12px;
+        cursor: pointer;
+        transition: transform 0.2s;
+        position: relative;
+      }
 
-  .bottom-nav .nav-item i {
-    font-size: 24px;
-    margin-bottom: 2px;
-    transition: color 0.2s, transform 0.2s;
-  }
+      .bottom-nav .nav-item i {
+        font-size: 24px;
+        margin-bottom: 2px;
+        transition: color 0.2s, transform 0.2s;
+      }
 
-  .bottom-nav .nav-item span {
-    font-size: 11px;
-  }
+      .bottom-nav .nav-item span {
+        font-size: 11px;
+      }
 
-  /* Active icon */
-  .bottom-nav .nav-item.active i,
-  .bottom-nav .nav-item.active span {
-    color: #FFD700; /* highlight color */
-    transform: scale(1.2);
-  }
+      /* Active icon */
+      .bottom-nav .nav-item.active i,
+      .bottom-nav .nav-item.active span {
+        color: #FFD700; /* highlight color */
+        transform: scale(1.2);
+      }
 
-  /* Tap effect */
-  .bottom-nav .nav-item:active {
-    transform: translateY(-3px);
-  }
-}
+      /* Tap effect */
+      .bottom-nav .nav-item:active {
+        transform: translateY(-3px);
+      }
+    }
 
-/* ---------------- Desktop hides bottom nav ---------------- */
-@media (min-width: 769px) {
-  .bottom-nav {
-    display: none;
-  }
-}
-
-
-.whatsapp-chat {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  bottom: 70px;       /* adjust as needed */
-  right: 25px;
-  width: 40px;
-  height: 40px;
-  font-size: 20px;
-  border-radius: 50%;
-  background: #25D366;  /* WhatsApp green */
-  color: white;
-  z-index: 10000;       /* above other content */
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-  cursor: pointer;
-  animation: float 1.5s ease-in-out infinite; /* floating animation */
-}
-
-/* Floating animation */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
-/* Hide "Chat on WhatsApp" text button on mobile */
-@media (max-width: 768px) {
-  .whatsapp-chat {
-    width: 36px;
-    height: 36px;
-    font-size: 18px;
-    bottom: 55px;
-  }
-
-  .whatsapp-chat img {
-    width: 20px;
-    height: 20px;
-  }
-}
+    /* ---------------- Desktop hides bottom nav ---------------- */
+    @media (min-width: 769px) {
+      .bottom-nav {
+        display: none;
+      }
+    }
 
 
+    .whatsapp-chat {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      bottom: 70px;       /* adjust as needed */
+      right: 25px;
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+      border-radius: 50%;
+      background: #25D366;  /* WhatsApp green */
+      color: white;
+      z-index: 10000;       /* above other content */
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      cursor: pointer;
+      animation: float 1.5s ease-in-out infinite; /* floating animation */
+    }
 
-@media (max-width: 768px) {
-  footer {
-    padding-bottom: 60px;  /* or margin-bottom */
-  }
-}
+    /* Floating animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
 
-/* Slider container */
-.new-products-slider {
-  overflow-x: auto; /* enable horizontal scroll */
-  width: 100%;
-  position: relative;
-  -webkit-overflow-scrolling: touch; /* smooth scrolling on mobile */
-  scrollbar-width: thin;
-  margin-bottom: 0; /* small gap below slider */
-  margin-top:0;
-  padding-bottom: 0;
-}
+    /* Hide "Chat on WhatsApp" text button on mobile */
+    @media (max-width: 768px) {
+      .whatsapp-chat {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+        bottom: 55px;
+      }
+
+      .whatsapp-chat img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+
+
+    @media (max-width: 768px) {
+      footer {
+        padding-bottom: 60px;  /* or margin-bottom */
+      }
+    }
+  /* Slider container */ 
+  /* --- New Products Section --- */
 .new-products-section {
-  max-width: 1200px;
-  margin: 50px auto;
-  padding: 0 20px;
+  max-width: 1400px;
+  margin: 40px auto;
+  padding: 0 10px;
   text-align: center;
 }
 
@@ -682,6 +706,18 @@ nav a:hover {
   margin-bottom: 30px;
 }
 
+/* --- Slider wrapper --- */
+.new-products-slider {
+  overflow-x: auto; /* enable horizontal scroll */
+  width: 100%;
+  position: relative;
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on mobile */
+  scrollbar-width: thin;
+  margin-top: 0;
+  margin-bottom: 0; /* small gap below slider */
+  padding-bottom: 0;
+}
+
 /* Wrapper for all products */
 .new-products-wrapper {
   display: flex;
@@ -689,7 +725,7 @@ nav a:hover {
   transition: transform 0.5s ease-in-out;
 }
 
-/* Product card */
+/* --- Product Card --- */
 .new-product {
   flex: 0 0 calc(33.333% - 10px); /* 3 products per row on desktop */
   text-align: center;
@@ -743,28 +779,30 @@ nav a:hover {
   color: #555;
 }
 
-/* Mobile view: horizontal sliding */
-@media (max-width: 768px) {
-  .new-products-wrapper {
-    flex-wrap: nowrap; /* keep horizontal sliding */}
-.new-products-slider {
-    margin-top:0;
-  }
 
-  .new-product {
-    flex: 0 0 70%; /* each card takes 70% of viewport width */
-  }
+    /* Mobile view: horizontal sliding */
+    @media (max-width: 768px) {
+      .new-products-wrapper {
+        flex-wrap: nowrap; /* keep horizontal sliding */}
+    .new-products-slider {
+        margin-top:0;
+      }
+    .new-products-section .section-header h2 {
+      font-size: 1.5rem;}
+      .new-product {
+        flex: 0 0 70%; /* each card takes 70% of viewport width */
+      }
 
-  .product-image {
-    height: auto; /* height adjusts automatically */
-  }
+      .product-image {
+        height: auto; /* height adjusts automatically */
+      }
 
-  .product-image img {
-    width: 100%;
-    height: auto;
-    object-fit: contain; /* fit entire image without cropping */
-  }
-}
+      .product-image img {
+        width: 100%;
+        height: auto;
+        object-fit: contain; /* fit entire image without cropping */
+      }
+    }
 
  
 /* EMI Banner */
@@ -789,17 +827,15 @@ nav a:hover {
 /* Responsive adjustments for mobile */
 @media (max-width: 768px) {
   .emi-banner img {
-    margin: 5px 0;     /* keep small gaps on mobile */
+    margin: 15px auto;     /* keep small gaps on mobile */
     border-radius: 3px; /* slightly smaller corners */
   }
 
   .below-section {
-    margin-bottom: 0px;
+    margin-bottom: 5px;
   }
 
-  .feature {
-    margin-top: 3px;
-  }
+
 } 
 
 /* Contact section text */
@@ -1039,12 +1075,49 @@ nav a:hover {
     width: 100%;
   }
 }
+.footer-about-us {
+  flex: 1 1 300px; /* similar to other columns */
+  color: #fff;
+}
 
+.footer-about-us h3 {
+  font-family: 'Playfair Display', serif;
+  color: #1A237E;
+  margin-bottom: 10px;
+}
+
+.footer-about-us p {
+  font-size: 0.95rem;
+  color: #ddd;
+  line-height: 1.5;
+}
+
+/* Ensure all three columns are side by side on desktop */
+.footer-top > div {
+  flex: 1 1 300px; /* min-width 300px, flexible */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .footer-newsletter form {
+    flex-direction: column;
+  }
+
+  .footer-newsletter input[type="email"],
+  .footer-newsletter button {
+    width: 100%;
+  }
 @keyframes float {
 
   0% { transform: translateY(0); }
   50% { transform: translateY(-15px); }
   100% { transform: translateY(0); }
+}
 }
 .floating-item {
   animation: float 4s ease-in-out infinite;
@@ -1373,7 +1446,7 @@ nav a:hover {
 /* Section Title */
 .promo-section {
   text-align: center;
-  padding: 40px 20px;
+  padding: 30px 20px;
 }
 
 .promo-title {
@@ -1391,7 +1464,7 @@ nav a:hover {
   gap: 20px;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 /* Flip Card Setup */
@@ -1450,7 +1523,12 @@ nav a:hover {
   text-transform: uppercase;
   z-index: 2;
 }
-
+@media (max-width: 768px) {
+  .promo-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  }
+}
 /* Different colors for each type */
 .promo-tag.offer { background: #ff6b6b; }
 .promo-tag.winter { background: #1e90ff; }
@@ -1473,7 +1551,7 @@ nav a:hover {
 
 /* Section Title */
 .customer-reviews h2 {
-  font-size: 2.6rem;
+  font-size: 1.5rem;
   text-align: center;
   margin-bottom: 15px;
   background: linear-gradient(180deg, #cc0e93, #000000);
@@ -1674,8 +1752,8 @@ nav a:hover {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 30px;
-  max-width: 1100px;
+  gap: 20px;
+  max-width: 900px;
   margin: 0 auto;
   flex-wrap: wrap;
 }
@@ -1788,9 +1866,9 @@ nav a:hover {
 .section-title {
   justify-content: center;
   text-align: center;
-  font-size: 2.2rem;
-  font-weight: 800;
-  margin-bottom: 35px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
   background: linear-gradient(180deg, #dd1572, #000000);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1843,11 +1921,15 @@ nav a:hover {
 }
 
 /* Banner Section */
+/* Desktop */
+.desktop-banner { display: block; }
+.mobile-grid-section { display: none; }
+
 .banner-section {
   position: relative;
   width: 100%;
-  height: 250px; /* adjust banner height */
-  margin-bottom: 60px; /* space below banner */
+  height: 250px;
+  margin-bottom: 30px;
 }
 
 .banner-container {
@@ -1864,10 +1946,10 @@ nav a:hover {
   filter: brightness(0.8);
 }
 
-/* Overlay Images Container */
+/* Overlay Images - Desktop */
 .overlay-images {
   position: absolute;
-  top: 20px; /* adjust distance from top of banner */
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -1876,17 +1958,16 @@ nav a:hover {
   flex-wrap: nowrap;
 }
 
-/* Individual overlay image container */
 .overlay-item {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative; /* for price tag */
 }
 
-/* Images */
 .overlay-item img {
   width: 150px;
-  height: 150px;
+  height: 180px;
   object-fit: cover;
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -1898,72 +1979,151 @@ nav a:hover {
   transform: scale(1.05);
 }
 
-/* Text below each image */
-.price-tag {
-  margin-top: 8px;
-  background: linear-gradient(90deg, #ffb700, #ff7700);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700;
-  font-size: 1rem;
-  text-align: center;
-}
-/* Mobile sliding carousel for banner overlay images */
-@media (max-width: 768px) {
-  .banner-section {
-    position: relative;
-    height: 120px;
-    margin-bottom: 100px;
-    overflow: hidden; /* prevent page scroll */
-  }
 
-  .overlay-images {
-    display: flex;
-    overflow-x: auto;
-    gap: 15px;
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 0 10px;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .overlay-item {
-    flex: 0 0 calc((100% - 30px*2)/3); /* 3 images fully visible at a time with gaps */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .overlay-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-  }
-
-  .price-tag {
-    font-size: 0.85rem;
-    margin-top: 5px;
+  .overlay-item .price-tag {
+    margin-top: 6px; /* space between image and tag */
+    background: rgba(6, 238, 199, 0.6);
+    color: #fff;
+    padding: 4px 6px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    font-weight: 600;
     text-align: center;
+    width: 100%; /* match image width */
+    box-sizing: border-box;
   }
 
-  /* Hide scrollbar */
-  .overlay-images::-webkit-scrollbar {
-    display: none;
-  }
-  .overlay-images {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
+
+/* Mobile Styles */
+
+  
+  /* Create partial 4th image vis*
+
+/* ✅ Styling */
+.search-container {
+  text-align: center;
+  margin:10px auto;
+  position: relative;
 }
 
+#searchInput {
+  padding: 12px 14px;
+  width: 250px;
+  border-radius: 10px;
+  border: 1px solid #bbb;
+  font-size: 16px;
+  outline: none;
+}
+
+.search-btn {
+  padding: 12px 16px;
+  margin-left: 6px;
+  border-radius: 10px;
+  border: none;
+  background: #c99b55;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.suggestions-list {
+  position: absolute;
+  width: 250px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  list-style: none;
+  margin: 2px 0 0;
+  padding: 0;
+  display: none;
+  z-index: 999;
+}
+
+.suggestions-list li {
+  padding: 10px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.suggestions-list li:hover {
+  background: #eee;
+}
+
+/* ✅ Mobile Responsive */
+@media (max-width: 480px) {
+  #searchInput {
+    width: 65%;
+  }
+  .suggestions-list {
+    width: 65%;
+  }
+}
+/* Hide on desktop */
+.mobile-grid-section {
+  display: none;
+}
+
+/* Mobile Only */
+@media (max-width: 768px) { 
+  /* Mobile Grid */
+
+  .desktop-banner { display: none; }
+  .mobile-grid-section { display: block; }
 
 
-/* Overlay images container */
+  .mobile-grid-section {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
 
+  /* Section title */
+  .mobile-grid-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #a70972;
+  }
 
+  .mobile-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 images per row */
+    gap: 12px 10px; /* vertical and horizontal gaps */
+  }
+
+  .grid-item {
+    display: flex;
+    flex-direction: column; /* image on top, tag below */
+    align-items: center;
+    width: 100%;
+  }
+
+  .grid-item img {
+    width: 100%;
+    height: 150px; /* fixed image height */
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  /* Tag below image */
+  .price-tag {
+    margin-top: 6px; /* space between image and tag */
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    padding: 4px 6px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+    width: 100%; /* match image width */
+    box-sizing: border-box;
+  }
+}
 
   </style> 
 
@@ -1974,8 +2134,20 @@ nav a:hover {
 
 <body> 
 
+<!-- =================== Search Section =================== -->
+<!-- =================== Search Section =================== -->
+<!-- ✅ UNIVERSAL SEARCH SECTION -->
+<div class="search-container">
+  <input type="text" id="searchInput" placeholder="Search any product, contact, map..." oninput="showSuggestions()">
+  <button class="search-btn" onclick="searchPage()">Search</button>
 
-<section class="categories-section">
+  <ul id="suggestions" class="suggestions-list"></ul>
+</div>
+
+
+
+
+<section id="home" class="categories-section">
   <!-- Section Title -->
   <div class="section-header">
     <h2>Our collection</h2>
@@ -2011,27 +2183,27 @@ nav a:hover {
     </div>
 
     <!-- Second row -->
-    <div class="cat" onclick="window.location.href='tables.html'">
+    <div class="cat" onclick="window.location.href='table.html'">
       <img src="images/table.jpg" alt="tables">
       <div class="cat-name">Tables</div>
     </div>
-    <div class="cat" onclick="window.location.href='lamps.html'">
+    <div class="cat" onclick="window.location.href='mattress.html'">
       <img src="images/mattress.jpg" alt="mattress">
       <div class="cat-name">Mattress</div>
     </div>
-    <div class="cat" onclick="window.location.href='carpets.html'">
+    <div class="cat" onclick="window.location.href='Ac.html'">
       <img src="images/ac21.jpg" alt="air conditioner">
       <div class="cat-name">Air Conditioners</div>
     </div>
-    <div class="cat" onclick="window.location.href='curtains.html'">
+    <div class="cat" onclick="window.location.href='cooler.html'">
       <img src="images/cooler.jpg" alt="cooler">
       <div class="cat-name">Coolers</div>
     </div>
-    <div class="cat" onclick="window.location.href='bookshelves.html'">
+    <div class="cat" onclick="window.location.href='wardrobe.html'">
       <img src="images/wardrobe.jpg" alt="wardrobe">
       <div class="cat-name">Wardrobes</div>
     </div>
-    <div class="cat" onclick="window.location.href='decor.html'">
+    <div class="cat" onclick="window.location.href='tv.html'">
       <img src="images/tv.jpg" alt="tv">
       <div class="cat-name">TVs</div>
     </div>
@@ -2050,6 +2222,7 @@ nav a:hover {
 
  <!-- Floating Lollipop Map Icon -->
 <!-- Floating Map Icon -->
+  
 <a href="#contact" class="floating-map-icon" title="View Map">
   <img src="images/map.png" alt="Map Icon">
 </a>
@@ -2105,7 +2278,7 @@ nav a:hover {
 
 <!-- Offers & Seasonal Highlights Section -->
 <!-- Offers & Seasonal Highlights Section -->
-<section class="promo-section">
+<section id="Offer" class="promo-section">
   <h2 class="promo-title">🔥 Offers & Seasonal Highlights</h2>
 
   <div class="promo-grid">
@@ -2155,40 +2328,75 @@ nav a:hover {
   </div>
 </section>
 
+<section id="kitchen">
+  <!-- Desktop Banner -->
+  <div class="banner-section desktop-banner">
+    <div class="banner-container">
+      <img src="images/banner1.png" alt="Main Banner" class="banner-image">
 
-<!-- Banner Section -->
-<section class="banner-section">
-  <div class="banner-container">
-    <img src="images/banner1.png" alt="Main Banner" class="banner-image">
+      <!-- Overlay Images -->
+      <div class="overlay-images">
+        <div class="overlay-item">
+          <img src="images/grinder2.jpg" alt="Mixer Grinder">
+          <span class="price-tag">Sarts from ₹10,000</span>
+        </div>
+        <div class="overlay-item">
+          <img src="images/grinder.jpg" alt="Grinder">
+          <span class="price-tag">Sarts from ₹8,000</span>
+        </div>
+        <div class="overlay-item">
+          <img src="images/fan.jpg" alt="Fan">
+          <span class="price-tag">Sarts from ₹5,000</span>
+        </div>
+        <div class="overlay-item">
+          <img src="images/cooker.jpg" alt="Cooker">
+          <span class="price-tag">Sarts from ₹6,000</span>
+        </div>
+        <div class="overlay-item">
+          <img src="images/gas.jpg" alt="Gas Stove">
+          <span class="price-tag">Sarts from ₹7,000</span>
+        </div>
+        <div class="overlay-item">
+          <img src="images/tn.jpg" alt="Stand Fan">
+          <span class="price-tag">Sarts from ₹7,000</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <!-- Overlay Images -->
-    <div class="overlay-images">
-      <div class="overlay-item">
-        <img src="images/grinder2.jpg" alt="Sofa Set">
-        <p>⭐ Starts from ₹10,000</p>
+  <!-- Mobile Grid -->
+  <div class="mobile-grid-section">
+    <h2 class="mobile-grid-title">Our Kitchen Products</h2>
+    <div class="mobile-grid">
+      <div class="grid-item">
+        <img src="images/grinder2.jpg" alt="Mixer Grinder">
+        <span class="price-tag">starts from ₹10,000</span>
       </div>
-      <div class="overlay-item">
-        <img src="images/grinder.jpg" alt="Dining Table">
-        <p>⭐ Starts from ₹8,000</p>
+      <div class="grid-item">
+        <img src="images/grinder.jpg" alt="Grinder">
+        <span class="price-tag">starts from ₹8,000</span>
       </div>
-      <div class="overlay-item">
-        <img src="images/fan.jpg" alt="Chair Set">
-        <p>⭐ Starts from ₹5,000</p>
+      <div class="grid-item">
+        <img src="images/fan.jpg" alt="Fan">
+        <span class="price-tag">starts from ₹5,000</span>
       </div>
-      <div class="overlay-item">
-        <img src="images/cooker.jpg" alt="Chair Set">
-        <p>⭐ Starts from ₹5,000</p>
+      <div class="grid-item">
+        <img src="images/cooker.jpg" alt="Cooker">
+        <span class="price-tag">starts from ₹6,000</span>
       </div>
-      <div class="overlay-item">
-        <img src="images/gas.jpg" alt="Chair Set">
-        <p>⭐ Starts from ₹5,000</p>
+      <div class="grid-item">
+        <img src="images/gas.jpg" alt="Gas Stove">
+        <span class="price-tag">starts from ₹7,000</span>
+      </div>
+      <div class="grid-item">
+        <img src="images/tn.jpg" alt="Stand Fan">
+        <span class="price-tag">starts from ₹7,000</span>
       </div>
     </div>
   </div>
 </section>
 
-
- <section class="new-products-section">
+ <section id="new-arrivals" class="new-products-section">
   <!-- Section Title -->
   <div class="section-header">
     <h2>New Arrivals</h2>
@@ -2401,8 +2609,8 @@ nav a:hover {
 
 
 <!-- Explore Button -->
-<div class="explore-collection">
-  <button id="exploreBtn" class="btn-explore">Explore Our Collection</button>
+  <section id="products" class="explore-collection">
+  <button id="exploreBtn" class="btn-explore">Explore Our products</button>
 </div>
 
 <!-- Featured Collection (Hidden Initially) -->
@@ -2412,7 +2620,7 @@ nav a:hover {
     <div style="color:var(--muted)">Quality furniture • Free delivery in city</div>
   </div>
 
-  <section id="products">
+ 
     <div class="grid" id="productGrid">
       <!-- Product cards inserted by JS -->
     </div>
@@ -2454,9 +2662,9 @@ nav a:hover {
 
 
 
-<!-- Contact + Map Section -->
-<section class="contact-map-section">
-  <h1 class="section-title">📍 Contact & Visit Us</h1> <!-- 🌟 Added Title -->
+<section id="contact" class="contact-map-section">  
+  
+  <h1 class="section-title">📍 Contact & Visit Us</h1>
 
   <div class="contact-container">
 
@@ -2509,19 +2717,7 @@ nav a:hover {
   </div>
  
 
- <!-- Navigation -->
-<nav class="nav">
-  <div class="nav-toggle" id="navToggle">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#products">Products</a></li>
-    <li><a href="#cart">Cart</a></li>
-  </ul>
-</nav>
+
 
 <!-- Bottom Nav for Mobile 
   <div class="nav-item" onclick="scrollToSection('home')">
@@ -2554,9 +2750,9 @@ nav a:hover {
     <span>Products</span>
     <div class="dot"></div>
   </div>
-  <div class="nav-item" onclick="scrollToSection('cart')">
+  <div class="nav-item" onclick="scrollToSection('Offer')">
     <i class="fa-solid fa-bag-shopping"></i>
-    <span>Cart</span>
+    <span>Offer</span>
     <div class="dot"></div>
   </div>
 </div>
@@ -2565,11 +2761,14 @@ nav a:hover {
 <!-- Sections -->
 <section id="home"></section>
 <section id="products"></section>
-<section id="cart"></section>
+<section id="Offer"></section>
 
 <!-- edn of thee pageeeeeeee-->
+<!-- Footer Section -->
 <footer class="footer">
   <div class="footer-top">
+    
+    <!-- Product Categories -->
     <div class="footer-products">
       <h3>Product Categories</h3>
       <ul>
@@ -2582,6 +2781,19 @@ nav a:hover {
       </ul>
     </div>
 
+    <!-- About Us Section -->
+    <div class="footer-about-us">
+      <h3>About Us</h3>
+      <p>
+        Welcome to Jay's Furniture! We are dedicated to providing stylish, high-quality, and affordable furniture for every home.  
+        Our collections combine modern design with comfort and functionality, ensuring your spaces look elegant and feel cozy.  
+        Customer satisfaction is our top priority!
+      </p>
+    </div> 
+
+  
+
+    <!-- Newsletter Sign-Up -->
     <div class="footer-newsletter">
       <h3>Sign Up for Regular Updates</h3>
       <p>Subscribe to receive updates on new arrivals, offers, and more!</p>
@@ -2589,6 +2801,24 @@ nav a:hover {
         <input type="email" placeholder="Enter your email" required>
         <button type="submit">Subscribe</button>
       </form>
+    </div>
+
+  </div>
+  
+      <!-- Navigation -->
+    <nav class="nav">
+      <div class="nav-toggle" id="navToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#Offer">offer</a></li>
+      </ul>
+    </nav>
+
 
       <div class="footer-payments">
         <h4>We Accept</h4>
@@ -3368,6 +3598,148 @@ exploreBtn.addEventListener("click", () => {
     exploreBtn.textContent = "Explore Our Collection";
   }
 });
+
+// ✅ List of search items and locations
+const searchItems = {
+  "sofa": "sofas.html",
+  "sofas": "sofas.html",
+  "soofa": "sofas.html",
+  "soffa": "sofas.html",
+
+  "chair": "chairs.html",
+  "chairs": "chairs.html",
+
+  "bed": "beds.html",
+  "beds": "beds.html",
+
+  "washing machine": "washing.html",
+  "washing": "washing.html",
+  "washer": "washing.html",
+
+  "fridge": "fridge.html",
+  "refrigerator": "fridge.html",
+
+  "ac": "ac.html",
+  "cooler": "cooler.html",
+
+  "table": "tables.html",
+  "tables": "tables.html",
+
+  "mattress": "mattress.html",
+  "matress": "mattress.html",
+
+  "tv": "tv.html",
+  "television": "tv.html",
+
+  "pillow": "pillow.html",
+  "pillows": "pillow.html",
+
+  // ✅ Scroll to page sections instead of opening new pages
+  "contact": "#contact",
+  "phone": "#contact",
+  "call": "#contact",
+  "help": "#contact",
+
+  "map": "#contact",
+  "location": "#contact",
+  "direction": "#contact",
+
+  "videos": "#videos",
+  "video": "#videos",
+  "new arrival": "#new-arrivals",
+    "new arrivals": "#new-arrivals",
+    "latest": "#new-arrivals",
+    "new products" :"#new-arrivals",
+
+    "offer": "#offers",
+    "offers": "#offers",
+    "discount": "#offers",
+    "sale": "#offers",
+    "trending": "#offers",
+     
+    "kitchen": "#kitchen",
+    "kitchen items": "#kitchen",
+    "kitchenware": "#kitchen",
+    "cookware": "#kitchen",
+    "cooker" :"#kitchen",
+    "cokker":"#kitchen",
+    "fans":"#kitchen",
+    "fan":"#kitchen",
+    "geinder":"#kitchen",
+    "mixer":"#kitchen"
+}
+
+
+
+
+// ✅ Levenshtein distance for typo correction
+function levenshtein(a, b) {
+  const matrix = Array.from({ length: b.length + 1 }, (_, i) => [i]);
+  for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+  for (let i = 1; i <= b.length; i++) {
+    for (let j = 1; j <= a.length; j++) {
+      matrix[i][j] = b[i-1] === a[j-1]
+        ? matrix[i-1][j-1]
+        : Math.min(matrix[i-1][j-1]+1, matrix[i][j-1]+1, matrix[i-1][j]+1);
+    }
+  }
+  return matrix[b.length][a.length];
+}
+
+// ✅ Suggestions dropdown
+function showSuggestions() {
+  const input = document.getElementById('searchInput').value.toLowerCase().trim();
+  const suggestionsBox = document.getElementById('suggestions');
+
+  suggestionsBox.innerHTML = "";
+  if (!input) {
+    suggestionsBox.style.display = "none";
+    return;
+  }
+
+  const ranked = Object.keys(searchItems)
+    .map(key => ({ key, distance: levenshtein(input,key) }))
+    .sort((a,b) => a.distance - b.distance)
+    .slice(0,3);
+
+  ranked.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item.key;
+    li.onclick = () => redirect(item.key);
+    suggestionsBox.appendChild(li);
+  });
+
+  suggestionsBox.style.display = "block";
+}
+
+// ✅ ENTER button support
+document.getElementById("searchInput").addEventListener("keypress", function(e) {
+  if (e.key === "Enter") searchPage();
+});
+
+// ✅ Final Redirect + Scroll Support
+function redirect(key) {
+  const destination = searchItems[key];
+
+  if (destination.startsWith("#")) {
+    document.querySelector(destination)?.scrollIntoView({ behavior: "smooth" });
+  } else {
+    window.location.href = destination;
+  }
+}
+
+
+// ✅ Main search handler
+function searchPage() {
+  const input = document.getElementById("searchInput").value.toLowerCase().trim();
+  const matches = Object.keys(searchItems).map(key => ({
+    key,
+    distance: levenshtein(input, key)
+  })).sort((a,b) => a.distance - b.distance);
+
+  if (matches[0].distance <= 2) redirect(matches[0].key);
+  else alert("❌ No results found!");
+}
 
 </script>
 

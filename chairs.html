@@ -5,25 +5,100 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Jay's Furniture — Chairs</title>
   <style>
-    body { font-family: 'Poppins', sans-serif; margin:0; background:#fbfaf8; color:#111; }
-    a { text-decoration:none; color:inherit; }
-    .container { max-width:1200px; margin:26px auto; padding:0 20px; }
-    header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
-    .brand { display:flex; align-items:center; gap:12px; }
-    .logo { width:50px; height:50px; background:#c99b55; color:#fff; font-weight:700; display:flex; align-items:center; justify-content:center; border-radius:10px; }
-    nav a { margin-left:12px; font-weight:600; }
-    h2 { margin-top:0; }
-    .grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:20px; }
-    .card { background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 8px 30px rgba(18,22,28,0.08); transition: transform .25s ease; }
-    .card:hover { transform:translateY(-6px); }
-    .card img { width:100%; height:200px; object-fit:cover; }
-    .card-body { padding:14px; }
-    .title { font-weight:600; margin:0 0 6px; }
-    .meta { color:#6b6b6b; font-size:13px; margin-bottom:8px; }
-    .price { font-weight:700; font-size:16px; color:#a67c36; margin-bottom:10px; }
-    .btn { background:#c99b55; color:#fff; border:none; padding:8px 12px; border-radius:10px; cursor:pointer; font-weight:600; }
-    footer { margin-top:40px; text-align:center; color:#6b6b6b; font-size:14px; }
-    @media(max-width:768px){ .grid { grid-template-columns:1fr; } }
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: #fbfaf8;
+      color: #111;
+    }
+    a { text-decoration: none; color: inherit; }
+    .container { max-width: 1200px; margin: 26px auto; padding: 0 20px; }
+
+    /* Header */
+    header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .logo {
+      width: 50px; height: 50px;
+      background: #c99b55; color: #fff;
+      font-weight: 700; display: flex; align-items: center; justify-content: center; border-radius: 10px;
+    }
+    nav a { margin-left: 12px; font-weight: 600; }
+
+    h2 { margin-top: 0; }
+
+    /* Grid / Cards */
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px; }
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(18,22,28,0.08);
+      transition: transform .25s ease;
+    }
+    .card:hover { transform: translateY(-6px); }
+    .card img {
+      width: 100%;
+      height: auto;
+      max-height: 250px;
+      object-fit: contain;
+      border-radius: 12px 12px 0 0;
+      background: #f0f0f0;
+      display: block;
+    }
+    .card-body { padding: 14px; }
+    .title { font-weight: 600; margin: 0 0 6px; }
+    .meta { color: #6b6b6b; font-size: 13px; margin-bottom: 8px; }
+    .price { font-weight: 700; font-size: 16px; color: #a67c36; margin-bottom: 10px; }
+    .btn {
+      background: #c99b55; color: #fff; border: none;
+      padding: 8px 12px; border-radius: 10px;
+      cursor: pointer; font-weight: 600;
+    }
+
+    /* Footer */
+    footer { margin-top: 40px; text-align: center; color: #6b6b6b; font-size: 14px; }
+
+      /* Desktop: 3 columns */
+      .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px; }
+
+      /* Tablet: 2 columns */
+      @media(max-width: 1024px){ 
+        .grid { grid-template-columns: repeat(2, 1fr); } 
+      }
+
+      /* Small mobile: 2 columns instead of 1 */
+      @media(max-width: 600px){ 
+        .grid { grid-template-columns: repeat(2, 1fr); } 
+      }
+
+    .modal {
+      display: none; position: fixed; z-index: 9999;
+      left: 0; top: 0; width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(6px);
+    }
+    .modal-content {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 18px;
+      width: 90%; max-width: 500px;
+      max-height: 90vh;
+      padding: 20px;
+      color: #333; text-align: left;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+      animation: zoomIn 0.4s ease;
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      overflow-y: auto;
+    }
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .close { float: right; font-size: 24px; cursor: pointer; }
+    .modal-content img {
+      width: 100%; height: auto; max-height: 250px; object-fit: contain;
+      border-radius: 12px; margin-bottom: 15px; background: #f0f0f0; display: block;
+    }
   </style>
 </head>
 <body>
@@ -36,7 +111,10 @@
       <nav>
         <a href="index.html">Home</a>
         <a href="sofas.html">Sofas</a>
-        <a href="chairs.html">Chairs</a>
+        <a href="chairs.html" style="color:#c99b55;">Chairs</a>
+        <a href="beds.html">Beds</a>
+        <a href="fridge.html">Fridges</a>
+        <a href="washing.html">Washing Machines</a>
       </nav>
     </header>
 
@@ -49,7 +127,7 @@
           <h4 class="title">Classic Wooden Chair</h4>
           <div class="meta">Sturdy and stylish, perfect for dining rooms.</div>
           <div class="price">₹4,499</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Chair Enquiry'">Enquire</button>
+          <button class="btn" onclick="openModal('images/chair1.jpg','Classic Wooden Chair','Sturdy and stylish, perfect for dining rooms.')">View Details</button>
         </div>
       </div>
 
@@ -60,7 +138,7 @@
           <h4 class="title">Ergonomic Office Chair</h4>
           <div class="meta">Comfortable chair with adjustable height and back support.</div>
           <div class="price">₹6,999</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Chair Enquiry'">Enquire</button>
+          <button class="btn" onclick="openModal('images/chair2.jpg','Ergonomic Office Chair','Comfortable chair with adjustable height and back support.')">View Details</button>
         </div>
       </div>
 
@@ -71,7 +149,7 @@
           <h4 class="title">Modern Lounge Chair</h4>
           <div class="meta">Perfect for living rooms or reading corners.</div>
           <div class="price">₹7,499</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Chair Enquiry'">Enquire</button>
+          <button class="btn" onclick="openModal('images/chair3.jpg','Modern Lounge Chair','Perfect for living rooms or reading corners.')">View Details</button>
         </div>
       </div>
 
@@ -82,7 +160,7 @@
           <h4 class="title">Plastic Dining Chair</h4>
           <div class="meta">Durable, lightweight, and easy to clean.</div>
           <div class="price">₹2,999</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Chair Enquiry'">Enquire</button>
+          <button class="btn" onclick="openModal('images/chair4.jpg','Plastic Dining Chair','Durable, lightweight, and easy to clean.')">View Details</button>
         </div>
       </div>
 
@@ -93,7 +171,7 @@
           <h4 class="title">Recliner Chair</h4>
           <div class="meta">Luxury recliner with soft cushions for relaxation.</div>
           <div class="price">₹9,499</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Chair Enquiry'">Enquire</button>
+          <button class="btn" onclick="openModal('images/chair5.jpg','Recliner Chair','Luxury recliner with soft cushions for relaxation.')">View Details</button>
         </div>
       </div>
 
@@ -104,12 +182,41 @@
           <h4 class="title">Rattan Chair</h4>
           <div class="meta">Handcrafted rattan chair with natural look.</div>
           <div class="price">₹5,999</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Chair Enquiry'">Enquire</button>
+          <button class="btn" onclick="openModal('images/chair6.jpg','Rattan Chair','Handcrafted rattan chair with natural look.')">View Details</button>
         </div>
       </div>
     </div>
 
     <footer>© Jay's Furniture — Crafted with care</footer>
   </div>
+
+  <!-- Modal -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <img id="modalImage" src="" alt="">
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+    </div>
+  </div>
+
+  <script>
+    function openModal(imgSrc, title, desc){
+      document.getElementById('modalImage').src = imgSrc;
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalDesc').innerText = desc;
+      document.getElementById('myModal').style.display = 'block';
+    }
+
+    document.querySelector('.close').onclick = function() {
+      document.getElementById('myModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      if(event.target == document.getElementById('myModal')){
+        document.getElementById('myModal').style.display = 'none';
+      }
+    }
+  </script>
 </body>
 </html>

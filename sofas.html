@@ -5,27 +5,256 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Jay's Furniture — Sofas</title>
   <style>
-    body { font-family: 'Poppins', sans-serif; margin:0; background:#fbfaf8; color:#111; }
-    a { text-decoration:none; color:inherit; }
-    .container { max-width:1200px; margin:26px auto; padding:0 20px; }
-    header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
-    .brand { display:flex; align-items:center; gap:12px; }
-    .logo { width:50px; height:50px; background:#c99b55; color:#fff; font-weight:700; display:flex; align-items:center; justify-content:center; border-radius:10px; }
-    nav a { margin-left:12px; font-weight:600; }
-    h2 { margin-top:0; }
-    .grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:20px; }
-    .card { background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 8px 30px rgba(18,22,28,0.08); transition: transform .25s ease; }
-    .card:hover { transform:translateY(-6px); }
-    .card img { width:100%; height:200px; object-fit:cover; }
-    .card-body { padding:14px; }
-    .title { font-weight:600; margin:0 0 6px; }
-    .meta { color:#6b6b6b; font-size:13px; margin-bottom:8px; }
-    .price { font-weight:700; font-size:16px; color:#a67c36; margin-bottom:10px; }
-    .btn { background:#c99b55; color:#fff; border:none; padding:8px 12px; border-radius:10px; cursor:pointer; font-weight:600; }
-    footer { margin-top:40px; text-align:center; color:#6b6b6b; font-size:14px; }
-    @media(max-width:768px){ .grid { grid-template-columns:1fr; } }
+    /* ---------------------------
+       🌟 GLOBAL STYLES
+    ---------------------------- */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #fdfcfb, #e2d1c3);
+      color: #111;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: 1250px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    /* ---------------------------
+       🌿 HEADER
+    ---------------------------- */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 25px;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(10px);
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 55px;
+      height: 55px;
+      background: linear-gradient(135deg, #b88917, #d9a441);
+      color: #fff;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      font-size: 18px;
+      box-shadow: 0 4px 10px rgba(184, 137, 23, 0.4);
+    }
+
+    .brand h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #c084fc, #9333ea);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav a {
+      margin-left: 15px;
+      font-weight: 600;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+    nav a:hover { color: #b88917; }
+
+    /* ---------------------------
+       🛋️ TITLE
+    ---------------------------- */
+    h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-top: 30px;
+      font-weight: 800;
+      background: linear-gradient(90deg, #a855f7, #f97316);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* ---------------------------
+       🪞 PRODUCT GRID
+    ---------------------------- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 35px;
+    }
+
+    .card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Card / Home Section Images */
+    .card img, .home-section img {
+      width: 100%;
+      height: auto;
+      max-height: 250px;
+      object-fit: contain; /* fit fully without cropping */
+      background: #f0f0f0;
+      border-radius: 12px;
+      display: block;
+    }
+
+    .card-body {
+      padding: 18px;
+      text-align: center;
+    }
+
+    .title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: #2e2e2e;
+    }
+
+    .meta {
+      color: #6b6b6b;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #b88917;
+      margin-bottom: 12px;
+    }
+
+    .btn {
+      background: linear-gradient(90deg, #b88917, #e6b93c);
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(232, 183, 56, 0.3);
+    }
+
+    .btn:hover {
+      background: linear-gradient(90deg, #e6b93c, #b88917);
+      transform: scale(1.05);
+    }
+
+    /* ---------------------------
+       💎 MODAL (DETAIL POPUP)
+    ---------------------------- */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(6px);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 18px;
+      width: 90%;
+      max-width: 500px;
+      max-height: 90vh;
+      padding: 20px;
+      color: #333;
+      text-align: left;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+      animation: zoomIn 0.4s ease;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      overflow-y: auto;
+    }
+
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      max-height: 250px;
+      object-fit: contain; /* full image visible */
+      border-radius: 12px;
+      margin-bottom: 15px;
+      background: #f0f0f0;
+      display: block;
+    }
+
+    #modalSpecs {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    #modalSpecs li {
+      margin-bottom: 8px;
+      padding: 8px;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .close {
+      float: right;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    /* ---------------------------
+       ⚡ FOOTER
+    ---------------------------- */
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      color: #6b6b6b;
+      font-size: 0.9rem;
+    }
+
+    /* ---------------------------
+       📱 RESPONSIVE
+    ---------------------------- */
+    @media (max-width: 768px) {
+      header { flex-direction: column; text-align: center; gap: 10px; }
+      nav a { margin: 0 8px; }
+      h2 { font-size: 1.7rem; margin-top: 20px; }
+      .modal-content { width: 90%; max-height: 85vh; }
+      .modal-content img { max-height: 180px; }
+    }
+
   </style>
 </head>
+
 <body>
   <div class="container">
     <header>
@@ -40,76 +269,116 @@
       </nav>
     </header>
 
-    <h2>Sofas Collection</h2>
+    <h2>✨ Sofas Collection</h2>
+
     <div class="grid">
-      <!-- Sofa 1 -->
+      <!-- Sofa Cards -->
       <div class="card">
         <img src="images/sofa1.jpg" alt="Luxury Velvet Sofa">
         <div class="card-body">
           <h4 class="title">Luxury Velvet Sofa</h4>
           <div class="meta">Comfortable 3-seater with soft velvet upholstery.</div>
           <div class="price">₹27,999</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Sofa Enquiry'">Enquire</button>
+          <button class="btn" onclick="showDetails(1)">View Details</button>
         </div>
       </div>
 
-      <!-- Sofa 2 -->
       <div class="card">
         <img src="images/sofa2.jpg" alt="Modern L-Shaped Sofa">
         <div class="card-body">
           <h4 class="title">Modern L-Shaped Sofa</h4>
-          <div class="meta">Stylish L-shape design, perfect for living rooms.</div>
-          <div class="price">₹32,499</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Sofa Enquiry'">Enquire</button>
+          <div class="meta">Spacious corner design with premium fabric.</div>
+          <div class="price">₹34,499</div>
+          <button class="btn" onclick="showDetails(2)">View Details</button>
         </div>
       </div>
 
-      <!-- Sofa 3 -->
       <div class="card">
-        <img src="images/sofa3.jpg" alt="Fabric 2-Seater Sofa">
+        <img src="images/sofa3.jpg" alt="Classic Leather Sofa">
         <div class="card-body">
-          <h4 class="title">Fabric 2-Seater Sofa</h4>
-          <div class="meta">Compact 2-seater with soft fabric cushions.</div>
-          <div class="price">₹15,999</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Sofa Enquiry'">Enquire</button>
+          <h4 class="title">Classic Leather Sofa</h4>
+          <div class="meta">Timeless genuine leather finish with plush comfort.</div>
+          <div class="price">₹41,999</div>
+          <button class="btn" onclick="showDetails(3)">View Details</button>
         </div>
       </div>
 
-      <!-- Sofa 4 -->
       <div class="card">
-        <img src="images/sofa4.jpg" alt="Recliner Sofa">
+        <img src="images/sofa4.jpg" alt="Compact Fabric Sofa">
         <div class="card-body">
-          <h4 class="title">Recliner Sofa</h4>
-          <div class="meta">Luxury recliner sofa for ultimate comfort.</div>
-          <div class="price">₹29,499</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Sofa Enquiry'">Enquire</button>
+          <h4 class="title">Compact Fabric Sofa</h4>
+          <div class="meta">Ideal for small spaces, easy-clean soft material.</div>
+          <div class="price">₹19,999</div>
+          <button class="btn" onclick="showDetails(4)">View Details</button>
         </div>
       </div>
 
-      <!-- Sofa 5 -->
       <div class="card">
-        <img src="images/sofa5.jpg" alt="Corner Sofa">
+        <img src="images/sofa5.jpg" alt="Luxury Recliner Sofa">
         <div class="card-body">
-          <h4 class="title">Corner Sofa</h4>
-          <div class="meta">Elegant corner sofa for large living spaces.</div>
-          <div class="price">₹38,999</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Sofa Enquiry'">Enquire</button>
+          <h4 class="title">Luxury Recliner Sofa</h4>
+          <div class="meta">Dual-recline mechanism with memory foam seats.</div>
+          <div class="price">₹45,999</div>
+          <button class="btn" onclick="showDetails(5)">View Details</button>
         </div>
       </div>
 
-      <!-- Sofa 6 -->
       <div class="card">
-        <img src="images/sofa6.jpg" alt="Leather Sofa">
+        <img src="images/sofa6.jpg" alt="Minimalist Linen Sofa">
         <div class="card-body">
-          <h4 class="title">Leather Sofa</h4>
-          <div class="meta">Premium leather sofa with modern style.</div>
-          <div class="price">₹45,499</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Sofa Enquiry'">Enquire</button>
+          <h4 class="title">Minimalist Linen Sofa</h4>
+          <div class="meta">Scandinavian-inspired design with linen texture.</div>
+          <div class="price">₹29,999</div>
+          <button class="btn" onclick="showDetails(6)">View Details</button>
         </div>
       </div>
     </div>
 
-    <footer>© Jay's Furniture — Crafted with care</footer>
+    <!-- Modal -->
+    <div id="sofaModal" class="modal">
+      <div class="modal-content" id="modalContent"></div>
+    </div>
+
+    <footer>© 2025 Jay's Furniture. All rights reserved.</footer>
   </div>
+
+  <script>
+    const sofas = {
+      1: { name: "Luxury Velvet Sofa", color: "Royal Blue", size: "3-Seater (210cm x 90cm x 85cm)", model: "JV-301", fabric: "Premium Velvet", details: "Elegant velvet sofa perfect for living rooms with plush comfort." },
+      2: { name: "Modern L-Shaped Sofa", color: "Beige", size: "5-Seater (260cm x 200cm x 90cm)", model: "JL-505", fabric: "Soft Cotton Blend", details: "Spacious L-shaped sofa offering premium comfort and style." },
+      3: { name: "Classic Leather Sofa", color: "Dark Brown", size: "3-Seater (220cm x 95cm x 90cm)", model: "CL-210", fabric: "Genuine Leather", details: "A timeless leather finish that adds class to any room." },
+      4: { name: "Compact Fabric Sofa", color: "Light Grey", size: "2-Seater (160cm x 85cm x 80cm)", model: "CF-115", fabric: "Easy-Clean Cotton", details: "Perfect for apartments with limited space yet full comfort." },
+      5: { name: "Luxury Recliner Sofa", color: "Charcoal Grey", size: "3-Seater (220cm x 100cm x 95cm)", model: "LR-702", fabric: "Microfiber with Recline", details: "Relax fully with dual reclining features and soft foam seats." },
+      6: { name: "Minimalist Linen Sofa", color: "Off-White", size: "3-Seater (210cm x 90cm x 85cm)", model: "ML-330", fabric: "Pure Linen", details: "Modern Scandinavian look with natural linen texture." }
+    };
+
+    function showDetails(id) {
+      const sofa = sofas[id];
+      const modal = document.getElementById('sofaModal');
+      const content = document.getElementById('modalContent');
+      content.innerHTML = `
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img src="images/sofa${id}.jpg" alt="${sofa.name}">
+        <h3>${sofa.name}</h3>
+        <ul id="modalSpecs">
+          <li><strong>Color:</strong> ${sofa.color}</li>
+          <li><strong>Size:</strong> ${sofa.size}</li>
+          <li><strong>Model:</strong> ${sofa.model}</li>
+          <li><strong>Fabric:</strong> ${sofa.fabric}</li>
+          <li><strong>Details:</strong> ${sofa.details}</li>
+        </ul>
+      `;
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('sofaModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById('sofaModal');
+      if (event.target === modal) closeModal();
+    }
+  </script>
 </body>
 </html>
