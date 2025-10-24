@@ -35,13 +35,8 @@ h2{text-align:center;font-size:2.2rem;margin-top:30px;font-weight:800;background
 .close{float:right;font-size:24px;cursor:pointer;}
 @keyframes zoomIn{from{transform:scale(0.8);opacity:0;}to{transform:scale(1);opacity:1;}}
 footer{margin-top:50px;text-align:center;color:#6b6b6b;font-size:0.9rem;}   
-      /* Active nav link styling */
-nav a.active {
-  background: linear-gradient(90deg,#c99b55,#e0b469);
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(201,155,85,0.4);
-  transform: scale(1.05);
-}
+       /* Active nav link styling */
+
 
 /* Active link styling */
 nav a.active {
@@ -95,8 +90,10 @@ html {
 
 
 
+
 </style>
 </head>
+<body>
 <header>
   <div class="brand">
     <div class="logo">sri</div>
@@ -129,7 +126,7 @@ html {
   <div class="card"><img src="images/bed4.jpg" alt="Classic Wooden Bed"><div class="card-body"><h4 class="title">Classic Wooden Bed</h4><div class="meta">Elegant wooden frame for comfort.</div><div class="price">₹12,499</div><button class="btn" onclick="showDetails(1)">View Details</button></div></div>
   <div class="card"><img src="images/bed5.jpg" alt="King Size Bed"><div class="card-body"><h4 class="title">King Size Bed</h4><div class="meta">Spacious and premium comfort.</div><div class="price">₹19,999</div><button class="btn" onclick="showDetails(2)">View Details</button></div></div>
   <div class="card"><img src="images/bed6.jpg" alt="Storage Bed"><div class="card-body"><h4 class="title">Storage Bed</h4><div class="meta">Practical bed with drawers.</div><div class="price">₹15,499</div><button class="btn" onclick="showDetails(3)">View Details</button></div></div>
-</div>
+
 </div>
 </section>
 <div id="bedModal" class="modal"><div class="modal-content" id="modalContent"></div></div>
@@ -158,16 +155,25 @@ window.onclick=function(event){if(event.target===document.getElementById('bedMod
 
 
 // Highlight current nav link
- // Highlight current page link in navbar
-  const currentPage = location.pathname.split("/").pop(); // e.g., "fridge.html"
-  const navLinks = document.querySelectorAll("#navbar a");
-  navLinks.forEach(link => {
-    if(link.getAttribute("href") === currentPage){
-      link.classList.add("active");
-      // Scroll it into view for mobile horizontal nav
-      link.scrollIntoView({behavior: "smooth", inline: "center"});
-    }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPage = window.location.pathname.split("/").pop(); 
+    const menuLinks = document.querySelectorAll("#navbar a");
+
+    menuLinks.forEach(link => {
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+
+        // Auto scroll in mobile horizontal navigation
+        link.scrollIntoView({ behavior: "smooth", inline: "center" });
+      }
+    });
   });
+
+
+
+</script>
+
 </script>
 </body>
 </html>

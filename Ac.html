@@ -243,7 +243,7 @@
     <a href="beds.html">Beds</a>
     <a href="fridge.html">Fridges</a>
     <a href="washing.html">Washing Machines</a>
-    <a href="ac.html">ACs</a>
+    <a href="Ac.html">ACs</a>
     <a href="cooler.html">Coolers</a>
     <a href="table.html">Tables</a>
     <a href="mattress.html">Mattresses</a>
@@ -335,9 +335,9 @@
       3: { name:"Portable AC", size:"0.8 Ton", model:"PAC-303", energy:"4 Star", details:"Move anywhere and cool instantly.", image:"ac3.jpg" }
     };
 
-    function showDetails(id) {
-      const product = acs[id];
-      const modal = document.getElementById('acModal');
+        function showDetails(id) {
+      const product = coolers[id];
+      const modal = document.getElementById('coolerModal');
       const content = document.getElementById('modalContent');
       content.innerHTML = `
         <span class="close" onclick="closeModal()">&times;</span>
@@ -346,7 +346,7 @@
         <ul id="modalSpecs">
           <li><strong>Size:</strong> ${product.size}</li>
           <li><strong>Model:</strong> ${product.model}</li>
-          <li><strong>Energy Rating:</strong> ${product.energy}</li>
+          <li><strong>Material:</strong> ${product.material}</li>
           <li><strong>Details:</strong> ${product.details}</li>
         </ul>
       `;
@@ -363,18 +363,24 @@
     } 
 
 
-     
-    // Highlight current nav link
-    // Highlight current page link in navbar
-  const currentPage = location.pathname.split("/").pop(); // e.g., "fridge.html"
-  const navLinks = document.querySelectorAll("#navbar a");
-  navLinks.forEach(link => {
-    if(link.getAttribute("href") === currentPage){
-      link.classList.add("active");
-      // Scroll it into view for mobile horizontal nav
-      link.scrollIntoView({behavior: "smooth", inline: "center"});
-    }
+  
+  // Highlight current nav link
+  // Highlight current nav link
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPage = window.location.pathname.split("/").pop(); 
+    const menuLinks = document.querySelectorAll("#navbar a");
+
+    menuLinks.forEach(link => {
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+
+        // Auto scroll in mobile horizontal navigation
+        link.scrollIntoView({ behavior: "smooth", inline: "center" });
+      }
+    });
   });
+
   </script>
 </body>
 </html>
