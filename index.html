@@ -46,9 +46,6 @@ License: free to use and customize.
       </div>
     </div>
 
-
-
-
     <!-- Hamburger menu for mobile -->
     <div class="nav-toggle" id="navToggle">
       <span></span>
@@ -61,18 +58,12 @@ License: free to use and customize.
       <a href="#home">Home</a>
       <a href="#products">Products</a>
       <a href="#Offer">Offer</a>
-      
-      
       <button id="adminToggle" class="ghost">Admin</button>
       <button id="cartBtn" class="btn">Cart (<span id="cartCount">0</span>)</button>
     </nav> 
   </header>
-
-
  
   <style> 
-
-
     :root{
       --bg:linear-gradient(135deg, #df47b9 0%, #06a79f 50%, #000000 100%);; --card:#949494; --muted:#6b6b6b;
       --accent:rgb(138, 138, 138); --accent-dark:#000000; --accent-contrast:#fff;
@@ -84,7 +75,6 @@ License: free to use and customize.
     a{text-decoration:none;color:#06a79f}
     .container{max-width:var(--maxw);margin:26px auto;padding:0 20px}
       
-  
 
     /* Header */
    
@@ -105,13 +95,6 @@ License: free to use and customize.
     .hero-cta .btn{font-size:15px}
     .hero-image{border-radius:14px;overflow:hidden;height:320px;box-shadow:var(--shadow)}
     .hero-image img{width:100%;height:100%;object-fit:cover;display:block}
-
-   
-        /* Categories */
-      /* --- Category Section --- */
-    /* Desktop view: grid */
-    /* --- Category Section --- */
-    /* --- Category Section --- */
     /* Desktop view: 6 products per row */
     .categories {
       display: grid;
@@ -286,10 +269,6 @@ License: free to use and customize.
       .modal .right{width:100%}
       .cart-drawer{width:100%}
     }
-
-
-
-
     /* rwossssssssssssss*/
       
     .featured-collection {
@@ -384,8 +363,6 @@ License: free to use and customize.
       } 
 
     }
-
-
 
     header {
       position: sticky;
@@ -537,9 +514,6 @@ License: free to use and customize.
     }
 
 
-/*
-
-
 
     /* ✨ Floating animation for smooth entry */
     @keyframes floatIn {
@@ -561,7 +535,7 @@ License: free to use and customize.
         position: absolute;
         top: 70px;
         right: 20px;
-        background: #1A237E;
+        background: #3697a3;
         flex-direction: column;
         gap: 15px;
         padding: 20px;
@@ -584,8 +558,8 @@ License: free to use and customize.
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 55px;
-        background: #1A237E; /* solid background */
+        height: 45px;
+        background: #2ba898; /* solid background */
         justify-content: space-around;
         align-items: center;
         padding: 0;
@@ -599,7 +573,7 @@ License: free to use and customize.
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        color: white;
+        color: rgb(0, 0, 0);
         font-size: 12px;
         cursor: pointer;
         transition: transform 0.2s;
@@ -607,7 +581,7 @@ License: free to use and customize.
       }
 
       .bottom-nav .nav-item i {
-        font-size: 24px;
+        font-size: 18px;
         margin-bottom: 2px;
         transition: color 0.2s, transform 0.2s;
       }
@@ -619,7 +593,7 @@ License: free to use and customize.
       /* Active icon */
       .bottom-nav .nav-item.active i,
       .bottom-nav .nav-item.active span {
-        color: #FFD700; /* highlight color */
+        color: #b40ec4d2; /* highlight color */
         transform: scale(1.2);
       }
 
@@ -1228,7 +1202,6 @@ License: free to use and customize.
       
       }
     }
-
     .video-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr); /* 3 videos per row */
@@ -1314,9 +1287,6 @@ License: free to use and customize.
         height: 150px; /* smaller height for mobile */
       }
     }
-
-
-
 
     /* Container and Title */
     .choose-container {
@@ -1442,9 +1412,6 @@ License: free to use and customize.
       .choose-card p { font-size: 0.8rem; }
     }
 
-
-
-
     /* Section Title */
     .promo-section {
       text-align: center;
@@ -1548,9 +1515,7 @@ License: free to use and customize.
       z-index: 2;
     }
 
-    /* Hove*
-
-
+ 
     /* Section Title */
     .customer-reviews h2 {
       font-size: 1.5rem;
@@ -2126,10 +2091,6 @@ License: free to use and customize.
         box-sizing: border-box;
       }
     }
-
-
-
-
     /* Smooth scroll behavior for all anchor links */
     html {
       scroll-behavior: smooth;
@@ -2153,7 +2114,6 @@ License: free to use and customize.
       display: none;  /* Hidden by default */
       transition: all 0.3s ease;
     }
-
     /* Hover effect */
     .btn-top:hover {
       transform: scale(1.1);
@@ -2165,16 +2125,10 @@ License: free to use and customize.
           display: none !important;
         }
       }
-
   </style> 
-
-
-
 </head>
-
 <body> 
 
-    <!-- =================== Search Section =================== -->
     <!-- =================== Search Section =================== -->
     <!-- ✅ UNIVERSAL SEARCH SECTION -->
     <div class="search-container">
@@ -2183,9 +2137,6 @@ License: free to use and customize.
 
       <ul id="suggestions" class="suggestions-list"></ul>
     </div>
-
-
-
 
     <section id="home" class="categories-section">
       <!-- Section Title -->
@@ -2267,176 +2218,153 @@ License: free to use and customize.
       <img src="images/map.png" alt="Map Icon">
     </a>
 
+    <!-- 3D Gallery between Featured Collection and Categories -->
+    <section class="gallery-section"></section>
+      <iframe src="3d.html" width="100%" height="450" frameborder="0" style="border-radius:10px;"></iframe>
+    </section>
+
+    <!-- Media Grid Section -->
+    <div class="media-grid">
+      <!-- Left column: Video + Square Image -->
+      <div class="left-column">
+        <video id="myVideo" class="video" muted playsinline autoplay loop>
+          <source src="videos/diwali.webm" type="video/webm">
+        </video>
+        <img src="images/diwali.jpg" alt="Square Image" class="square">
+      </div>
+
+      <!-- Right column: Tall Image -->
+      <div class="right-column">
+        <img src="images/diwali1.jpg" alt="Tall Image" class="tall">
+      </div>
+    </div>
+      
+  <section class="emi-banner">
+    <img src="images/banner.jpg" alt="EMI on Cards Banner">
+  </section>
 
 
- 
 
+  <!-- Offers & Seasonal Highlights Section -->
+  <section id="Offer" class="promo-section">
+    <h2 class="promo-title">🔥 Offers & Seasonal Highlights</h2>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 3D Gallery between Featured Collection and Categories -->
-<section class="gallery-section"></section>
-  <iframe src="3d.html" width="100%" height="450" frameborder="0" style="border-radius:10px;"></iframe>
-</section>
-
-
-<!-- Media Grid Section -->
-<div class="media-grid">
-  <!-- Left column: Video + Square Image -->
-  <div class="left-column">
-    <video id="myVideo" class="video" muted playsinline autoplay loop>
-      <source src="videos/diwali.webm" type="video/webm">
-    </video>
-    <img src="images/diwali.jpg" alt="Square Image" class="square">
-  </div>
-
-  <!-- Right column: Tall Image -->
-  <div class="right-column">
-    <img src="images/diwali1.jpg" alt="Tall Image" class="tall">
-  </div>
-</div>
-
-
-  
-
-
-<section class="emi-banner">
-  <img src="images/banner.jpg" alt="EMI on Cards Banner">
- </section>
-
-
-<!-- Offers & Seasonal Highlights Section -->
-<!-- Offers & Seasonal Highlights Section -->
-<section id="Offer" class="promo-section">
-  <h2 class="promo-title">🔥 Offers & Seasonal Highlights</h2>
-
-  <div class="promo-grid">
-    <!-- Offer Card -->
-    <div class="promo-card" id="card1" data-images='["images/offer.jpg","images/offer1.jpg","images/offer2.jpg","images/offer3.jpg"]'>
-      <div class="promo-inner">
-        <div class="promo-front">
-          <img src="images/offer1.jpg" alt="Offer 1">
-          <span class="promo-tag offer">Offer</span>
-          <div class="promo-name">Big Offer</div>
+    <div class="promo-grid">
+      <!-- Offer Card -->
+      <div class="promo-card" id="card1" data-images='["images/offer.jpg","images/offer1.jpg","images/offer2.jpg","images/offer3.jpg"]'>
+        <div class="promo-inner">
+          <div class="promo-front">
+            <img src="images/offer1.jpg" alt="Offer 1">
+            <span class="promo-tag offer">Offer</span>
+            <div class="promo-name">Big Offer</div>
+          </div>
+          <div class="promo-back">
+            <img src="images/offer1.jpg" alt="Offer 1">
+            <span class="promo-tag offer">Offer</span>
+            <div class="promo-name">Big Offer</div>
+          </div>
         </div>
-        <div class="promo-back">
-          <img src="images/offer1.jpg" alt="Offer 1">
-          <span class="promo-tag offer">Offer</span>
-          <div class="promo-name">Big Offer</div>
+      </div>
+
+      <!-- Winter Sale Card -->
+      <div class="promo-card" id="card2" data-images='["images/winter.jpg","images/winter1.jpg","images/winter2.jpg","images/winter3.jpg"]'>
+        <div class="promo-inner">
+          <div class="promo-front">
+            <img src="images/winter1.jpg" alt="Winter 1">
+            <span class="promo-tag winter">Winter</span>
+          </div>
+          <div class="promo-back">
+            <img src="images/winter1.jpg" alt="Winter 1">
+            <span class="promo-tag winter">Winter</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trending Card -->
+      <div class="promo-card" id="card3" data-images='["images/trending.jpg","images/trending1.jpg","images/trending2.jpg","images/trending3.jpg"]'>
+        <div class="promo-inner">
+          <div class="promo-front">
+            <img src="images/trend1.jpg" alt="Trend 1">
+            <span class="promo-tag trending">Trending</span>
+          </div>
+          <div class="promo-back">
+            <img src="images/trend1.jpg" alt="Trend 1">
+            <span class="promo-tag trending">Trending</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    </section>
+
+    <section id="kitchen">
+    <!-- Desktop Banner -->
+    <div class="banner-section desktop-banner">
+      <div class="banner-container">
+        <img src="images/banner1.png" alt="Main Banner" class="banner-image">
+
+        <!-- Overlay Images -->
+        <div class="overlay-images">
+          <div class="overlay-item">
+            <img src="images/grinder2.jpg" alt="Mixer Grinder">
+            <span class="price-tag">Sarts from ₹10,000</span>
+          </div>
+          <div class="overlay-item">
+            <img src="images/grinder.jpg" alt="Grinder">
+            <span class="price-tag">Sarts from ₹8,000</span>
+          </div>
+          <div class="overlay-item">
+            <img src="images/fan.jpg" alt="Fan">
+            <span class="price-tag">Sarts from ₹5,000</span>
+          </div>
+          <div class="overlay-item">
+            <img src="images/cooker.jpg" alt="Cooker">
+            <span class="price-tag">Sarts from ₹6,000</span>
+          </div>
+          <div class="overlay-item">
+            <img src="images/gas.jpg" alt="Gas Stove">
+            <span class="price-tag">Sarts from ₹7,000</span>
+          </div>
+          <div class="overlay-item">
+            <img src="images/tn.jpg" alt="Stand Fan">
+            <span class="price-tag">Sarts from ₹7,000</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Winter Sale Card -->
-    <div class="promo-card" id="card2" data-images='["images/winter.jpg","images/winter1.jpg","images/winter2.jpg","images/winter3.jpg"]'>
-      <div class="promo-inner">
-        <div class="promo-front">
-          <img src="images/winter1.jpg" alt="Winter 1">
-          <span class="promo-tag winter">Winter</span>
-        </div>
-        <div class="promo-back">
-          <img src="images/winter1.jpg" alt="Winter 1">
-          <span class="promo-tag winter">Winter</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Trending Card -->
-    <div class="promo-card" id="card3" data-images='["images/trending.jpg","images/trending1.jpg","images/trending2.jpg","images/trending3.jpg"]'>
-      <div class="promo-inner">
-        <div class="promo-front">
-          <img src="images/trend1.jpg" alt="Trend 1">
-          <span class="promo-tag trending">Trending</span>
-        </div>
-        <div class="promo-back">
-          <img src="images/trend1.jpg" alt="Trend 1">
-          <span class="promo-tag trending">Trending</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="kitchen">
-  <!-- Desktop Banner -->
-  <div class="banner-section desktop-banner">
-    <div class="banner-container">
-      <img src="images/banner1.png" alt="Main Banner" class="banner-image">
-
-      <!-- Overlay Images -->
-      <div class="overlay-images">
-        <div class="overlay-item">
+    <!-- Mobile Grid -->
+    <div class="mobile-grid-section">
+      <h2 class="mobile-grid-title">Our Kitchen Products</h2>
+      <div class="mobile-grid">
+        <div class="grid-item">
           <img src="images/grinder2.jpg" alt="Mixer Grinder">
-          <span class="price-tag">Sarts from ₹10,000</span>
+          <span class="price-tag">starts from ₹10,000</span>
         </div>
-        <div class="overlay-item">
+        <div class="grid-item">
           <img src="images/grinder.jpg" alt="Grinder">
-          <span class="price-tag">Sarts from ₹8,000</span>
+          <span class="price-tag">starts from ₹8,000</span>
         </div>
-        <div class="overlay-item">
+        <div class="grid-item">
           <img src="images/fan.jpg" alt="Fan">
-          <span class="price-tag">Sarts from ₹5,000</span>
+          <span class="price-tag">starts from ₹5,000</span>
         </div>
-        <div class="overlay-item">
+        <div class="grid-item">
           <img src="images/cooker.jpg" alt="Cooker">
-          <span class="price-tag">Sarts from ₹6,000</span>
+          <span class="price-tag">starts from ₹6,000</span>
         </div>
-        <div class="overlay-item">
+        <div class="grid-item">
           <img src="images/gas.jpg" alt="Gas Stove">
-          <span class="price-tag">Sarts from ₹7,000</span>
+          <span class="price-tag">starts from ₹7,000</span>
         </div>
-        <div class="overlay-item">
+        <div class="grid-item">
           <img src="images/tn.jpg" alt="Stand Fan">
-          <span class="price-tag">Sarts from ₹7,000</span>
+          <span class="price-tag">starts from ₹7,000</span>
         </div>
       </div>
     </div>
-  </div>
+    </section>
 
-  <!-- Mobile Grid -->
-  <div class="mobile-grid-section">
-    <h2 class="mobile-grid-title">Our Kitchen Products</h2>
-    <div class="mobile-grid">
-      <div class="grid-item">
-        <img src="images/grinder2.jpg" alt="Mixer Grinder">
-        <span class="price-tag">starts from ₹10,000</span>
-      </div>
-      <div class="grid-item">
-        <img src="images/grinder.jpg" alt="Grinder">
-        <span class="price-tag">starts from ₹8,000</span>
-      </div>
-      <div class="grid-item">
-        <img src="images/fan.jpg" alt="Fan">
-        <span class="price-tag">starts from ₹5,000</span>
-      </div>
-      <div class="grid-item">
-        <img src="images/cooker.jpg" alt="Cooker">
-        <span class="price-tag">starts from ₹6,000</span>
-      </div>
-      <div class="grid-item">
-        <img src="images/gas.jpg" alt="Gas Stove">
-        <span class="price-tag">starts from ₹7,000</span>
-      </div>
-      <div class="grid-item">
-        <img src="images/tn.jpg" alt="Stand Fan">
-        <span class="price-tag">starts from ₹7,000</span>
-      </div>
-    </div>
-  </div>
-</section>
-
- <section id="new-arrivals" class="new-products-section">
+  <section id="new-arrivals" class="new-products-section">
   <!-- Section Title -->
   <div class="section-header">
     <h2>New Arrivals</h2>
@@ -2467,9 +2395,9 @@ License: free to use and customize.
           <h3 class="product-name">Comfort Sofa</h3>
           <p class="product-price">$220</p>
         </div>
-      </div>
+  </div>
 
-      <div class="new-product">
+  <div class="new-product">
         <div class="product-image">
           <span class="new-tag">New Arrival</span>
           <img src="images/sofa13.jpg" alt="Classic Sofa">
@@ -2478,9 +2406,9 @@ License: free to use and customize.
           <h3 class="product-name">Classic Sofa</h3>
           <p class="product-price">$200</p>
         </div>
-      </div>
+  </div>
 
-      <div class="new-product">
+  <div class="new-product">
         <div class="product-image">
           <span class="new-tag">New Arrival</span>
           <img src="images/sofa14.jpg" alt="Modern Sofa">
@@ -2489,7 +2417,7 @@ License: free to use and customize.
           <h3 class="product-name">Modern Sofa</h3>
           <p class="product-price">$230</p>
         </div>
-      </div>
+  </div>
 
       <div class="new-product">
         <div class="product-image">
@@ -2559,10 +2487,10 @@ License: free to use and customize.
 
     </div>
   </div>
-</section>
+  </section>
 
 
-<section class="video-section">
+  <section class="video-section">
   <!-- Section Title -->
   <div class="section-header">
     <h2>Our Video Showcase</h2>
@@ -2602,11 +2530,11 @@ License: free to use and customize.
       </video>
     </div>
   </div>
-</section>
+  </section>
 
 
   <!-- Why Choose Us Section -->
-<section class="why-choose-us">
+  <section class="why-choose-us">
   <div class="choose-container">
     <div class="choose-text">
       <h2>We Create Experiences, Not Just Products</h2>
@@ -2642,7 +2570,7 @@ License: free to use and customize.
       “Rate is not important — your presence is important.”
     </blockquote>
   </div>
-</section>
+  </section>
 
 
 
@@ -2651,13 +2579,13 @@ License: free to use and customize.
 <!-- Explore Button -->
   <section id="products" class="explore-collection">
   <button id="exploreBtn" class="btn-explore">Explore Our products</button>
-</div>
+  </div>
 
 <!-- Featured Collection (Hidden Initially) -->
-<div id="featuredWrapper" style="display: none;">
+  <div id="featuredWrapper" style="display: none;">
   <div class="section-title">
     <h3 style="margin:0">Featured Collection</h3>
-    <div style="color:var(--muted)">Quality furniture • Free delivery in city</div>
+    <div style="color:var(--muted)"></div>
   </div>
 
  
@@ -2665,7 +2593,7 @@ License: free to use and customize.
       <!-- Product cards inserted by JS -->
     </div>
   </section>
-</div>
+  </div>
 
 
           
@@ -2697,48 +2625,46 @@ License: free to use and customize.
 
   <!-- 💬 Reviews List -->
   <div class="reviews-list" id="reviewsList"></div>
-</section>
+  </section>
 
 
 
 
-<section id="contact" class="contact-map-section">  
-  
-  <h1 class="section-title">📍 Contact & Visit Us</h1>
+  <section id="contact" class="contact-map-section">  
+    
+    <h1 class="section-title">📍 Contact & Visit Us</h1>
 
-  <div class="contact-container">
+    <div class="contact-container">
 
-    <!-- Left Glass Card -->
-    <div class="glass-card">
-      <h2 class="contact-title">Visit Our Showroom</h2>
-      <p class="contact-meta">📍 Address: 354, SH 14, MAIN ROAD, near PADMAJA PICTURE PALACE, Malikipuram, Andhra Pradesh 533253</p>
-      <p class="contact-meta">⏰ Open: Mon–Sat 10am–7pm</p>
-      <p class="contact-meta">📞 Phone: +91 98765 43210</p>
-      <p class="contact-meta">✉ Email: <a href="mailto:info@jaysfurniture.com" style="color:#fff;text-decoration:underline;">info@jaysfurniture.com</a></p>
+      <!-- Left Glass Card -->
+      <div class="glass-card">
+        <h2 class="contact-title">Visit Our Showroom</h2>
+        <p class="contact-meta">📍 Address: 354, SH 14, MAIN ROAD, near PADMAJA PICTURE PALACE, Malikipuram, Andhra Pradesh 533253</p>
+        <p class="contact-meta">⏰ Open: Mon–Sat 10am–7pm</p>
+        <p class="contact-meta">📞 Phone: +91 98765 43210</p>
+        <p class="contact-meta">✉ Email: <a href="mailto:info@jaysfurniture.com" style="color:#fff;text-decoration:underline;">info@jaysfurniture.com</a></p>
 
-      <!-- Contact Form -->
-      <form class="contact-form" id="contactForm">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="text" name="contact" placeholder="Phone or Email" required>
-        <textarea name="message" placeholder="Message" required></textarea>
-        <button type="submit" class="btn-submit">Send Enquiry</button>
-      </form>
+        <!-- Contact Form -->
+        <form class="contact-form" id="contactForm">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="text" name="contact" placeholder="Phone or Email" required>
+          <textarea name="message" placeholder="Message" required></textarea>
+          <button type="submit" class="btn-submit">Send Enquiry</button>
+        </form>
+      </div>
+
+      <!-- Right Map -->
+      <div class="contact-right">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11529.374086473676!2d81.79842761397704!3d16.408762646761126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a37df6b508354dd%3A0x246f756714c90975!2sSRI%20SAI%20GANESH%20HOME%20NEEDS%20AND%20FURNITURES%2CMALIKIPURAM!5e0!3m2!1sen!2sin!4v1761150637163!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
     </div>
-
-    <!-- Right Map -->
-    <div class="contact-right">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11529.374086473676!2d81.79842761397704!3d16.408762646761126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a37df6b508354dd%3A0x246f756714c90975!2sSRI%20SAI%20GANESH%20HOME%20NEEDS%20AND%20FURNITURES%2CMALIKIPURAM!5e0!3m2!1sen!2sin!4v1761150637163!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-
-  </div>
-</section>
+  </section>
 
 
 
   <!-- Modal template -->
   <div id="modalRoot" style="display:none"></div>
-
-  
 
   <!-- Cart Drawer -->
   <div id="cartDrawer" class="cart-drawer" aria-hidden="true">
@@ -2755,51 +2681,28 @@ License: free to use and customize.
       <button id="checkoutBtn" class="btn" style="width:100%;margin-top:8px">Checkout</button>
     </div>
   </div>
- 
 
-
-
-<!-- Bottom Nav for Mobile 
-  <div class="nav-item" onclick="scrollToSection('home')">
-    <i>🏠</i>
-    <span>Home</span>
-    <div class="dot"></div>
+    <!-- Bottom Nav for Mobile -->
+  <div class="bottom-nav">
+      <div class="nav-item active" onclick="scrollToSection('home')">
+        <i class="fa-solid fa-house-chimney"></i>
+        <span>Home</span>
+        <div class="dot"></div>
+      </div>
+      <div class="nav-item" onclick="scrollToSection('products')">
+        <i class="fa-solid fa-bed"></i>
+        <span>Products</span>
+        <div class="dot"></div>
+      </div>
+      <div class="nav-item" onclick="scrollToSection('Offer')">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span>Offer</span>
+        <div class="dot"></div>
+      </div>
   </div>
-  <div class="nav-item" onclick="scrollToSection('products')">
-    <i>🛋️</i>
-    <span>Products</span>
-    <div class="dot"></div>
-  </div>
-  <div class="nav-item" onclick="scrollToSection('cart')">
-    <i>🛒</i>
-    <span>Cart</span>
-    <div class="dot"></div>
-  </div>
-</div> -->
 
+  <button onclick="scrollToTop()" class="btn-top" id="btnTop">↑</button>
 
-<!-- Bottom Nav for Mobile -->
-<div class="bottom-nav">
-  <div class="nav-item active" onclick="scrollToSection('home')">
-    <i class="fa-solid fa-house-chimney"></i>
-    <span>Home</span>
-    <div class="dot"></div>
-  </div>
-  <div class="nav-item" onclick="scrollToSection('products')">
-    <i class="fa-solid fa-bed"></i>
-    <span>Products</span>
-    <div class="dot"></div>
-  </div>
-  <div class="nav-item" onclick="scrollToSection('Offer')">
-    <i class="fa-solid fa-bag-shopping"></i>
-    <span>Offer</span>
-    <div class="dot"></div>
-  </div>
-</div>
-
-<button onclick="scrollToTop()" class="btn-top" id="btnTop">↑</button>
-
->
 
   <!-- edn of thee pageeeeeeee-->
   <!-- Footer Section -->
@@ -2828,8 +2731,6 @@ License: free to use and customize.
         Customer satisfaction is our top priority!
       </p>
   </div> 
-
-  
 
     <!-- Newsletter Sign-Up -->
   <div class="footer-newsletter">
@@ -2887,18 +2788,13 @@ License: free to use and customize.
       <img src="images/youtube.png" alt="YouTube">
     </a>
   </div>
-</div>
+  </div>
 
 
   <p class="footer-copy">© 2025 Sri Sai Ganesha Furniture. All Rights Reserved.</p>
-</footer>
+  </footer>
 
-
-
-
-
-<canvas id="fireworksCanvas"></canvas>
-
+   <canvas id="fireworksCanvas"></canvas>
 
 
   <script>
@@ -3183,9 +3079,7 @@ window.addEventListener('scroll', () => {
   } else {
     header.classList.remove('shrink');
   }
-});
-
-
+})
   
 // ===== Scroll to section (desktop & mobile) =====
 function scrollToSection(id) {
@@ -3235,10 +3129,6 @@ window.addEventListener('scroll', () => {
   });
 });
 
-
-
-
-
 // =======================
 // 2️⃣ New Arrivals auto-slide
 // =======================
@@ -3265,9 +3155,6 @@ newWrapper.style.transition = 'transform 0.5s ease-in-out';
 // Auto-slide every 2.5 seconds
 setInterval(slideNewProducts, 2500);
 
-
-
-// =======================
 // 3️⃣ 3D Gallery
 // =======================
 
@@ -3316,11 +3203,6 @@ fetch('3d.html')
     // Initialize 3D gallery after HTML is loaded
     init3DGallery('#gallery-container .carousel-wrapper');
   });
-
-
-
-
-
 
 const navItems = document.querySelectorAll('.bottom-nav .nav-item');
 
@@ -3708,8 +3590,6 @@ const searchItems = {
 }
 
 
-
-
 // ✅ Levenshtein distance for typo correction
 function levenshtein(a, b) {
   const matrix = Array.from({ length: b.length + 1 }, (_, i) => [i]);
@@ -3766,7 +3646,6 @@ function redirect(key) {
   }
 }
 
-
 // ✅ Main search handler
 function searchPage() {
   const input = document.getElementById("searchInput").value.toLowerCase().trim();
@@ -3778,8 +3657,6 @@ function searchPage() {
   if (matches[0].distance <= 2) redirect(matches[0].key);
   else alert("❌ No results found!");
 }
-
-
 
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -3795,8 +3672,6 @@ window.addEventListener("scroll", () => {
   }
 });
 
-
 </script>
-
 </body>
 </html>
