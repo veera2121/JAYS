@@ -7,191 +7,418 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      margin:0;
-      background:#fbfaf8;
-      color:#111;
+      margin: 0;
+      background: linear-gradient(135deg, #e0e7ff, #fef6e4, #f3e8ff);
+      color: #111;
+      min-height: 100vh;
     }
-    a { text-decoration:none; color:inherit; }
-    .container { max-width:1200px; margin:26px auto; padding:0 20px; }
+    a { text-decoration: none; color: inherit; }
 
-    /* Header */
+    .container {
+      max-width: 1250px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
     header {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:30px;
-      padding:12px 20px;
-      border-radius:20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 25px;
+      background: rgba(255, 255, 255, 0.25);
       backdrop-filter: blur(10px);
-      background: rgba(255,255,255,0.25);
-      box-shadow:0 4px 30px rgba(0,0,0,0.1);
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
     }
-    .brand { display:flex; align-items:center; gap:12px; }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
     .logo {
-      width:50px; height:50px; background:#c99b55; color:#fff;
-      font-weight:700; display:flex; align-items:center; justify-content:center;
-      border-radius:12px; font-size:18px;
+      width: 55px;
+      height: 55px;
+      background: linear-gradient(135deg, #c99b55, #e0b469);
+      color: #fff;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      font-size: 18px;
+      box-shadow: 0 4px 10px rgba(201, 155, 85, 0.4);
     }
-    nav a { margin-left:15px; font-weight:600; color:#333; transition: color .3s; }
-    nav a:hover { color:#c99b55; }
 
-    h2 { margin-top:0; }
+    .brand h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #a78bfa, #f59e0b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-    /* Grid cards */
+    nav a {
+      margin-left: 15px;
+      font-weight: 600;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+    nav a:hover { color: #c99b55; }
+
+    h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-top: 30px;
+      font-weight: 800;
+      background: linear-gradient(90deg, #a855f7, #f97316);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
     .grid {
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-      gap:24px;
-      margin-top:20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      margin-top: 35px;
     }
+
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
     .card {
-      background: rgba(255,255,255,0.15);
-      border-radius:20px;
-      backdrop-filter: blur(12px);
-      border:1px solid rgba(255,255,255,0.25);
-      box-shadow:0 8px 32px rgba(31,38,135,0.25);
-      overflow:hidden;
-      transition: transform .25s ease, box-shadow .3s ease;
+      position: relative;
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      backdrop-filter: blur(10px);
+      cursor: pointer;
     }
+
     .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     }
+
     .card img {
-      width:100%;
-      height:220px;
-      object-fit: contain; /* Fit fully, no cropping */
-      border-bottom:1px solid rgba(255,255,255,0.2);
-      background:#f0f0f0;
-      display:block;
+      width: 100%;
+      height: auto;
+      max-height: 250px;
+      object-fit: contain;
+      background: #f0f0f0;
+      display: block;
+      border-radius: 12px;
     }
-    .card-body { padding:18px; }
-    .title { font-weight:600; font-size:18px; margin:0 0 6px; color:#222; }
-    .meta { color:#555; font-size:14px; margin-bottom:8px; }
-    .price { font-weight:700; font-size:17px; color:#c99b55; margin-bottom:12px; }
+
+    .card-body {
+      padding: 18px;
+      text-align: center;
+    }
+
+    .title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: #2e2e2e;
+    }
+
+    .meta {
+      color: #6b6b6b;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #c99b55;
+      margin-bottom: 12px;
+    }
 
     .btn {
-      background: linear-gradient(135deg,#c99b55,#e0b469);
-      color:#fff;
-      border:none;
-      padding:8px 14px;
-      border-radius:10px;
-      cursor:pointer;
-      font-weight:600;
-      transition:0.3s;
+      background: linear-gradient(90deg, #c99b55, #e0b469);
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(224, 180, 105, 0.3);
     }
+
     .btn:hover {
-      background: linear-gradient(135deg,#b88a4e,#d9a85f);
+      background: linear-gradient(90deg, #e0b469, #c99b55);
       transform: scale(1.05);
     }
 
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.65);
+      backdrop-filter: blur(6px);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: rgba(255,255,255,0.95);
+      border-radius: 18px;
+      width: 90%;
+      max-width: 500px;
+      max-height: 90vh;
+      padding: 20px;
+      color: #333;
+      text-align: left;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+      animation: zoomIn 0.4s ease;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      overflow-y: auto;
+    }
+
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      max-height: 250px;
+      object-fit: contain;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      background: #f0f0f0;
+      display: block;
+    }
+
+    #modalSpecs {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    #modalSpecs li {
+      margin-bottom: 8px;
+      padding: 8px;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .close {
+      float: right;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
     footer {
-      margin-top:50px;
-      text-align:center;
-      color:#444;
-      font-size:14px;
-      padding:20px 0;
-      backdrop-filter: blur(10px);
-      background: rgba(255,255,255,0.25);
-      border-top:1px solid rgba(255,255,255,0.2);
-      border-radius:20px 20px 0 0;
+      margin-top: 50px;
+      text-align: center;
+      color: #6b6b6b;
+      font-size: 0.9rem;
     }
+              /* Active nav link styling */
+      nav a.active {
+        background: linear-gradient(90deg,#c99b55,#e0b469);
+        color: #fff;
+        box-shadow: 0 4px 12px rgba(201,155,85,0.4);
+        transform: scale(1.05);
+      }
+        
+    html {
+  scroll-padding-top: 100px;
+}
 
-    @media(max-width:768px){
-      header { flex-direction: column; gap:10px; text-align:center; }
-    }
+      @media(max-width:768px){
+      nav {
+    display:flex;                   /* horizontal layout */
+    overflow-x:auto;                /* allow scrolling */
+    padding:10px 0;
+    gap:10px;                       /* space between links */
+    -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+  }
+
+  /* Hide scrollbar for cleaner look */
+  nav::-webkit-scrollbar { display:none; }
+
+  nav a {
+    flex:0 0 auto;                 /* prevent shrinking */
+    font-size:0.9rem;
+    padding:8px 16px;
+    white-space:nowrap;             /* prevent wrapping text */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius:10px;
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(5px);
+    transition: transform 0.2s;
+  }
+
+  nav a:hover {
+    transform: scale(1.05);
+    background: rgba(255,255,255,0.35);
+  }
+}
+
   </style>
-</head>
-<body>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo">Jay's</div>
-        <h1>Jay's Furniture</h1>
-      </div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="sofas.html">Sofas</a>
-        <a href="chairs.html">Chairs</a>
-        <a href="beds.html">Beds</a>
-        <a href="fridge.html">Fridges</a>
-        <a href="washing.html">Washing Machines</a>
-        <a href="ac.html">ACs</a>
-        <a href="cooler.html">Coolers</a>
-        <a href="table.html" style="color:#c99b55;">Tables</a>
-      </nav>
-    </header>
+<header>
+  <div class="brand">
+    <div class="logo">sri</div>
+    <h1>Sri's Furniture</h1>
+  </div>
+  
+  <!-- NAVIGATION -->
+  <nav id="navbar">
+    <a href="index.html">Home</a>
+    <a href="sofas.html">Sofas</a>
+    <a href="chairs.html">Chairs</a>
+    <a href="beds.html">Beds</a>
+    <a href="fridge.html">Fridges</a>
+    <a href="washing.html">Washing Machines</a>
+    <a href="ac.html">ACs</a>
+    <a href="cooler.html">Coolers</a>
+    <a href="table.html">Tables</a>
+    <a href="mattress.html">Mattresses</a>
+    <a href="wardrobe.html">Wardrobe</a>
+    <a href="pillows.html">Pillows</a>
+    <a href="tv.html">TV</a>
+  </nav>
+</header>
 
+
+  <section id="table">
     <h2>Tables Collection</h2>
+
     <div class="grid">
-      <!-- Table 1 -->
+      <!-- Table Cards -->
       <div class="card">
-        <img src="images/table1.jpg" alt="Classic Wooden Table">
+        <img src="images/table1.jpg" alt="Wooden Dining Table">
         <div class="card-body">
-          <h4 class="title">Classic Wooden Table</h4>
-          <div class="meta">Elegant solid wood design for living and dining.</div>
-          <div class="price">₹8,499</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Table Enquiry'">Enquire</button>
+          <h4 class="title">Wooden Dining Table</h4>
+          <div class="meta">Solid wood, perfect for family meals.</div>
+          <div class="price">₹12,999</div>
+          <button class="btn" onclick="showDetails(1)">View Details</button>
         </div>
       </div>
 
-      <!-- Table 2 -->
       <div class="card">
         <img src="images/table2.jpg" alt="Glass Coffee Table">
         <div class="card-body">
           <h4 class="title">Glass Coffee Table</h4>
-          <div class="meta">Modern glass top table for your lounge area.</div>
-          <div class="price">₹5,999</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Table Enquiry'">Enquire</button>
+          <div class="meta">Modern glass design for living rooms.</div>
+          <div class="price">₹8,499</div>
+          <button class="btn" onclick="showDetails(2)">View Details</button>
         </div>
       </div>
 
-      <!-- Table 3 -->
       <div class="card">
-        <img src="images/table3.jpg" alt="Study Table">
+        <img src="images/table3.jpg" alt="Foldable Study Table">
         <div class="card-body">
-          <h4 class="title">Study Table</h4>
-          <div class="meta">Functional study table with drawers.</div>
-          <div class="price">₹6,499</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Table Enquiry'">Enquire</button>
+          <h4 class="title">Foldable Study Table</h4>
+          <div class="meta">Compact and practical for students.</div>
+          <div class="price">₹4,999</div>
+          <button class="btn" onclick="showDetails(3)">View Details</button>
         </div>
       </div>
 
-      <!-- Table 4 -->
       <div class="card">
-        <img src="images/table4.jpg" alt="Side Table">
-        <div class="card-body">
-          <h4 class="title">Side Table</h4>
-          <div class="meta">Compact side table for any room corner.</div>
-          <div class="price">₹3,999</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Table Enquiry'">Enquire</button>
-        </div>
-      </div>
-
-      <!-- Table 5 -->
-      <div class="card">
-        <img src="images/table5.jpg" alt="Dining Table">
-        <div class="card-body">
-          <h4 class="title">Dining Table</h4>
-          <div class="meta">Spacious dining table for family meals.</div>
-          <div class="price">₹14,499</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Table Enquiry'">Enquire</button>
-        </div>
-      </div>
-
-      <!-- Table 6 -->
-      <div class="card">
-        <img src="images/table6.jpg" alt="Round Coffee Table">
+        <img src="images/table4.jpg" alt="Round Coffee Table">
         <div class="card-body">
           <h4 class="title">Round Coffee Table</h4>
-          <div class="meta">Stylish round table for living rooms.</div>
-          <div class="price">₹7,499</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Table Enquiry'">Enquire</button>
+          <div class="meta">Stylish round design with wood finish.</div>
+          <div class="price">₹6,499</div>
+          <button class="btn" onclick="showDetails(4)">View Details</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="images/table5.jpg" alt="Extendable Dining Table">
+        <div class="card-body">
+          <h4 class="title">Extendable Dining Table</h4>
+          <div class="meta">Adjustable size for more guests.</div>
+          <div class="price">₹15,499</div>
+          <button class="btn" onclick="showDetails(5)">View Details</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="images/table6.jpg" alt="Bedside Table">
+        <div class="card-body">
+          <h4 class="title">Bedside Table</h4>
+          <div class="meta">Compact bedside table with drawer.</div>
+          <div class="price">₹3,499</div>
+          <button class="btn" onclick="showDetails(6)">View Details</button>
         </div>
       </div>
     </div>
+  </section>
+    <!-- Modal -->
+    <div id="tableModal" class="modal">
+      <div class="modal-content" id="modalContent"></div>
+    </div>
 
-    <footer>© Jay's Furniture — Crafted with Care</footer>
+    <footer>© 2025 Jay's Furniture. All rights reserved.</footer>
   </div>
+
+  <script>
+    const tables = {
+      1: { name:"Wooden Dining Table", size:"6 Seater", model:"WD-101", material:"Solid Wood", details:"Solid wood, perfect for family meals.", image:"table1.jpg" },
+      2: { name:"Glass Coffee Table", size:"80x40 cm", model:"GC-202", material:"Tempered Glass & Wood", details:"Modern glass design for living rooms.", image:"table2.jpg" },
+      3: { name:"Foldable Study Table", size:"120x60 cm", model:"FS-303", material:"Engineered Wood", details:"Compact and practical for students.", image:"table3.jpg" },
+      4: { name:"Round Coffee Table", size:"70x70 cm", model:"RC-404", material:"Wood", details:"Stylish round design with wood finish.", image:"table4.jpg" },
+      5: { name:"Extendable Dining Table", size:"4-8 Seater", model:"ED-505", material:"Wood & Metal", details:"Adjustable size for more guests.", image:"table5.jpg" },
+      6: { name:"Bedside Table", size:"50x40 cm", model:"BT-606", material:"Wood", details:"Compact bedside table with drawer.", image:"table6.jpg" }
+    };
+
+    function showDetails(id) {
+      const product = tables[id];
+      const modal = document.getElementById('tableModal');
+      const content = document.getElementById('modalContent');
+      content.innerHTML = `
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img src="images/${product.image}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <ul id="modalSpecs">
+          <li><strong>Size:</strong> ${product.size}</li>
+          <li><strong>Model:</strong> ${product.model}</li>
+          <li><strong>Material:</strong> ${product.material}</li>
+          <li><strong>Details:</strong> ${product.details}</li>
+        </ul>
+      `;
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('tableModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById('tableModal');
+      if(event.target === modal) modal.style.display = 'none';
+    } 
+
+
+      
+  // Highlight current page link in navbar
+  const currentPage = location.pathname.split("/").pop(); // e.g., "fridge.html"
+  const navLinks = document.querySelectorAll("#navbar a");
+  navLinks.forEach(link => {
+    if(link.getAttribute("href") === currentPage){
+      link.classList.add("active");
+      // Scroll it into view for mobile horizontal nav
+      link.scrollIntoView({behavior: "smooth", inline: "center"});
+    }
+  });
+  </script>
 </body>
 </html>

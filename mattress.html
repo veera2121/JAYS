@@ -5,131 +5,317 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Jay's Furniture — Mattresses</title>
   <style>
+    /* ---------------------------
+       🌟 GLOBAL STYLES
+    ---------------------------- */
     body {
       font-family: 'Poppins', sans-serif;
-      margin:0;
+      margin: 0;
       background: linear-gradient(135deg, #e0e7ff, #fef6e4, #f3e8ff);
-      color:#111;
-      min-height:100vh;
-      background-attachment: fixed;
+      color: #111;
     }
-    a { text-decoration:none; color:inherit; }
+    a { text-decoration: none; color: inherit; }
 
     .container {
-      max-width:1200px;
-      margin:26px auto;
-      padding:0 20px;
+      max-width: 1250px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
 
-    /* Header */
+    /* ---------------------------
+       🌿 HEADER
+    ---------------------------- */
     header {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:30px;
-      padding:12px 20px;
-      border-radius:20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 25px;
+      background: rgba(255, 255, 255, 0.25);
       backdrop-filter: blur(10px);
-      background: rgba(255,255,255,0.25);
-      box-shadow:0 4px 30px rgba(0,0,0,0.1);
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     }
-    .brand { display:flex; align-items:center; gap:12px; }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
     .logo {
-      width:50px; height:50px;
-      background: linear-gradient(135deg,#c99b55,#e0b469);
-      color:#fff;
-      font-weight:700;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      border-radius:12px;
-      font-size:18px;
-      box-shadow:0 4px 15px rgba(0,0,0,0.2);
+      width: 55px;
+      height: 55px;
+      background: linear-gradient(135deg, #b88917, #d9a441);
+      color: #fff;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      font-size: 18px;
+      box-shadow: 0 4px 10px rgba(184, 137, 23, 0.4);
     }
-    nav a { margin-left:15px; font-weight:600; color:#333; transition:.3s; }
-    nav a:hover { color:#c99b55; }
 
-    /* Grid */
+    .brand h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #c084fc, #9333ea);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav a {
+      margin-left: 15px;
+      font-weight: 600;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+    nav a:hover { color: #b88917; }
+
+    /* ---------------------------
+       🛋️ TITLE
+    ---------------------------- */
+    h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-top: 30px;
+      font-weight: 800;
+      background: linear-gradient(90deg, #a855f7, #f97316);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* ---------------------------
+       🪞 PRODUCT GRID
+    ---------------------------- */
     .grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
-      gap:24px;
-      margin-top:20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 per desktop */
+      gap: 25px;
+      margin-top: 35px;
     }
 
-    /* Glass Cards */
     .card {
-      background: rgba(255,255,255,0.15);
-      border-radius:20px;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border:1px solid rgba(255,255,255,0.25);
-      box-shadow:0 8px 32px rgba(31,38,135,0.25);
-      overflow:hidden;
-      transition: transform .25s ease, box-shadow .3s ease;
+      position: relative;
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      backdrop-filter: blur(10px);
     }
+
     .card:hover {
-      transform: translateY(-8px);
-      box-shadow:0 10px 40px rgba(0,0,0,0.25);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     }
+
     .card img {
-      width:100%;
-      height:220px;
-      object-fit:contain; /* fit image without cropping */
-      border-bottom:1px solid rgba(255,255,255,0.2);
-      background:#f0f0f0;
+      width: 100%;
+      height: auto;
+      max-height: 250px;
+      object-fit: contain;
+      background: #f0f0f0;
+      border-radius: 12px;
+      display: block;
     }
-    .card-body { padding:18px; }
-    .title { font-weight:600; font-size:18px; margin:0 0 6px; color:#222; }
-    .meta { color:#555; font-size:14px; margin-bottom:8px; }
-    .price { font-weight:700; font-size:17px; color:#c99b55; margin-bottom:12px; }
+
+    .card-body {
+      padding: 18px;
+      text-align: center;
+    }
+
+    .title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: #2e2e2e;
+    }
+
+    .meta {
+      color: #6b6b6b;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #b88917;
+      margin-bottom: 12px;
+    }
+
     .btn {
-      background: linear-gradient(135deg,#c99b55,#e0b469);
-      color:#fff; border:none;
-      padding:8px 14px; border-radius:10px;
-      cursor:pointer; font-weight:600; transition:.3s;
+      background: linear-gradient(90deg, #b88917, #e6b93c);
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(232, 183, 56, 0.3);
     }
+
     .btn:hover {
-      background: linear-gradient(135deg,#b88a4e,#d9a85f);
+      background: linear-gradient(90deg, #e6b93c, #b88917);
       transform: scale(1.05);
     }
 
+    /* ---------------------------
+       💎 MODAL
+    ---------------------------- */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(6px);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 18px;
+      width: 90%;
+      max-width: 500px;
+      max-height: 90vh;
+      padding: 20px;
+      color: #333;
+      text-align: left;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+      animation: zoomIn 0.4s ease;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      overflow-y: auto;
+    }
+
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      max-height: 250px;
+      object-fit: contain;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      background: #f0f0f0;
+      display: block;
+    }
+
+    #modalSpecs {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    #modalSpecs li {
+      margin-bottom: 8px;
+      padding: 8px;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .close {
+      float: right;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    /* ---------------------------
+       ⚡ FOOTER
+    ---------------------------- */
     footer {
-      margin-top:50px; text-align:center;
-      color:#444; font-size:14px;
-      padding:20px 0;
-      backdrop-filter: blur(10px);
-      background: rgba(255,255,255,0.25);
-      border-top:1px solid rgba(255,255,255,0.2);
-      border-radius:20px 20px 0 0;
-    }
+      margin-top: 50px;
+      text-align: center;
+      color: #6b6b6b;
+      font-size: 0.9rem;
+          } 
+          /* Active nav link styling */
+      nav a.active {
+        background: linear-gradient(90deg,#c99b55,#e0b469);
+        color: #fff;
+        box-shadow: 0 4px 12px rgba(201,155,85,0.4);
+        transform: scale(1.05);
+      }
 
-    @media(max-width:768px){
-      header { flex-direction:column; gap:10px; text-align:center; }
-    }
+       
+    html {
+  scroll-padding-top: 100px;
+}
+
+    /* ---------------------------
+       📱 RESPONSIVE
+    ---------------------------- */
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: repeat(2, 1fr); } /* 2 per mobile */
+      
+      nav {
+    display:flex;                   /* horizontal layout */
+    overflow-x:auto;                /* allow scrolling */
+    padding:10px 0;
+    gap:10px;                       /* space between links */
+    -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+  }
+
+  /* Hide scrollbar for cleaner look */
+  nav::-webkit-scrollbar { display:none; }
+
+  nav a {
+    flex:0 0 auto;                 /* prevent shrinking */
+    font-size:0.9rem;
+    padding:8px 16px;
+    white-space:nowrap;             /* prevent wrapping text */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius:10px;
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(5px);
+    transition: transform 0.2s;
+  }
+
+  nav a:hover {
+    transform: scale(1.05);
+    background: rgba(255,255,255,0.35);
+  }
+}
+
+
   </style>
-</head>
-<body>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo">Jay's</div>
-        <h1>Jay's Furniture</h1>
-      </div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="sofas.html">Sofas</a>
-        <a href="chairs.html">Chairs</a>
-        <a href="beds.html">Beds</a>
-        <a href="fridge.html">Fridges</a>
-        <a href="washing.html">Washing Machines</a>
-        <a href="ac.html">AC</a>
-        <a href="cooler.html">Coolers</a>
-        <a href="tables.html">Tables</a>
-      </nav>
-    </header>
+<header>
+  <div class="brand">
+    <div class="logo">sri</div>
+    <h1>Sri's Furniture</h1>
+  </div>
+  
+  <!-- NAVIGATION -->
+  <nav id="navbar">
+    <a href="index.html">Home</a>
+    <a href="sofas.html">Sofas</a>
+    <a href="chairs.html">Chairs</a>
+    <a href="beds.html">Beds</a>
+    <a href="fridge.html">Fridges</a>
+    <a href="washing.html">Washing Machines</a>
+    <a href="ac.html">ACs</a>
+    <a href="cooler.html">Coolers</a>
+    <a href="table.html">Tables</a>
+    <a href="mattress.html">Mattresses</a>
+    <a href="wardrobe.html">Wardrobe</a>
+    <a href="pillows.html">Pillows</a>
+    <a href="tv.html">TV</a>
+  </nav>
+</header>
 
-    <h2>Mattresses Collection</h2>
+  <section id="mattress"> 
+    <h2>✨ Mattresses Collection</h2>
+
     <div class="grid">
       <div class="card">
         <img src="images/mattress1.jpg" alt="Memory Foam Mattress">
@@ -137,7 +323,7 @@
           <h4 class="title">Memory Foam Mattress</h4>
           <div class="meta">Comfortable foam mattress for restful sleep.</div>
           <div class="price">₹9,999</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Mattress Enquiry'">Enquire</button>
+          <button class="btn" onclick="showDetails(1)">View Details</button>
         </div>
       </div>
 
@@ -147,7 +333,7 @@
           <h4 class="title">Spring Mattress</h4>
           <div class="meta">Durable mattress with excellent support.</div>
           <div class="price">₹7,499</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Mattress Enquiry'">Enquire</button>
+          <button class="btn" onclick="showDetails(2)">View Details</button>
         </div>
       </div>
 
@@ -157,7 +343,7 @@
           <h4 class="title">Latex Mattress</h4>
           <div class="meta">Natural latex mattress with orthopedic support.</div>
           <div class="price">₹12,499</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Mattress Enquiry'">Enquire</button>
+          <button class="btn" onclick="showDetails(3)">View Details</button>
         </div>
       </div>
 
@@ -167,7 +353,7 @@
           <h4 class="title">Pocket Spring Mattress</h4>
           <div class="meta">Individually wrapped springs for comfort and support.</div>
           <div class="price">₹14,999</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Mattress Enquiry'">Enquire</button>
+          <button class="btn" onclick="showDetails(4)">View Details</button>
         </div>
       </div>
 
@@ -177,7 +363,7 @@
           <h4 class="title">Gel Mattress</h4>
           <div class="meta">Cool gel-infused mattress for temperature regulation.</div>
           <div class="price">₹11,499</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Mattress Enquiry'">Enquire</button>
+          <button class="btn" onclick="showDetails(5)">View Details</button>
         </div>
       </div>
 
@@ -187,12 +373,70 @@
           <h4 class="title">Hybrid Mattress</h4>
           <div class="meta">Combination of foam and springs for perfect comfort.</div>
           <div class="price">₹13,999</div>
-          <button class="btn" onclick="window.location.href='mailto:info@jaysfurniture.com?subject=Mattress Enquiry'">Enquire</button>
+          <button class="btn" onclick="showDetails(6)">View Details</button>
         </div>
       </div>
     </div>
+   </section>
+    <!-- Modal -->
+    <div id="mattressModal" class="modal">
+      <div class="modal-content" id="modalContent"></div>
+    </div>
 
-    <footer>© Jay's Furniture — Crafted with Care</footer>
+    <footer>© 2025 Jay's Furniture. All rights reserved.</footer>
   </div>
+
+  <script>
+    const mattresses = {
+      1: { name:"Memory Foam Mattress", size:"90x190cm", type:"Foam", details:"Comfortable foam mattress for restful sleep.", image:"mattress1.jpg", price:"₹9,999" },
+      2: { name:"Spring Mattress", size:"100x200cm", type:"Spring", details:"Durable mattress with excellent support.", image:"mattress2.jpg", price:"₹7,499" },
+      3: { name:"Latex Mattress", size:"90x200cm", type:"Latex", details:"Natural latex mattress with orthopedic support.", image:"mattress3.jpg", price:"₹12,499" },
+      4: { name:"Pocket Spring Mattress", size:"120x200cm", type:"Pocket Spring", details:"Individually wrapped springs for comfort and support.", image:"mattress4.jpg", price:"₹14,999" },
+      5: { name:"Gel Mattress", size:"100x200cm", type:"Gel Foam", details:"Cool gel-infused mattress for temperature regulation.", image:"mattress5.jpg", price:"₹11,499" },
+      6: { name:"Hybrid Mattress", size:"120x200cm", type:"Hybrid", details:"Combination of foam and springs for perfect comfort.", image:"mattress6.jpg", price:"₹13,999" }
+    };
+
+    function showDetails(id){
+      const m = mattresses[id];
+      const modal = document.getElementById('mattressModal');
+      const content = document.getElementById('modalContent');
+      content.innerHTML = `
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img src="images/${m.image}" alt="${m.name}">
+        <h3>${m.name}</h3>
+        <ul id="modalSpecs">
+          <li><strong>Size:</strong> ${m.size}</li>
+          <li><strong>Type:</strong> ${m.type}</li>
+          <li><strong>Details:</strong> ${m.details}</li>
+          <li><strong>Price:</strong> ${m.price}</li>
+        </ul>
+      `;
+      modal.style.display='flex';
+    }
+
+    function closeModal(){
+      document.getElementById('mattressModal').style.display='none';
+    }
+
+    window.onclick=function(event){
+      const modal=document.getElementById('mattressModal');
+      if(event.target===modal) closeModal();
+    } 
+
+
+
+   
+  // Highlight current page link in navbar
+  const currentPage = location.pathname.split("/").pop(); // e.g., "fridge.html"
+  const navLinks = document.querySelectorAll("#navbar a");
+  navLinks.forEach(link => {
+    if(link.getAttribute("href") === currentPage){
+      link.classList.add("active");
+      // Scroll it into view for mobile horizontal nav
+      link.scrollIntoView({behavior: "smooth", inline: "center"});
+    }
+  });
+</script>
+
 </body>
 </html>
