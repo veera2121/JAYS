@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jay's Furniture — Sofas</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+  <style>
+/* ===== Body & Container ===== */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg,#e0e7ff,#fef6e4,#f3e8ff);
+  color: #111;
+  min-height: 100vh;
+  scroll-padding-top: 100px;
+}
+.container { max-width: 1250px; margin: 40px auto; padding: 0 20px; padding-top: 100px; }
+
+/* ===== Header ===== */
+header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 15px 25px;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(10px);
+  border-radius:14px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.1);
+  margin-bottom:20px;
+}
+.brand { display:flex; align-items:center; gap:12px; }
+.logo {
+  width:55px; height:55px;
+  background: linear-gradient(135deg,#c99b55,#e0b469);
+  color:#fff; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+  border-radius:14px; font-size:18px;
+  box-shadow:0 4px 10px rgba(201,155,85,0.4);
+}
+.brand h1 {
+  font-size:1.5rem;
+  font-weight:700;
+  background:linear-gradient(90deg,#a78bfa,#f59e0b);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+nav a { margin-left:15px; font-weight:600; color:#333; transition:color 0.3s; text-decoration:none; }
+nav a:hover { color:#c99b55; }
+nav a.active { background: linear-gradient(30deg,#c99b55,#aca2a6); color: #fff; box-shadow:0 4px 12px rgb(0,0,0); transform: scale(1.05); }
+
+/* ===== Section Header ===== */
+h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-top: 30px;
+  font-weight: 800;
+  background: linear-gradient(90deg,#a855f7,#f97316);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ===== Grid Layout ===== */
+.grid {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:25px;
+  margin-top:35px;
+}
+@media(max-width:768px){
+  .grid { grid-template-columns:repeat(1,1fr); }
+}
+
+/* ===== Cards ===== */
+.card {
+  position:relative;
+  background: rgba(255,255,255,0.25);
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 8px 25px rgba(0,0,0,0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  backdrop-filter: blur(10px);
+  cursor:pointer;
+}
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+.card img {
+  width:100%;
+  max-height:250px;
+  object-fit:contain;
+  border-radius:12px;
+  display:block;
+  background:#f0f0f0;
+  margin-bottom:10px;
+}
+.card-body { padding:18px; text-align:center; }
+.title { font-weight:700; font-size:1.1rem; margin-bottom:8px; color:#2e2e2e; }
+.meta { color:#6b6b6b; font-size:0.9rem; margin-bottom:10px; }
+.price { font-weight:800; font-size:1.1rem; color:#c99b55; margin-bottom:12px; }
+.btn {
+  background: linear-gradient(90deg,#c99b55,#e0b469);
+  color:#fff; border:none; padding:10px 18px;
+  border-radius:25px; cursor:pointer; font-weight:600;
+  transition: all 0.3s ease; box-shadow:0 4px 10px rgba(224,180,105,0.3);
+}
+.btn:hover {
+  background: linear-gradient(90deg,#e0b469,#c99b55);
+  transform: scale(1.05);
+}
+
+/* ===== Modal ===== */
+.modal {
+  display:none; position:fixed; z-index:9999; left:0; top:0;
+  width:100%; height:100%; background-color: rgba(0,0,0,0.65);
+  backdrop-filter: blur(6px); justify-content:center; align-items:center;
+}
+.modal-content {
+  background: rgba(255,255,255,0.95);
+  border-radius:18px;
+  width:90%; max-width:500px; max-height:90vh;
+  padding:20px; color:#333; text-align:left;
+  box-shadow:0 8px 30px rgba(0,0,0,0.25);
+  animation: zoomIn 0.4s ease;
+  position:absolute; top:50%; left:50%;
+  transform: translate(-50%,-50%); overflow-y:auto;
+}
+.modal-content img {
+  width:100%; max-height:250px; object-fit:contain;
+  border-radius:12px; margin-bottom:15px; background:#f0f0f0; display:block;
+}
+#modalSpecs { list-style:none; padding:0; margin:0; font-size:0.95rem; }
+#modalSpecs li { margin-bottom:8px; padding:8px; border-bottom:1px solid rgba(0,0,0,0.1); }
+.close { float:right; font-size:24px; cursor:pointer; }
+@keyframes zoomIn { from{transform:scale(0.8);opacity:0;} to{transform:scale(1);opacity:1;} }
+
+/* ===== Sofa Types Buttons ===== */
+.sofa-types {
+  display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin:20px 0 30px 0;
+}
+.sofa-types a.type-btn {
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(5px);
+  padding:8px 16px; border-radius:12px;
+  font-weight:600; color:#333; text-decoration:none;
+  transition: all 0.3s ease;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+.sofa-types a.type-btn:hover { transform:scale(1.05); background:rgba(255,255,255,0.35); color:#c99b55; }
+@media(max-width:768px){
+  .sofa-types { overflow-x:auto; -webkit-overflow-scrolling:touch; gap:8px; padding-bottom:10px; }
+  .sofa-types::-webkit-scrollbar { display:none; }
+  .sofa-types a.type-btn { flex:0 0 auto; white-space:nowrap; font-size:0.9rem; padding:6px 12px; }
+}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="logo">Sri</div>
+    <h1>Sri's Furniture</h1>
+  </div>
+  <nav id="navbar">
+    <a href="index.html">Home</a>
+    <a href="sofas.html">Sofas</a>
+    <a href="chairs.html">Chairs</a>
+    <a href="beds.html">Beds</a>
+  </nav>
+</header>
+
+<div class="container">
+
+<!-- ===== Sofa Types Buttons ===== -->
+<div class="sofa-types">
+  <a href="#3seater" class="type-btn">3 Seater</a>
+  <a href="#recliner" class="type-btn">Recliner</a>
+  <a href="#sectional" class="type-btn">Sectional</a>
+  <a href="#chaise" class="type-btn">Chaise Lounge</a>
+  <a href="#corner" class="type-btn">Corner Sofa</a>
+  <a href="#loveseat" class="type-btn">Loveseat</a>
+</div>
+
+<!-- ===== 6 Sections, 6 Cards Each ===== -->
+
+<!-- 3 Seater Section -->
+<section id="3seater">
+  <h2>3 Seater Sofas</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="images/sofa1.jpg" alt="Leather 3 Seater" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Leather 3 Seater</h4>
+        <div class="meta">Premium leather, classic design.</div>
+        <div class="price">₹24,999</div>
+        <button class="btn" onclick="showDetails(1)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa2.jpg" alt="Fabric 3 Seater" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Fabric 3 Seater</h4>
+        <div class="meta">Soft fabric cushions for comfort.</div>
+        <div class="price">₹19,499</div>
+        <button class="btn" onclick="showDetails(2)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa3.jpg" alt="Modern 3 Seater" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Modern 3 Seater</h4>
+        <div class="meta">Sleek modern design, durable frame.</div>
+        <div class="price">₹22,999</div>
+        <button class="btn" onclick="showDetails(3)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa4.jpg" alt="Fabric Classic" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Fabric Classic</h4>
+        <div class="meta">Elegant fabric with soft cushions.</div>
+        <div class="price">₹20,499</div>
+        <button class="btn" onclick="showDetails(4)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa5.jpg" alt="Leather Comfort" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Leather Comfort</h4>
+        <div class="meta">Premium leather, comfortable seating.</div>
+        <div class="price">₹25,499</div>
+        <button class="btn" onclick="showDetails(5)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa6.jpg" alt="Classic 3 Seater" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Classic 3 Seater</h4>
+        <div class="meta">Traditional design, long-lasting.</div>
+        <div class="price">₹21,999</div>
+        <button class="btn" onclick="showDetails(6)">View Details</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Recliner Section -->
+<section id="recliner">
+  <h2>Recliner Sofas</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="images/sofa7.jpg" alt="Modern Recliner 1" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Modern Recliner 1</h4>
+        <div class="meta">Ultimate comfort, adjustable seating.</div>
+        <div class="price">₹29,999</div>
+        <button class="btn" onclick="showDetails(7)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa8.jpg" alt="Modern Recliner 2" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Modern Recliner 2</h4>
+        <div class="meta">Premium leather with recline feature.</div>
+        <div class="price">₹31,499</div>
+        <button class="btn" onclick="showDetails(8)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa9.jpg" alt="Comfort Recliner" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Comfort Recliner</h4>
+        <div class="meta">Soft cushioning and durable frame.</div>
+        <div class="price">₹28,999</div>
+        <button class="btn" onclick="showDetails(9)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa10.jpg" alt="Leather Recliner" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Leather Recliner</h4>
+        <div class="meta">Elegant leather, reclining backrest.</div>
+        <div class="price">₹32,499</div>
+        <button class="btn" onclick="showDetails(10)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa11.jpg" alt="Recliner Deluxe" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Recliner Deluxe</h4>
+        <div class="meta">Premium design with extra comfort.</div>
+        <div class="price">₹33,499</div>
+        <button class="btn" onclick="showDetails(11)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa12.jpg" alt="Classic Recliner" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Classic Recliner</h4>
+        <div class="meta">Durable and stylish for living rooms.</div>
+        <div class="price">₹30,499</div>
+        <button class="btn" onclick="showDetails(12)">View Details</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6 Sections, 6 Cards Each ===== -->
+
+<!-- 3 Seater Section -->
+<section id="3seater">
+  <h2>3 Seater Sofas</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="images/sofa1.jpg" alt="Leather 3 Seater" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Leather 3 Seater</h4>
+        <div class="meta">Premium leather, classic design.</div>
+        <div class="price">₹24,999</div>
+        <button class="btn" onclick="showDetails(1)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa2.jpg" alt="Fabric 3 Seater" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Fabric 3 Seater</h4>
+        <div class="meta">Soft fabric cushions for comfort.</div>
+        <div class="price">₹19,499</div>
+        <button class="btn" onclick="showDetails(2)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa3.jpg" alt="Modern 3 Seater" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Modern 3 Seater</h4>
+        <div class="meta">Sleek modern design, durable frame.</div>
+        <div class="price">₹22,999</div>
+        <button class="btn" onclick="showDetails(3)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa4.jpg" alt="Fabric Classic" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Fabric Classic</h4>
+        <div class="meta">Elegant fabric with soft cushions.</div>
+        <div class="price">₹20,499</div>
+        <button class="btn" onclick="showDetails(4)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa5.jpg" alt="Leather Comfort" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Leather Comfort</h4>
+        <div class="meta">Premium leather, comfortable seating.</div>
+        <div class="price">₹25,499</div>
+        <button class="btn" onclick="showDetails(5)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa6.jpg" alt="Classic 3 Seater" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Classic 3 Seater</h4>
+        <div class="meta">Traditional design, long-lasting.</div>
+        <div class="price">₹21,999</div>
+        <button class="btn" onclick="showDetails(6)">View Details</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Recliner Section -->
+<section id="recliner">
+  <h2>Recliner Sofas</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="images/sofa7.jpg" alt="Modern Recliner 1" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Modern Recliner 1</h4>
+        <div class="meta">Ultimate comfort, adjustable seating.</div>
+        <div class="price">₹29,999</div>
+        <button class="btn" onclick="showDetails(7)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa8.jpg" alt="Modern Recliner 2" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Modern Recliner 2</h4>
+        <div class="meta">Premium leather with recline feature.</div>
+        <div class="price">₹31,499</div>
+        <button class="btn" onclick="showDetails(8)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa9.jpg" alt="Comfort Recliner" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Comfort Recliner</h4>
+        <div class="meta">Soft cushioning and durable frame.</div>
+        <div class="price">₹28,999</div>
+        <button class="btn" onclick="showDetails(9)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa10.jpg" alt="Leather Recliner" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Leather Recliner</h4>
+        <div class="meta">Elegant leather, reclining backrest.</div>
+        <div class="price">₹32,499</div>
+        <button class="btn" onclick="showDetails(10)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa11.jpg" alt="Recliner Deluxe" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Recliner Deluxe</h4>
+        <div class="meta">Premium design with extra comfort.</div>
+        <div class="price">₹33,499</div>
+        <button class="btn" onclick="showDetails(11)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa12.jpg" alt="Classic Recliner" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Classic Recliner</h4>
+        <div class="meta">Durable and stylish for living rooms.</div>
+        <div class="price">₹30,499</div>
+        <button class="btn" onclick="showDetails(12)">View Details</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6 Sections, 6 Cards Each ===== -->
+
+<!-- 3 Seater Section -->
+<section id="sectional">
+  <h2>3 Seater Sofas</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="images/sofa1.jpg" alt="Leather 3 Seater" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Leather 3 Seater</h4>
+        <div class="meta">Premium leather, classic design.</div>
+        <div class="price">₹24,999</div>
+        <button class="btn" onclick="showDetails(1)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa2.jpg" alt="Fabric 3 Seater" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Fabric 3 Seater</h4>
+        <div class="meta">Soft fabric cushions for comfort.</div>
+        <div class="price">₹19,499</div>
+        <button class="btn" onclick="showDetails(2)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa3.jpg" alt="Modern 3 Seater" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Modern 3 Seater</h4>
+        <div class="meta">Sleek modern design, durable frame.</div>
+        <div class="price">₹22,999</div>
+        <button class="btn" onclick="showDetails(3)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa4.jpg" alt="Fabric Classic" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Fabric Classic</h4>
+        <div class="meta">Elegant fabric with soft cushions.</div>
+        <div class="price">₹20,499</div>
+        <button class="btn" onclick="showDetails(4)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa5.jpg" alt="Leather Comfort" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Leather Comfort</h4>
+        <div class="meta">Premium leather, comfortable seating.</div>
+        <div class="price">₹25,499</div>
+        <button class="btn" onclick="showDetails(5)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa6.jpg" alt="Classic 3 Seater" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Classic 3 Seater</h4>
+        <div class="meta">Traditional design, long-lasting.</div>
+        <div class="price">₹21,999</div>
+        <button class="btn" onclick="showDetails(6)">View Details</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Recliner Section -->
+<section id="chaise">
+  <h2>Recliner Sofas</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="images/sofa7.jpg" alt="Modern Recliner 1" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Modern Recliner 1</h4>
+        <div class="meta">Ultimate comfort, adjustable seating.</div>
+        <div class="price">₹29,999</div>
+        <button class="btn" onclick="showDetails(7)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa8.jpg" alt="Modern Recliner 2" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Modern Recliner 2</h4>
+        <div class="meta">Premium leather with recline feature.</div>
+        <div class="price">₹31,499</div>
+        <button class="btn" onclick="showDetails(8)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa9.jpg" alt="Comfort Recliner" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Comfort Recliner</h4>
+        <div class="meta">Soft cushioning and durable frame.</div>
+        <div class="price">₹28,999</div>
+        <button class="btn" onclick="showDetails(9)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa10.jpg" alt="Leather Recliner" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Leather Recliner</h4>
+        <div class="meta">Elegant leather, reclining backrest.</div>
+        <div class="price">₹32,499</div>
+        <button class="btn" onclick="showDetails(10)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa11.jpg" alt="Recliner Deluxe" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Recliner Deluxe</h4>
+        <div class="meta">Premium design with extra comfort.</div>
+        <div class="price">₹33,499</div>
+        <button class="btn" onclick="showDetails(11)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa12.jpg" alt="Classic Recliner" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Classic Recliner</h4>
+        <div class="meta">Durable and stylish for living rooms.</div>
+        <div class="price">₹30,499</div>
+        <button class="btn" onclick="showDetails(12)">View Details</button>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ===== 6 Sections, 6 Cards Each ===== -->
+
+<!-- 3 Seater Section -->
+<section id="">
+  <h2>3 Seater Sofas</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="images/sofa1.jpg" alt="Leather 3 Seater" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Leather 3 Seater</h4>
+        <div class="meta">Premium leather, classic design.</div>
+        <div class="price">₹24,999</div>
+        <button class="btn" onclick="showDetails(1)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa2.jpg" alt="Fabric 3 Seater" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Fabric 3 Seater</h4>
+        <div class="meta">Soft fabric cushions for comfort.</div>
+        <div class="price">₹19,499</div>
+        <button class="btn" onclick="showDetails(2)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa3.jpg" alt="Modern 3 Seater" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Modern 3 Seater</h4>
+        <div class="meta">Sleek modern design, durable frame.</div>
+        <div class="price">₹22,999</div>
+        <button class="btn" onclick="showDetails(3)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa4.jpg" alt="Fabric Classic" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Fabric Classic</h4>
+        <div class="meta">Elegant fabric with soft cushions.</div>
+        <div class="price">₹20,499</div>
+        <button class="btn" onclick="showDetails(4)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa5.jpg" alt="Leather Comfort" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Leather Comfort</h4>
+        <div class="meta">Premium leather, comfortable seating.</div>
+        <div class="price">₹25,499</div>
+        <button class="btn" onclick="showDetails(5)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa6.jpg" alt="Classic 3 Seater" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Classic 3 Seater</h4>
+        <div class="meta">Traditional design, long-lasting.</div>
+        <div class="price">₹21,999</div>
+        <button class="btn" onclick="showDetails(6)">View Details</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Recliner Section -->
+<section id="recliner">
+  <h2>Recliner Sofas</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="images/sofa7.jpg" alt="Modern Recliner 1" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Modern Recliner 1</h4>
+        <div class="meta">Ultimate comfort, adjustable seating.</div>
+        <div class="price">₹29,999</div>
+        <button class="btn" onclick="showDetails(7)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa8.jpg" alt="Modern Recliner 2" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Modern Recliner 2</h4>
+        <div class="meta">Premium leather with recline feature.</div>
+        <div class="price">₹31,499</div>
+        <button class="btn" onclick="showDetails(8)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa9.jpg" alt="Comfort Recliner" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Comfort Recliner</h4>
+        <div class="meta">Soft cushioning and durable frame.</div>
+        <div class="price">₹28,999</div>
+        <button class="btn" onclick="showDetails(9)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa10.jpg" alt="Leather Recliner" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Leather Recliner</h4>
+        <div class="meta">Elegant leather, reclining backrest.</div>
+        <div class="price">₹32,499</div>
+        <button class="btn" onclick="showDetails(10)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa11.jpg" alt="Recliner Deluxe" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Recliner Deluxe</h4>
+        <div class="meta">Premium design with extra comfort.</div>
+        <div class="price">₹33,499</div>
+        <button class="btn" onclick="showDetails(11)">View Details</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/sofa12.jpg" alt="Classic Recliner" loading="lazy">
+      <div class="card-body">
+        <h4 class="title">Classic Recliner</h4>
+        <div class="meta">Durable and stylish for living rooms.</div>
+        <div class="price">₹30,499</div>
+        <button class="btn" onclick="showDetails(12)">View Details</button>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Modal -->
+<div id="sofaModal" class="modal">
+  <div class="modal-content" id="modalContent"></div>
+</div>
+
+<footer style="text-align:center; margin-top:50px; color:#6b6b6b;">
+  © Jay's Furniture — Crafted with care
+</footer>
+
+<script>
+// ===== Sofa Data =====
+const sofas = {
+  1: { name:"Leather 3 Seater", size:"3 Seater", color:"Brown", model:"LS-001", features:"Premium leather, classic design, durable frame.", image:"sofa1.jpg" },
+  2: { name:"Fabric 3 Seater", size:"3 Seater", color:"Grey", model:"FS-002", features:"Comfortable fabric upholstery with soft cushions.", image:"sofa2.jpg" },
+  3: { name:"Modern Recliner", size:"2 Seater", color:"Black", model:"RS-003", features:"Ultimate comfort with recliner mechanism.", image:"sofa3.jpg" },
+  4: { name:"L-Shaped Sectional", size:"L-Shape", color:"Beige", model:"SS-004", features:"Spacious L-shaped sectional for family comfort.", image:"sofa4.jpg" },
+  5: { name:"Chaise Lounge", size:"2 Seater", color:"Blue", model:"CS-005", features:"Stylish chaise lounge for modern interiors.", image:"sofa5.jpg" },
+  6: { name:"Corner Sofa", size:"L-Shape", color:"Grey", model:"CNS-006", features:"Corner sofa for modern interiors.", image:"sofa6.jpg" },
+  7: { name:"Loveseat Sofa", size:"2 Seater", color:"Red", model:"LS-007", features:"Compact 2-seater for small spaces.", image:"sofa7.jpg" }
+};
+
+// ===== Modal Functions =====
+function showDetails(id){
+  const product = sofas[id];
+  const modal = document.getElementById('sofaModal');
+  const content = document.getElementById('modalContent');
+  content.innerHTML = `
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img src="images/${product.image}" alt="${product.name}">
+    <h3>${product.name}</h3>
+    <ul id="modalSpecs">
+      <li><strong>Size:</strong> ${product.size}</li>
+      <li><strong>Color:</strong> ${product.color}</li>
+      <li><strong>Model:</strong> ${product.model}</li>
+      <li><strong>Features:</strong> ${product.features}</li>
+    </ul>
+  `;
+  modal.style.display='flex';
+}
+function closeModal(){ document.getElementById('sofaModal').style.display='none'; }
+window.onclick = function(event){ if(event.target===document.getElementById('sofaModal')) closeModal(); };
+
+// ===== Highlight active navbar link =====
+const currentPage = location.pathname.split("/").pop();
+const navLinks = document.querySelectorAll("#navbar a");
+navLinks.forEach(link=>{
+  if(link.getAttribute("href")===currentPage){
+    link.classList.add("active");
+    link.scrollIntoView({behavior:"smooth",inline:"center"});
+  }
+});
+</script>
+
+</body>
+</html>
