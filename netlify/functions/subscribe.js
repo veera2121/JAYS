@@ -11,7 +11,7 @@ exports.handler = async (event, context) => {
     return { statusCode: 400, body: "Phone number is required" };
   }
 
-  const sheetUrl = "YOUR_GOOGLE_SHEET_WEB_APP_URL"; // replace this with your Google Sheet URL
+ const sheetUrl = "https://script.google.com/macros/s/AKfycbyzJEZ1UcjqIhQqf65k5KBiIcFjALd6MPwMAzbe1ilylQV8Yut4j2miLE6NhKVSId2e/exec";
 
   try {
     await fetch(sheetUrl, {

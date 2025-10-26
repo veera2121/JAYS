@@ -108,7 +108,7 @@ License: free to use and customize.
     /* Desktop view: 6 products per row */
     .categories {
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: repeat(7, 1fr);
       gap: 15px;
       max-width: 1200px;
       margin: 20px auto;
@@ -735,6 +735,9 @@ header .header-content h1 {
         transform: translateY(-3px);
       }
       
+    .bottom-nav {
+  display: none; /* hides it initially */
+}
 
     /* ---------------- Desktop hides bottom nav ---------------- */
     @media (min-width: 769px) {
@@ -745,7 +748,7 @@ header .header-content h1 {
 
   }
     .whatsapp-chat {
-      display: flex;
+      display: none;
       justify-content: center;
       align-items: center;
       position: fixed;
@@ -3197,12 +3200,13 @@ header .header-content h1 {
       </p>
   </div> 
 
-<form id="subscribeForm">
+form name="subscribe" method="POST" data-netlify="true" id="subscribeForm">
+  <input type="hidden" name="form-name" value="subscribe">
   <input type="text" name="name" placeholder="Your Name">
-  <input type="text" name="phone" placeholder="Enter your number" required>
+  <input type="tel" name="phone" placeholder="Your Phone Number" required>
   <button type="submit">Subscribe</button>
 </form>
-
+<div id="msg"></div>
  
   
       <!-- Navigation -->
@@ -3367,7 +3371,8 @@ header .header-content h1 {
       const p = products.find(x=>x.id===id);
       const subject = encodeURIComponent(`Enquiry about ${p.title}`);
       const body = encodeURIComponent(`Hi Jay's team,\n\nI am interested in ${p.title} (product id ${p.id}). Please share more details and pricing.\n\nThanks,`);
-      window.location.href = `mailto:info@jaysfurniture.com?subject=${subject}&body=${body}`;
+     window.location.href = `mailto:vamika2650@gmail.com?subject=${subject}&body=${body}`;
+
     }
 
     function addToCart(id){
@@ -3559,9 +3564,19 @@ document.querySelectorAll('nav a').forEach(link => {
   });
 });
 
-// ===== Mobile bottom nav smooth scroll =====
+const bottomNav = document.querySelector('.bottom-nav');
 const bottomNavItems = document.querySelectorAll('.bottom-nav .nav-item');
-const sectionIds = ['home', 'products', 'cart']; // match your sections
+const sectionIds = ['home', 'products', 'cart']; // match your section IDs
+
+
+// ===== Show bottom nav only when scrolling =====
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    bottomNav.style.display = 'flex';
+  } else {
+    bottomNav.style.display = 'none';
+  }
+});
 
 bottomNavItems.forEach((item, i) => {
   item.addEventListener('click', () => {
@@ -4132,6 +4147,27 @@ window.addEventListener("scroll", () => {
     btn.style.display = "none";
   }
 });
+
+
+
+document.getElementById('subscribeForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const formData = new FormData(this);
+  fetch('/', {
+    method: 'POST',
+    body: new URLSearchParams(formData)
+  })
+  .then(() => {
+    document.getElementById('msg').innerText = '✅ Thank you! Your number has been submitted.';
+    this.reset();
+  })
+  .catch(() => {
+    document.getElementById('msg').innerText = '❌ Submission failed. Try again.';
+  });
+});
+
+
 
 </script>
 </body>
