@@ -3911,6 +3911,7 @@ cards.forEach(card => {
 // ⭐ Rating selection
 const stars = document.querySelectorAll("#starRating span");
 let selectedRating = 0;
+
 stars.forEach((star, index) => {
   star.addEventListener("click", () => {
     selectedRating = index + 1;
@@ -3918,29 +3919,40 @@ stars.forEach((star, index) => {
   });
 });
 
-// 💬 Submit Review to MongoDB
-document.getElementById("reviewForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const name = document.getElementById("reviewName").value;
-  const review = document.getElementById("reviewText").value;
+// ✅ Submit review to MongoDB
+async function submitReview() {
+  const name = document.getElementById("reviewName").value.trim() || "Guest User";
+  const review = document.getElementById("reviewText").value.trim();
 
-  if (!review.trim()) return alert("Please write a review!");
+  if (!review) {
+    alert("Please write a review!");
+    return;
+  }
 
   const response = await fetch("/api/reviews", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({ name, review, rating: selectedRating })
+    body: JSON.stringify({
+      name,
+      review,
+      rating: selectedRating
+    })
   });
 
   const result = await response.json();
   alert(result.message);
 
-  loadReviews(); // Refresh review list
-});
+  // Clear after submit
+  document.getElementById("reviewText").value = "";
+  selectedRating = 0;
+  stars.forEach((s) => s.classList.remove("selected"));
 
-// ✅ Load reviews from MongoDB
+  loadReviews(); // Refresh list
+}
+
+// ✅ Load reviews from MongoDB on start
 async function loadReviews() {
   const response = await fetch("/api/reviews");
   const data = await response.json();
@@ -3963,6 +3975,10 @@ async function loadReviews() {
     `;
   });
 }
+
+// ✅ Load reviews when page loads
+window.onload = loadReviews;
+
 
 window.onload = loadReviews;
     window.onload = loadReviews;
@@ -4159,22 +4175,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 });
-
-async function submitReview() {
-    const name = document.getElementById("name").value;
-    const review = document.getElementById("review").value;
-
-    const response = await fetch("/api/reviews", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ name, review })
-    });
-
-    const result = await response.json();
-    alert(result.message);
-}
 
 
 
