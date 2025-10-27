@@ -46,7 +46,7 @@ License: free to use and customize.
     <!-- Centered shop name -->
      <div class="header-content">
       <h1>
-              <span class="line1">sri sai ganesh Homeneeds</span><br>
+              <span class="line1">Sri Sai Ganesh Homeneeds</span><br>
               <span class="line2">  and Forniture</span><br>
               
       </h1>
@@ -75,7 +75,7 @@ License: free to use and customize.
  
   <style> 
     :root{
-      --bg: linear-gradient(0deg, #E00000 0%, #ff0000 100%);; --card:#949494; --muted:#6b6b6b;
+      --bg: linear-gradient(0deg, #ff0000 100%, #ff0000 100%);; --card:#949494; --muted:#6b6b6b;
       --accent:rgb(138, 138, 138); --accent-dark:#000000; --accent-contrast:#fff;
       --radius:14px; --maxw:1200px; --shadow:0 8px 30px rgba(18,22,28,0.08);
     }
@@ -384,10 +384,11 @@ header {
   display: flex;
   flex-direction: column;
   padding: 30px 25px;
-  background: linear-gradient(90deg, #E00000 0%, #ff0000 100%);
+  background: linear-gradient(90deg, #ff0000 0%, #ff0000 100%);
   border-bottom: 2px solid rgba(255,255,255,0.2);
   border-radius: 0 0 8px 8px;
-  box-shadow: 0 0 15px rgba(185, 15, 15, 0.6), 0 3px 8px rgba(0,0,0,0.25);
+  box-shadow: 0 0 15px rgb(255, 0, 0), 0 3px 8px rgba(0,0,0,0.25);
+  height:140px;
 }
 
 /* ---------------- HEADER TOP (LOGO + TITLE) ---------------- */
@@ -397,15 +398,20 @@ header .header-top {
   justify-content: center; /* center title */
   position: relative;
   width: 100%;
+  height:70px;
+  top:8;
 }
 
 /* Brand section (logo left) */
 .brand {
-  position: absolute;
+  position: absolute; 
+
   left: 0;
   display: flex;
-  align-items: center;
-  gap: 10px;
+  align-items: center; 
+  gap:10px;
+  
+ 
 }
 
 .logo {
@@ -414,19 +420,26 @@ header .header-top {
   object-fit: contain;
   border: 1px solid #fff;
   display: block;
-  border-radius: 5px;
+  border-radius: 5px; 
+  top :10px;
+
+  
 }
 
 /* ---------------- TITLE CENTERED ---------------- */
-header .header-content h1 {
-  font-weight: 900;
-  font-size: 3rem;
+header .header-content h1 { 
+  font-family: 'Montserrat', sans-serif;
+  font-size: 52px;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
   line-height: 1.1;
   text-align: center;
   background: linear-gradient(100deg, #ffffff, #ffffff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin: 0;
+  
   white-space: nowrap; /* keep on one line */
 }
 
@@ -437,7 +450,7 @@ header .header-content h1 {
     }
     header.shrink {
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      background: #E00000; /* slightly more transparent for effect */
+      background: #ff0000; /* slightly more transparent for effect */
     } 
     header {
   transition: all 0.3s ease;
@@ -447,9 +460,8 @@ nav {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 6px;
   flex-wrap: wrap;
-  margin-top: 8px;
+  
 }
 
 nav a {
@@ -483,7 +495,7 @@ nav a:hover {
  .nav-toggle {
       display: none;
       flex-direction: column;
-      gap: 5px;
+      gap: 10px;
       cursor: pointer;
     }
 
@@ -554,7 +566,9 @@ header .header-content h1 {
   /* ---------------- MOBILE HEADER ---------------- */
   header {
     padding: 1px; 
-      position: relative;
+      position: relative; 
+      height:100px;
+     
   }
     
   
@@ -563,7 +577,7 @@ header .header-content h1 {
     display: flex;
     flex-direction: row; /* side-by-side layout */
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     text-align: left;
     gap: 0.8rem;  
      width: 100%;
@@ -575,27 +589,40 @@ header .header-content h1 {
     display: flex;
     align-items: center;
     justify-content: flex-start; /* logo stays left */
-    margin: 0;
+    margin: 0;  
+   
   }
 
   .logo {
-    height: 60px;
-    width: 60px;
+    height: 70px;
+    width: 70px;
     border: 1px solid #fff;
     border-radius: 8px;
-    object-fit: contain;
+    object-fit: contain; 
+   
+   
   }
-
+  header .logo {
+  position: relative;
+  top: 10px; /* move down 10px — adjust as needed */
+}
   /* Header text (main title) */
   header .header-content {
-    flex: 1; /* allow text to use remaining space */
-  }
+   flex: 1;
+  display: flex;
+  justify-content: flex-end;   /* center horizontally */
+  align-items: flex-end;       /* center vertically */
+  flex-direction: column;    /* stack text properly */
+  text-align: center;        /* center text inside */
+  height: 100%;    }      
 
   header .header-content h1 {
-    font-size: 1.2rem; /* smaller for mobile */
-    font-weight: 900; 
-     font-family: 'Poppins', sans-serif;
- 
+    
+    font-size: 20px;   /* smaller, fits nicely on mobile */
+    letter-spacing: 1px;
+    line-height: 1.2;
+    white-space: normal; /* allow wrapping on small screens */
+  
    
     background: linear-gradient(180deg, #ffffff, #ffffff);
     -webkit-background-clip: text;
@@ -604,16 +631,13 @@ header .header-content h1 {
     line-height: 1.1;
     margin: 0; 
       margin: 25px 0 0 0; /* <-- top margin adds space */ 
-  }
-
-  /* Optional: if title has multiple lines */
-  header .header-content .line1,
-  header .header-content .line2
-   {
-    display: block;
-    text-align: left;
-  }
-
+  
+  } 
+  header .header-content h1 {
+  position: relative;
+  left: -30px; /* move slightly left — adjust value as needed */
+}
+ 
   /* Navigation below */
   nav {
    /* Hamburger menu */
@@ -624,7 +648,7 @@ header .header-content h1 {
         background: #1A237E;
         flex-direction: column;
         gap: 15px;
-        padding: 20px;
+        padding: 20px 5px;
         border-radius: 10px;
         display: none;
       }
@@ -636,7 +660,7 @@ header .header-content h1 {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    margin-top: 0.5rem; /* adds a little spacing below text */
+    margin-top: 10px; /* adds a little spacing below text */
     align-self: flex-end; /* right-aligns it in the new row */
     margin-left: auto; /* pushes it to the right side */
   
@@ -745,8 +769,8 @@ header .header-content h1 {
         display: none;
       }
   }
-
-  }
+ }
+  
     .whatsapp-chat {
       display: none;
       justify-content: center;
@@ -760,7 +784,7 @@ header .header-content h1 {
       border-radius: 50%;
       background: #25D366;  /* WhatsApp green */
       color: white;
-      z-index: 10000;       /* above other content */
+      z-index: 110000;       /* above other content */
       box-shadow: 0 4px 6px rgba(0,0,0,0.2);
       cursor: pointer;
       animation: float 1.5s ease-in-out infinite; /* floating animation */
@@ -2543,10 +2567,6 @@ header .header-content h1 {
     </section>
 
 
-    <!-- WhatsApp Chat button -->
-    <div class="whatsapp-chat">
-      <i class="fab fa-whatsapp"></i>
-    </div>
 
     <a href="https://wa.me/1234567890" class="whatsapp-chat" target="_blank">
       <i class="fab fa-whatsapp"></i>
@@ -3068,34 +3088,32 @@ header .header-content h1 {
   <section class="customer-reviews">
   <h2>What Our Customers Say</h2>
   <p class="cta-text">Share your experience & win a surprise reward 🎁</p>
-
-  <!-- ⭐ Review Form -->
-  <form class="review-form" id="reviewForm">
+<!-- ⭐ Review Form -->
+<form class="review-form" id="reviewForm">
     <div class="rating" id="starRating">
-      <span data-value="1">★</span>
-      <span data-value="2">★</span>
-      <span data-value="3">★</span>
-      <span data-value="4">★</span>
-      <span data-value="5">★</span>
+        <span data-value="1">★</span>
+        <span data-value="2">★</span>
+        <span data-value="3">★</span>
+        <span data-value="4">★</span>
+        <span data-value="5">★</span>
     </div>
 
-    <textarea placeholder="Write your review..." required></textarea>
+    <input id="reviewName" placeholder="Your Name">
+    <textarea id="reviewText" placeholder="Write your review..." required></textarea>
     <input type="file" id="reviewImage" accept="image/*">
-    <button type="submit">Submit Review</button>
-  </form>
 
-  <!-- 🎁 Reward Popup -->
-  <div class="reward-popup" id="rewardPopup">
+    <button type="submit">Submit Review ✅</button>
+</form>
+
+<!-- 🎁 Reward Popup -->
+<div class="reward-popup" id="rewardPopup">
     <span class="close-btn" onclick="closePopup()">×</span>
     <img src="https://cdn-icons-png.flaticon.com/512/992/992703.png" alt="gift">
     <span>🎉 Thanks! You’ve earned a Reward!</span>
-  </div>
+</div>
 
-  <!-- 💬 Reviews List -->
-  <div class="reviews-list" id="reviewsList"></div>
-  </section>
-
-
+<!-- 💬 Reviews List -->
+<div class="reviews-list" id="reviewsList"></div>
 
 
   <section id="contact" class="contact-map-section">  
@@ -3890,7 +3908,6 @@ cards.forEach(card => {
     index = (index + 1) % images.length;
   }, 4000);
 });
-  
 // ⭐ Rating selection
 const stars = document.querySelectorAll("#starRating span");
 let selectedRating = 0;
@@ -3901,100 +3918,54 @@ stars.forEach((star, index) => {
   });
 });
 
-// 💬 Add Review
-document.getElementById("reviewForm").addEventListener("submit", (e) => {
+// 💬 Submit Review to MongoDB
+document.getElementById("reviewForm").addEventListener("submit", async (e) => {
   e.preventDefault();
-  const textarea = e.target.querySelector("textarea");
-  const text = textarea.value.trim();
-  const fileInput = document.getElementById("reviewImage");
-  let imgSrc = "";
+  const name = document.getElementById("reviewName").value;
+  const review = document.getElementById("reviewText").value;
 
-  if (fileInput.files[0]) {
-    imgSrc = URL.createObjectURL(fileInput.files[0]);
-  }
+  if (!review.trim()) return alert("Please write a review!");
 
-  if (text) addReview(text, selectedRating, imgSrc);
+  const response = await fetch("/api/reviews", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ name, review, rating: selectedRating })
+  });
 
-  textarea.value = "";
-  fileInput.value = "";
-  selectedRating = 0;
-  stars.forEach((s) => s.classList.remove("selected"));
-  showReward();
+  const result = await response.json();
+  alert(result.message);
+
+  loadReviews(); // Refresh review list
 });
 
-// ✨ Add Review Card
-function addReview(text, rating, imgSrc) {
-  const reviewList = document.getElementById("reviewsList");
-  const card = document.createElement("div");
-  card.className = "review-card";
+// ✅ Load reviews from MongoDB
+async function loadReviews() {
+  const response = await fetch("/api/reviews");
+  const data = await response.json();
 
-  let starsHTML = "";
-  for (let i = 0; i < 5; i++) {
-    starsHTML += `<span style="color:${i < rating ? '#ffb703' : '#ccc'};">★</span>`;
-  }
+  const list = document.getElementById("reviewsList");
+  list.innerHTML = "";
 
-  const maxLength = 150;
-  let shortText = text;
-  let showMoreHTML = "";
-  if (text.length > maxLength) {
-    shortText = text.substring(0, maxLength) + "...";
-    showMoreHTML = `<span class="show-more" onclick="toggleText(this, '${text.replace(/'/g, "\\'")}')">Show More</span>`;
-  }
+  data.forEach(r => {
+    let starsHTML = "";
+    for (let i = 0; i < 5; i++) {
+      starsHTML += `<span style="color:${i < r.rating ? '#ffb703' : '#ccc'};">★</span>`;
+    }
 
-  card.innerHTML = `
-    ${imgSrc ? `<img src="${imgSrc}" alt="review image">` : ""}
-    <p>${shortText}</p>
-    ${showMoreHTML}
-    <div class="rating">${starsHTML}</div>
-  `;
-  reviewList.appendChild(card);
-  card.scrollIntoView({ behavior: "smooth", inline: "end" });
+    list.innerHTML += `
+      <div class="review-card">
+        <p><strong>${r.name || "Anonymous"}</strong></p>
+        <p>${r.review}</p>
+        <div class="rating">${starsHTML}</div>
+      </div>
+    `;
+  });
 }
 
-// 🔄 Toggle long text
-function toggleText(elem, fullText) {
-  const p = elem.previousElementSibling;
-  if (elem.innerText === "Show More") {
-    p.innerText = fullText;
-    elem.innerText = "Show Less";
-  } else {
-    p.innerText = fullText.substring(0, 150) + "...";
-    elem.innerText = "Show More";
-  }
-}
-
-// 🎁 Reward popup
-function showReward() {
-  const popup = document.getElementById("rewardPopup");
-  popup.classList.add("show");
-  setTimeout(() => popup.classList.remove("show"), 2500);
-}
-function closePopup() {
-  document.getElementById("rewardPopup").classList.remove("show");
-}
-
-const exploreBtn = document.getElementById("exploreBtn");
-const featuredWrapper = document.getElementById("featuredWrapper");
-
-exploreBtn.addEventListener("click", () => {
-  if (featuredWrapper.style.display === "none" || !featuredWrapper.classList.contains("show")) {
-    // Show the section
-    featuredWrapper.style.display = "block";
-    setTimeout(() => featuredWrapper.classList.add("show"), 50);
-
-    // Scroll to section
-    featuredWrapper.scrollIntoView({ behavior: "smooth" });
-
-    // Change button text
-    exploreBtn.textContent = "Hide Collection";
-  } else {
-    // Hide the section
-    featuredWrapper.classList.remove("show");
-    setTimeout(() => featuredWrapper.style.display = "none", 300); // wait for fade-out
-    exploreBtn.textContent = "Explore Our Collection";
-  }
-});
-
+window.onload = loadReviews;
+    window.onload = loadReviews;
 // ✅ List of search items and locations
 const searchItems = {
   "sofa": "sofas.html",
@@ -4166,6 +4137,45 @@ document.getElementById('subscribeForm').addEventListener('submit', function(e) 
     document.getElementById('msg').innerText = '❌ Submission failed. Try again.';
   });
 });
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const whatsappBtn = document.querySelector('.whatsapp-chat');
+
+  // Show WhatsApp icon after page loads
+  if (whatsappBtn) {
+    // Make visible after a short delay (optional)
+    setTimeout(() => {
+      whatsappBtn.style.display = 'flex';
+    }, 1000); // show after 1 second
+  }
+
+  // If you want to show only after scrolling
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 200) {
+      whatsappBtn.style.display = 'flex';
+    } else {
+      whatsappBtn.style.display = 'none';
+    }
+  });
+});
+
+async function submitReview() {
+    const name = document.getElementById("name").value;
+    const review = document.getElementById("review").value;
+
+    const response = await fetch("/api/reviews", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name, review })
+    });
+
+    const result = await response.json();
+    alert(result.message);
+}
+
 
 
 
